@@ -13,16 +13,18 @@ notifications:
 install:
   - npm ci # faster, goes only from package-lock
 before_script:
-  - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+  - psql -c 'create database "triviawithus-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 script:
-  - npm test             # test the code
+  - npm test # test the code
   - npm run build-client # make the bundle
-
-# before_deploy:
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
+  skip_cleanup: true
+  provider: heroku
+  # app should be your heroku app name; see README
+  app: triviawithus
+  # the secure key indicates an encrypted value; see README
+  api_key:
+    secure: SiZoJJ5DvBv/zShJp95806Ukl/5k3WUBtmN89ItzpOzHSz64TLEaCF9ZJ2U+3zaKzJNAUyGvaqTdoGpDc+QpJPPuOQwRbCwIJoaIUIyLrplRtEJ3ovalt8enPvkgNni9J79cEL83fVtd3YEuftaA6DhZVs8pCBV50tZO1iSl567m+dFkM8Rtn02xxjlFvWrv8zc6lrXaIbNNnN2ApcWx3Rp7D3U2IkXkgLKyAiW2ZnardKkp9B7iimhGRfwKJ/PiLL/kYQ/OWW2K0bxtb1dgi95sYzEo8K6dgkDRSNhN+AbVua/b3sF7hwV96JueYUkNo2DBESDigJuFcd8V1D/cAXjzQwcBkA8mqUH/bSw6RfZGWX2AOYahHgZzQ5GuwsZACBJl/pxApKzblsc2EkvBDNvW9U69Z0oBh4VbJg6spg0dgjM2Nq21KejS04zFiemQHH+v1swv/Wtz5wcWr7cmJxzf4bIn3rMVpDHvwLo3g8HduEoTki549Bho/5thn77iicnIZI5c/KlN4s8OVrCQfc4jlBWXaB7UOfS8r6/XqgpHM1atS0K8rnTbIMcKps1UEkr6N0Snupd2GNY0hTYZ0jCZwnS0HxXU7LjP25ZLGzDM+lao3lWoiM2GHXVvycR6HdWjFc3mmVXxUCgq89kuxnwfeclnm2qgUSeCGXLnEFM=
