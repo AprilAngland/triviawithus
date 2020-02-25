@@ -26,6 +26,16 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  weChatId: {
+    type: Sequelize.STRING
+  },
+  nickname: {
+    type: Sequelize.STRING
+  },
+  type: {
+    type: Sequelize.ENUM(['admin', 'guest']),
+    defaultValue: 'guest'
   }
 })
 
