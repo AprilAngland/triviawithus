@@ -19,3 +19,11 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.lavender {
+  background-color: #b1afd7;
+}
+
+.mint {
+  background-color: #86e7b8;
+}
