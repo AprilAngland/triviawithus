@@ -36,12 +36,12 @@ async function seed() {
     }),
     User.create({
       email: 'guest1@guest.cn',
-      password: 122115,
+      password: '122115',
       language: 'CN'
     }),
     User.create({
       email: 'guest2@guest.cn',
-      password: 122115,
+      password: '122115',
       language: 'CN'
     })
   ])
