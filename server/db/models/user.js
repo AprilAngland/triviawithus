@@ -27,8 +27,9 @@ const User = db.define('user', {
   googleId: {
     type: Sequelize.STRING
   },
-  weChatId: {
-    type: Sequelize.STRING
+  language: {
+    type: Sequelize.ENUM(['EN', 'CN']),
+    defaultValue: 'EN'
   },
   nickname: {
     type: Sequelize.STRING

@@ -19,7 +19,8 @@ User.belongsToMany(TriviaGuessNumber, {through: 'TriviaGuessNumberVotes'})
 TriviaGuessNumber.belongsToMany(User, {through: 'TriviaGuessNumberVotes'})
 User.belongsToMany(TriviaMultiChoice, {through: 'TriviaMultiChoiceVotes'})
 TriviaMultiChoice.belongsToMany(User, {through: 'TriviaMultiChoiceVotes'})
-
+User.belongsToMany(Menu, {through: 'MenuVotes'})
+Menu.belongsToMany(User, {through: 'MenuVotes'})
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'

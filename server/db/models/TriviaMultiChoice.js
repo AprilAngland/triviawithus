@@ -33,6 +33,18 @@ const TriviaMultiChoice = db.define('triviamultichoice', {
   ans: {
     type: Sequelize.STRING
   },
+  ansCnt1: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
+  ansCnt2: {
+    type: Sequelize.STRING,
+    defaultValue: 0
+  },
+  ansCnt3: {
+    type: Sequelize.STRING,
+    defaultValue: 0
+  },
   type: {
     type: Sequelize.ENUM(['real', 'dummy']),
     defaultValue: 'real'

@@ -355,6 +355,7 @@ async function seedAssociation() {
   var ranTriviaGuessNumber
   var ranTriviaTrueFalse
   var ranTriviaMultiChoice
+  var ranMenu
   for (var k = 0; k < 100; k++) {
     ranUser = await User.findByPk(Math.floor(Math.random() * 3.9) + 1)
     ranTriviaHimHer = await TriviaHimHer.findByPk(
@@ -369,10 +370,14 @@ async function seedAssociation() {
     ranTriviaMultiChoice = await TriviaMultiChoice.findByPk(
       Math.floor(Math.random() * 6.9) + 1
     )
+    ranMenu = await Menu.findOne({
+      where: {section: 'Entree'}
+    })
     await ranTriviaHimHer.addUser([ranUser])
     await ranTriviaGuessNumber.addUser([ranUser])
     await ranTriviaTrueFalse.addUser([ranUser])
     await ranTriviaMultiChoice.addUser([ranUser])
+    await ranMenu.addUser([ranUser])
   }
   console.log(`seeded association successfully`)
 }

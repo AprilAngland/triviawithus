@@ -12,6 +12,10 @@ const TriviaGuessNumber = db.define('triviaguessnumber', {
   ans: {
     type: Sequelize.INTEGER
   },
+  ansVotes: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    defaultValue: []
+  },
   type: {
     type: Sequelize.ENUM(['real', 'dummy']),
     defaultValue: 'real'

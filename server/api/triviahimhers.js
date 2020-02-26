@@ -16,6 +16,7 @@ router.get('/', adminOnly, async (req, res, next) => {
 router.get('/:id', adminOnly, async (req, res, next) => {
   try {
     const triviahimher = await TriviaHimHer.findAll({
+      include: [{model: User}],
       where: {id: req.params.id}
     })
     res.json(triviahimher[0])

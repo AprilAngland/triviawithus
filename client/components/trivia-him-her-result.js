@@ -1,26 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {getQuestion} from '../store'
 
 /**
  * COMPONENT
  */
-export const TriviaHimHerResult = props => {
-  // const {email} = props
-  console.log('TriviaHimHerResult component')
-  return (
-    <div className="wrapped">
-      <h3>TriviaHimHerResult</h3>
-    </div>
-  )
+class TriviaHimHerResult extends React.Component {
+  componentDidMount() {
+    this.props.getQuestion(this.props.idx)
+  }
+  render() {
+    // const winners =
+    return (
+      <div className="wrapped">
+        <h3>TriviaHimHerResult</h3>
+        <p>{JSON.stringify(this.props)}</p>
+      </div>
+    )
+  }
 }
 
 /**
  * CONTAINER
  */
-const mapState = state => ({})
+const mapState = state => ({result: state.triviaHimHer})
+const mapDispatch = dispatch => ({
+  getQuestion: idx => {
+    dispatch(getQuestion(idx))
+  }
+})
 
-export default connect(mapState)(TriviaHimHerResult)
+export default connect(mapState, mapDispatch)(TriviaHimHerResult)
 
 TriviaHimHerResult.propTypes = {
   // email: PropTypes.string
