@@ -175,7 +175,6 @@ async function seed() {
       type: 'dummy'
     })
   ])
-
   console.log(`seeded ${triviahimhers.length} triviahimhers`)
   console.log(`seeded successfully`)
 
@@ -350,6 +349,33 @@ async function seed() {
   console.log(`seeded successfully`)
 }
 
+async function seedAssociation() {
+  var ranUser
+  var ranTriviaHimHer
+  var ranTriviaGuessNumber
+  var ranTriviaTrueFalse
+  var ranTriviaMultiChoice
+  for (var k = 0; k < 100; k++) {
+    ranUser = await User.findByPk(Math.floor(Math.random() * 3.9) + 1)
+    ranTriviaHimHer = await TriviaHimHer.findByPk(
+      Math.floor(Math.random() * 6.9) + 1
+    )
+    ranTriviaGuessNumber = await TriviaGuessNumber.findByPk(
+      Math.floor(Math.random() * 6.9) + 1
+    )
+    ranTriviaTrueFalse = await TriviaTrueFalse.findByPk(
+      Math.floor(Math.random() * 6.9) + 1
+    )
+    ranTriviaMultiChoice = await TriviaMultiChoice.findByPk(
+      Math.floor(Math.random() * 6.9) + 1
+    )
+    await ranTriviaHimHer.addUser([ranUser])
+    await ranTriviaGuessNumber.addUser([ranUser])
+    await ranTriviaTrueFalse.addUser([ranUser])
+    await ranTriviaMultiChoice.addUser([ranUser])
+  }
+  console.log(`seeded association successfully`)
+}
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
@@ -357,6 +383,7 @@ async function runSeed() {
   console.log('seeding...')
   try {
     await seed()
+    await seedAssociation()
   } catch (err) {
     console.error(err)
     process.exitCode = 1

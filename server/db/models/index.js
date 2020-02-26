@@ -11,6 +11,15 @@ const Menu = require('./menu')
  *    BlogPost.belongsTo(User)
  */
 
+User.belongsToMany(TriviaHimHer, {through: 'TriviaHimHerVotes'})
+TriviaHimHer.belongsToMany(User, {through: 'TriviaHimHerVotes'})
+User.belongsToMany(TriviaTrueFalse, {through: 'TriviaTrueFalseVotes'})
+TriviaTrueFalse.belongsToMany(User, {through: 'TriviaTrueFalseVotes'})
+User.belongsToMany(TriviaGuessNumber, {through: 'TriviaGuessNumberVotes'})
+TriviaGuessNumber.belongsToMany(User, {through: 'TriviaGuessNumberVotes'})
+User.belongsToMany(TriviaMultiChoice, {through: 'TriviaMultiChoiceVotes'})
+TriviaMultiChoice.belongsToMany(User, {through: 'TriviaMultiChoiceVotes'})
+
 /**
  * We'll export all of our models here, so that any time a module needs a model,
  * we can just require it from 'db/models'

@@ -12,3 +12,14 @@ router.get('/', adminOnly, async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:id', adminOnly, async (req, res, next) => {
+  try {
+    const triviahimher = await TriviaHimHer.findAll({
+      where: {id: req.params.id}
+    })
+    res.json(triviahimher[0])
+  } catch (err) {
+    next(err)
+  }
+})
