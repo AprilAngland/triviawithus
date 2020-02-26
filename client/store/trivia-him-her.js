@@ -22,7 +22,7 @@ const gotQuestion = question => ({type: GET_QUESTION, question})
 export const getQuestion = idx => async dispatch => {
   try {
     const {data} = await axios.get(`/api/triviahimhers/${idx}`)
-    console.log(data)
+    // console.log(data)
     dispatch(gotQuestion(data || defaultQuestion))
   } catch (err) {
     console.error(err)
