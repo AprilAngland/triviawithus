@@ -21,6 +21,7 @@ import {AppBar, Tabs, Tab} from '@material-ui/core'
 
 const styles = {
   root: {
+    // marginBottom: '100px',
     background: '#b1afd7',
     color: 'black',
     '&$disabled': {
@@ -53,12 +54,26 @@ class NavbarCustom extends React.Component {
     this.setState({value: newValue})
   }
   render() {
+    console.log('navbar rendering', this.state, this.props)
     const {classes} = this.props
-    return (
+    const showEng = this.props.user.language === 'EN'
+    return !this.props.user ? (
+      ''
+    ) : (
       <div>
-        <h1>TRIVIA WITH US</h1>
-        <AppBar className={classes.root} position="static">
-          <Tabs onChange={this.handleChange} value={this.state.value}>
+        {/* <h1>TRIVIA WITH US</h1> */}
+        <AppBar
+          className={classes.root}
+          position="fixed"
+          // indicatorColor="secondary"
+        >
+          <Tabs
+            onChange={this.handleChange}
+            value={this.state.value}
+            variant="scrollable"
+            scrollButtons="auto"
+            aria-label="scrollable auto tabs example"
+          >
             {!this.props.isLoggedIn ? (
               <Tab value={0} label="Login with Google" href="/auth/google" />
             ) : (
@@ -91,17 +106,32 @@ class NavbarCustom extends React.Component {
               ''
             )}
             {this.props.isLoggedIn ? (
-              <Tab value={3} label="Home" to="/Home" component={Link} />
+              <Tab
+                value={3}
+                label={showEng ? 'Home' : '主页'}
+                to="/Home"
+                component={Link}
+              />
             ) : (
               ''
             )}
             {this.props.isLoggedIn ? (
-              <Tab value={4} label="Game" to="/Game" component={Link} />
+              <Tab
+                value={5}
+                label={showEng ? 'Menu' : '菜单'}
+                to="/Menu"
+                component={Link}
+              />
             ) : (
               ''
             )}
-            {this.props.isLoggedIn ? (
-              <Tab value={5} label="Menu" to="/Menu" component={Link} />
+            {this.props.isLoggedIn && !this.props.isAdmin ? (
+              <Tab
+                value={4}
+                label={showEng ? 'Trivia!' : '有奖竞猜'}
+                to="/Game"
+                component={Link}
+              />
             ) : (
               ''
             )}
@@ -148,7 +178,7 @@ class NavbarCustom extends React.Component {
             {this.props.isLoggedIn ? (
               <Tab
                 value={6}
-                label="LogOut"
+                label={showEng ? 'logOut' : '退出登录'}
                 href="#"
                 onClick={() => {
                   this.props.handleClick()
@@ -172,6 +202,7 @@ class NavbarCustom extends React.Component {
 
 const mapState = state => {
   return {
+    user: state.user,
     isLoggedIn: !!state.user.id,
     isAdmin: state.user.type === 'admin'
   }

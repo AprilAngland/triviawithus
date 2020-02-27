@@ -14,6 +14,7 @@ import {
 
 const styles = {
   root: {
+    marginTop: '10vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -22,12 +23,12 @@ const styles = {
     borderRadius: 3,
     justifyContent: 'flex-start',
     boxShadow: '0 3px 5px 2px',
-    height: '50vh',
+    height: '60vh',
     margin: '20px'
   },
   buttonBar: {
     margin: '5px',
-    flex: '2 0 3vh',
+    flex: '0 0 3vh',
     display: 'flex',
     justifyContent: 'space-between'
   },
@@ -60,6 +61,7 @@ class TriviaHimHerVote extends React.Component {
       }
       socket.emit('FromHost', toEmit)
     }
+    const showEng = this.props.user.language === 'EN'
     return (
       <div>
         <Card className={classes.root} variant="outlined">
@@ -82,7 +84,9 @@ class TriviaHimHerVote extends React.Component {
           </CardActions>
           <CardContent className={classes.body}>
             <Typography variant="h5" component="h2" align="center">
-              {`Vote: ${this.props.question.text} ${this.props.question.id}`}
+              {showEng
+                ? `Vote: ${this.props.question.text} ${this.props.question.id}`
+                : `问: ${this.props.question.translation} ${this.props.question.id}`}
             </Typography>
             <Typography color="textSecondary">
               {'answer: ' + this.props.question.ans}

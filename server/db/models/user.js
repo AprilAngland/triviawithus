@@ -37,6 +37,19 @@ const User = db.define('user', {
   type: {
     type: Sequelize.ENUM(['admin', 'guest']),
     defaultValue: 'guest'
+  },
+  entreechoice: {
+    type: Sequelize.ENUM(['lamb', 'sea bass', 'risotto', 'not sure']),
+    defaultValue: 'not sure'
+  },
+  expectedcount: {
+    type: Sequelize.INTEGER
+  },
+  notetohost: {
+    type: Sequelize.STRING
+  },
+  notetochef: {
+    type: Sequelize.STRING
   }
 })
 

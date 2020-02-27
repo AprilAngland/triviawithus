@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
-const {adminOnly} = require('./utils')
+const {adminOnly, userOnly} = require('./utils')
 module.exports = router
 
 router.get('/', adminOnly, async (req, res, next) => {
@@ -11,6 +11,26 @@ router.get('/', adminOnly, async (req, res, next) => {
       // send everything to anyone who asks!
       attributes: ['id', 'email', 'type']
     })
+    res.json(users)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/:id', userOnly, async (req, res, next) => {
+  try {
+    const [numUpdated, users] = await User.update(
+      {
+        ...req.body
+      },
+      {
+        where: {id: +req.params.id},
+        returning: true,
+        plain: true
+      }
+    )
+    // console.log('!!!!!!updated ')
+    // console.log(users)
     res.json(users)
   } catch (err) {
     next(err)

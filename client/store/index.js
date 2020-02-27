@@ -5,16 +5,18 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import storage from 'redux-persist/lib/storage'
 import {persistStore, persistReducer} from 'redux-persist'
 import user from './user'
+import menu from './menu'
 import triviaHimHer from './trivia-him-her'
-import userInfo from './user-info'
+import userVoteInfo from './user-vote-info'
+// import userGeneralInfo from './user-general-info'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['userInfo']
+  whitelist: ['userVoteInfo', 'user']
 }
 const reducer = persistReducer(
   persistConfig,
-  combineReducers({user, triviaHimHer, userInfo})
+  combineReducers({user, triviaHimHer, userVoteInfo: userVoteInfo, menu})
 )
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -24,5 +26,7 @@ export const persistor = persistStore(store)
 
 export default store
 export * from './user'
-export * from './user-info'
+export * from './user-vote-info'
+// export * from './user-general-info'
+export * from './menu'
 export * from './trivia-him-her'

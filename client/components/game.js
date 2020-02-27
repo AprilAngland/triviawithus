@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
 import {TriviaHimHerQuestion, TriviaHimHerVote} from '.'
-import queryString from 'query-string'
-import {setDisplayedQuestion} from '../store'
+import {setDisplayedQuestion, eraseDisplayedQuestions} from '../store'
 
 class Game extends React.Component {
   constructor() {
@@ -13,13 +12,17 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    console.log(
-      'component did mount game',
-      'state',
-      this.state.question,
-      'props',
-      this.props
-    )
+    // console.log(
+    //   'component did mount game',
+    //   'state',
+    //   this.state.question,
+    //   'props',
+    //   this.props
+    // )
+    socket.on('ResetUserToGuest', () => {
+      // console.log('ResetUserToGuest')
+      this.props.eraseDisplayedQuestions()
+    })
     socket.on('ToGuest', question => {
       this.setState({question: question})
       this.props.setDisplayedQuestion(question)
@@ -27,19 +30,20 @@ class Game extends React.Component {
   }
 
   render() {
-    console.log(
-      'rendering game',
-      'state',
-      this.state.question,
-      'props',
-      this.props.question
-    )
+    // console.log(
+    //   'rendering game',
+    //   'state',
+    //   this.state.question,
+    //   'props',
+    //   this.props.question
+    // )
     return (
       <div>
         <h3>Game</h3>
-        {!this.props.question ? (
-          ''
-        ) : this.props.question.displayType === 'question' ? (
+        {!this.props.question.text ? (
+          <div>LOADING</div>
+        ) : // <Loading />
+        this.props.question.displayType === 'question' ? (
           <TriviaHimHerQuestion
             id={this.props.question.id}
             question={this.props.question}
@@ -59,12 +63,16 @@ class Game extends React.Component {
  * CONTAINER
  */
 const mapState = state => ({
-  question: state.userInfo.question
+  question: state.userVoteInfo.question,
+  finished: state.userVoteInfo.finished
   // user: state.user
 })
 const mapDispatch = dispatch => ({
   setDisplayedQuestion: question => {
     dispatch(setDisplayedQuestion(question))
+  },
+  eraseDisplayedQuestions: () => {
+    dispatch(eraseDisplayedQuestions())
   }
 })
 

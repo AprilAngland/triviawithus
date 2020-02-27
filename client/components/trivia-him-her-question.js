@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
-import {voteQuestion, resetQuestion} from '../store'
+import {voteQuestion, resetQuestion, finishedDisplayedQuestion} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import {
   Card,
@@ -14,6 +14,7 @@ import {
 
 const styles = {
   root: {
+    marginTop: '10vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -22,12 +23,12 @@ const styles = {
     borderRadius: 3,
     justifyContent: 'flex-start',
     boxShadow: '0 3px 5px 2px',
-    height: '50vh',
+    height: '60vh',
     margin: '20px'
   },
   buttonBar: {
     margin: '5px',
-    flex: '2 0 3vh',
+    flex: '0 0 3vh',
     display: 'flex',
     justifyContent: 'space-between'
   },
@@ -53,47 +54,96 @@ class TriviaHimHerQuestion extends React.Component {
       }
       socket.emit('FromHost', toEmit)
     }
+    const showEng = this.props.user.language === 'EN'
     return (
       <div>
         <Card className={classes.root} variant="outlined">
-          <CardActions className={classes.buttonBar}>
-            <Button
-              size="small"
-              id={1}
-              href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-            >
-              Show Vote!
-            </Button>
-            <Button size="small" onClick={this.props.resetQuestion}>
-              Restart!
-            </Button>
-          </CardActions>
+          {this.props.user.type === 'admin' ? (
+            <CardActions className={classes.buttonBar}>
+              <Button
+                size="small"
+                id={1}
+                href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+              >
+                Show Vote!
+              </Button>
+              <Button
+                size="small"
+                href="/triviahimhers?id=1&type=question"
+                onClick={() => {
+                  this.props.resetQuestion()
+                  socket.emit('ResetUserFromHost')
+                }}
+              >
+                Restart!
+              </Button>
+            </CardActions>
+          ) : (
+            ''
+          )}
           <CardContent className={classes.body}>
             <Typography variant="h5" component="h2" align="center">
-              {`Question: ${this.props.question.text} ${this.props.question.id}`}
+              {showEng
+                ? `Question: ${this.props.question.text} ${this.props.question.id}`
+                : `问: ${this.props.question.translation} ${this.props.question.id}`}
             </Typography>
           </CardContent>
+          {/* {this.props.userVoteInfo.finished
+            ? `${JSON.stringify(
+                this.props.userVoteInfo.finished.find(
+                  question =>
+                    question &&
+                    question.questionType === 'himher' &&
+                    question.id === this.props.question.id
+                )
+              )}`
+            : 'No yet'} */}
+
           <CardActions className={classes.answerBar}>
             <Button
               size="large"
-              onClick={() =>
-                this.props.voteQuestion(this.props.question.id, 'him', 1)
+              disabled={
+                !!this.props.userVoteInfo.finished.find(
+                  question =>
+                    question &&
+                    question.questionType === 'himher' &&
+                    question.id === this.props.question.id
+                )
               }
+              onClick={() => {
+                console.log(' dispatch(finishedDisplayedQuestion())')
+                this.props.voteQuestion(
+                  this.props.question.id,
+                  'him',
+                  this.props.user.id
+                )
+                this.props.finishedDisplayedQuestion(this.props.question)
+              }}
             >
-              Him
+              {showEng ? 'Him' : '他'}
             </Button>
 
             <Button
               size="large"
-              onClick={() =>
+              disabled={
+                !!this.props.userVoteInfo.finished.find(
+                  question =>
+                    question &&
+                    question.questionType === 'himher' &&
+                    question.id === this.props.question.id
+                )
+              }
+              onClick={() => {
+                console.log(' dispatch(finishedDisplayedQuestion())')
                 this.props.voteQuestion(
                   this.props.question.id,
                   'her',
                   this.props.user.id
                 )
-              }
+                this.props.finishedDisplayedQuestion(this.props.question)
+              }}
             >
-              Her
+              {showEng ? 'Her' : '她'}
             </Button>
           </CardActions>
         </Card>
@@ -102,13 +152,17 @@ class TriviaHimHerQuestion extends React.Component {
   }
 }
 
-const mapState = state => ({user: state.user})
+const mapState = state => ({user: state.user, userVoteInfo: state.userVoteInfo})
 const mapDispatch = dispatch => ({
   voteQuestion: (id, ans, userId) => {
     dispatch(voteQuestion(id, ans, userId))
   },
   resetQuestion: () => {
     dispatch(resetQuestion())
+  },
+  finishedDisplayedQuestion: question => {
+    // console.log(' dispatch(finishedDisplayedQuestion())')
+    dispatch(finishedDisplayedQuestion(question))
   }
 })
 
