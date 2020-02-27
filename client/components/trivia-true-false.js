@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
  */
 export const TriviaTrueFalse = props => {
   // const {email} = props
-  console.log('TriviaTrueFalse component')
+  // console.log('TriviaTrueFalse component')
   return (
     <div className="wrapped">
       <h3>TriviaTrueFalse</h3>

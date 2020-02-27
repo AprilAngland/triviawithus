@@ -145,41 +145,41 @@ async function seed() {
   console.log(`seeded successfully`)
 
   const triviahimhers = await Promise.all([
+    // TriviaHimHer.create({
+    //   text: 'Who steals apple pie at night?',
+    //   translation: '天天向上',
+    //   ans: 'her'
+    // }),
+    // TriviaHimHer.create({
+    //   text: 'Who is the blanket thief?',
+    //   translation: '天天向上',
+    //   ans: 'him'
+    // }),
+    // TriviaHimHer.create({
+    //   text: 'Who is a couch potato?',
+    //   translation: '天天向上',
+    //   ans: 'her'
+    // }),
     TriviaHimHer.create({
-      text: 'Who steals apple pie at night?',
-      translation: '天天向上',
-      ans: 'her'
-    }),
-    TriviaHimHer.create({
-      text: 'Who is the blanket thief?',
-      translation: '天天向上',
-      ans: 'him'
-    }),
-    TriviaHimHer.create({
-      text: 'Who is a couch potato?',
-      translation: '天天向上',
-      ans: 'her'
-    }),
-    TriviaHimHer.create({
-      text: 'TriviaHimHer Dummy Question 1',
-      translation: '天天向上',
-      ans: 'her',
-      type: 'dummy'
-    }),
-    TriviaHimHer.create({
-      text: 'TriviaHimHer Dummy Question 2',
+      text: 'TriviaHimHer Dummy Question',
       translation: '天天向上',
       ans: 'her',
       type: 'dummy'
     }),
     TriviaHimHer.create({
-      text: 'TriviaHimHer Dummy Question 3',
+      text: 'TriviaHimHer Dummy Question',
       translation: '天天向上',
       ans: 'her',
       type: 'dummy'
     }),
     TriviaHimHer.create({
-      text: 'TriviaHimHer Dummy Question 4',
+      text: 'TriviaHimHer Dummy Question',
+      translation: '天天向上',
+      ans: 'her',
+      type: 'dummy'
+    }),
+    TriviaHimHer.create({
+      text: 'TriviaHimHer Dummy Question',
       translation: '天天向上',
       ans: 'her',
       type: 'dummy'
@@ -189,42 +189,42 @@ async function seed() {
   console.log(`seeded successfully`)
 
   const triviatruefalses = await Promise.all([
+    // TriviaTrueFalse.create({
+    //   text: 'John ordered Asian Stir Fry more often than April',
+    //   translation: '天天向上',
+    //   ans: 'true'
+    // }),
+    // TriviaTrueFalse.create({
+    //   text:
+    //     'April and John watched the final episode of Game of Throne Together',
+    //   translation: '天天向上',
+    //   ans: 'true'
+    // }),
+    // TriviaTrueFalse.create({
+    //   text: 'April is the better chef',
+    //   translation: '天天向上',
+    //   ans: 'false'
+    // }),
     TriviaTrueFalse.create({
-      text: 'John ordered Asian Stir Fry more often than April',
-      translation: '天天向上',
-      ans: 'true'
-    }),
-    TriviaTrueFalse.create({
-      text:
-        'April and John watched the final episode of Game of Throne Together',
-      translation: '天天向上',
-      ans: 'true'
-    }),
-    TriviaTrueFalse.create({
-      text: 'April is the better chef',
-      translation: '天天向上',
-      ans: 'false'
-    }),
-    TriviaTrueFalse.create({
-      text: 'TriviaTrueFalse Dummy Question 1',
-      translation: '天天向上',
-      ans: 'true',
-      type: 'dummy'
-    }),
-    TriviaTrueFalse.create({
-      text: 'TriviaTrueFalse Dummy Question 2',
+      text: 'TriviaTrueFalse Dummy Question',
       translation: '天天向上',
       ans: 'true',
       type: 'dummy'
     }),
     TriviaTrueFalse.create({
-      text: 'TriviaTrueFalse Dummy Question 3',
+      text: 'TriviaTrueFalse Dummy Question',
       translation: '天天向上',
       ans: 'true',
       type: 'dummy'
     }),
     TriviaTrueFalse.create({
-      text: 'TriviaTrueFalse Dummy Question 4',
+      text: 'TriviaTrueFalse Dummy Question',
+      translation: '天天向上',
+      ans: 'true',
+      type: 'dummy'
+    }),
+    TriviaTrueFalse.create({
+      text: 'TriviaTrueFalse Dummy Question',
       translation: '天天向上',
       ans: 'true',
       type: 'dummy'
@@ -235,41 +235,41 @@ async function seed() {
   console.log(`seeded successfully`)
 
   const triviaguessnumber = await Promise.all([
+    // TriviaGuessNumber.create({
+    //   text: 'How many days between the first date and the wedding',
+    //   translation: '天天向上',
+    //   ans: 0
+    // }),
+    // TriviaGuessNumber.create({
+    //   text: 'How many days between the first date and the proposal?',
+    //   translation: '天天向上',
+    //   ans: 0
+    // }),
+    // TriviaGuessNumber.create({
+    //   text: 'How many days between the first date and the city hall wedding',
+    //   translation: '天天向上',
+    //   ans: 100
+    // }),
     TriviaGuessNumber.create({
-      text: 'How many days between the first date and the wedding',
-      translation: '天天向上',
-      ans: 0
-    }),
-    TriviaGuessNumber.create({
-      text: 'How many days between the first date and the proposal?',
-      translation: '天天向上',
-      ans: 0
-    }),
-    TriviaGuessNumber.create({
-      text: 'How many days between the first date and the city hall wedding',
-      translation: '天天向上',
-      ans: 100
-    }),
-    TriviaGuessNumber.create({
-      text: 'TriviaGuessNumber Dummy Question 1',
-      translation: '天天向上',
-      ans: 0,
-      type: 'dummy'
-    }),
-    TriviaGuessNumber.create({
-      text: 'TriviaGuessNumber Dummy Question 2',
+      text: 'TriviaGuessNumber Dummy Question',
       translation: '天天向上',
       ans: 0,
       type: 'dummy'
     }),
     TriviaGuessNumber.create({
-      text: 'TriviaGuessNumber Dummy Question 3',
+      text: 'TriviaGuessNumber Dummy Question',
       translation: '天天向上',
       ans: 0,
       type: 'dummy'
     }),
     TriviaGuessNumber.create({
-      text: 'TriviaGuessNumber Dummy Question 4',
+      text: 'TriviaGuessNumber Dummy Question',
+      translation: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaGuessNumber.create({
+      text: 'TriviaGuessNumber Dummy Question',
       translation: '天天向上',
       ans: 0,
       type: 'dummy'
@@ -280,75 +280,75 @@ async function seed() {
   console.log(`seeded successfully`)
 
   const triviamultichoice = await Promise.all([
+    // TriviaMultiChoice.create({
+    //   text: 'What was the criteria John used to pick first date restaurant?',
+    //   translation: '首次约会john选择餐馆的标准是什么？',
+    //   text1: 'He likes the restaurant to be quite so it allows conversation',
+    //   translation1: '他问女生喜欢什么菜系',
+    //   text2: 'He picks the restaurant near his aparment to save commute',
+    //   translation2: '他选离家近的,省的麻烦',
+    //   ans: 0
+    // }),
+    // TriviaMultiChoice.create({
+    //   text: 'What did John and April eat at first date?',
+    //   text1: 'Spanish tapa, sangria',
+    //   text2: 'Japanese Bento, green tea crepe cake',
+    //   text3: 'Sushi, sashimi and black sesame ice cream',
+    //   translation: '首次约会John和April吃了什么？',
+    //   translation1: '西班牙小食， 水果酒',
+    //   translation2: '日式便当，绿茶千层蛋糕',
+    //   translation3: '寿司，黑芝麻冰淇淋',
+    //   ans: 0
+    // }),
+    // TriviaMultiChoice.create({
+    //   text1: 'How many days between the first date and the city hall wedding',
+    //   translation1: '天天向上',
+    //   ans: 100
+    // }),
     TriviaMultiChoice.create({
-      text: 'What was the criteria John used to pick first date restaurant?',
-      translation: '首次约会john选择餐馆的标准是什么？',
-      text1: 'He likes the restaurant to be quite so it allows conversation',
-      translation1: '他问女生喜欢什么菜系',
-      text2: 'He picks the restaurant near his aparment to save commute',
-      translation2: '他选离家近的,省的麻烦',
-      ans: 0
-    }),
-    TriviaMultiChoice.create({
-      text: 'What did John and April eat at first date?',
-      text1: 'Spanish tapa, sangria',
-      text2: 'Japanese Bento, green tea crepe cake',
-      text3: 'Sushi, sashimi and black sesame ice cream',
-      translation: '首次约会John和April吃了什么？',
-      translation1: '西班牙小食， 水果酒',
-      translation2: '日式便当，绿茶千层蛋糕',
-      translation3: '寿司，黑芝麻冰淇淋',
-      ans: 0
-    }),
-    TriviaMultiChoice.create({
-      text1: 'How many days between the first date and the city hall wedding',
-      translation1: '天天向上',
-      ans: 100
-    }),
-    TriviaMultiChoice.create({
-      text: 'TriviaMultiChoice Dummy Question 1',
+      text: 'TriviaMultiChoice Dummy Question ',
       translation: '天天向上',
-      text1: 'TriviaMultiChoice Dummy Question 1 Option 1',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
       translation1: '天天向上',
-      text2: 'TriviaMultiChoice Dummy Question 1 Option 2',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
       translation2: '天天向上',
-      text3: 'TriviaMultiChoice Dummy Question 1 Option 3',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
       translation3: '天天向上',
       ans: 0,
       type: 'dummy'
     }),
     TriviaMultiChoice.create({
-      text: 'TriviaMultiChoice Dummy Question 2',
+      text: 'TriviaMultiChoice Dummy Question',
       translation: '天天向上',
-      text1: 'TriviaMultiChoice Dummy Question 2 Option 1',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
       translation1: '天天向上',
-      text2: 'TriviaMultiChoice Dummy Question 2 Option 2',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
       translation2: '天天向上',
-      text3: 'TriviaMultiChoice Dummy Question 2 Option 3',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
       translation3: '天天向上',
       ans: 0,
       type: 'dummy'
     }),
     TriviaMultiChoice.create({
-      text: 'TriviaMultiChoice Dummy Question 3',
+      text: 'TriviaMultiChoice Dummy Question',
       translation: '天天向上',
-      text1: 'TriviaMultiChoice Dummy Question 3 Option 1',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
       translation1: '天天向上',
-      text2: 'TriviaMultiChoice Dummy Question 3 Option 2',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
       translation2: '天天向上',
-      text3: 'TriviaMultiChoice Dummy Question 3 Option 3',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
       translation3: '天天向上',
       ans: 0,
       type: 'dummy'
     }),
     TriviaMultiChoice.create({
-      text: 'TriviaMultiChoice Dummy Question 4',
+      text: 'TriviaMultiChoice Dummy Question',
       translation: '天天向上',
-      text1: 'TriviaMultiChoice Dummy Question 4 Option 1',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
       translation1: '天天向上',
-      text2: 'TriviaMultiChoice Dummy Question 4 Option 2',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
       translation2: '天天向上',
-      text3: 'TriviaMultiChoice Dummy Question 4 Option 3',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
       translation3: '天天向上',
       ans: 0,
       type: 'dummy'
@@ -366,19 +366,19 @@ async function seedAssociation() {
   var ranTriviaTrueFalse
   var ranTriviaMultiChoice
   var ranMenu
-  for (var k = 0; k < 100; k++) {
+  for (var k = 0; k < 1; k++) {
     ranUser = await User.findByPk(Math.floor(Math.random() * 3.9) + 1)
     ranTriviaHimHer = await TriviaHimHer.findByPk(
-      Math.floor(Math.random() * 6.9) + 1
+      Math.floor(Math.random() * 3.9) + 1
     )
     ranTriviaGuessNumber = await TriviaGuessNumber.findByPk(
-      Math.floor(Math.random() * 6.9) + 1
+      Math.floor(Math.random() * 3.9) + 1
     )
     ranTriviaTrueFalse = await TriviaTrueFalse.findByPk(
-      Math.floor(Math.random() * 6.9) + 1
+      Math.floor(Math.random() * 3.9) + 1
     )
     ranTriviaMultiChoice = await TriviaMultiChoice.findByPk(
-      Math.floor(Math.random() * 6.9) + 1
+      Math.floor(Math.random() * 3.9) + 1
     )
     ranMenu = await Menu.findOne({
       where: {section: 'Entree'}

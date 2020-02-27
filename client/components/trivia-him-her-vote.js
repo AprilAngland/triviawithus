@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {resetQuestion} from '../store'
 import socket from '../socket'
-import {voteQuestion, resetQuestion} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import {
   Card,
@@ -37,18 +37,25 @@ const styles = {
   answerBar: {
     flex: '5 0 15vh',
     justifyContent: 'space-evenly',
-    margin: '40px'
+    marginBottom: '20px'
   }
 }
-class TriviaHimHerQuestion extends React.Component {
+
+class TriviaHimHerVote extends React.Component {
   componentDidMount() {}
   render() {
     const NUM_QUESTIONS = 4
     const {classes} = this.props
+    console.log(
+      'rendering TriviaHimHerVote',
+      this.props.question,
+      this.props.user.type
+    )
+
     if (this.props.questions !== null && this.props.user.type === 'admin') {
       const toEmit = {
         ...this.props.question,
-        displayType: 'question',
+        displayType: 'vote',
         questionType: 'himher'
       }
       socket.emit('FromHost', toEmit)
@@ -58,44 +65,43 @@ class TriviaHimHerQuestion extends React.Component {
         <Card className={classes.root} variant="outlined">
           <CardActions className={classes.buttonBar}>
             <Button
+              disabled={this.props.question.id === NUM_QUESTIONS}
               size="small"
-              id={1}
-              href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+              href={`/triviahimhers?id=${this.props.question.id +
+                1}&type=question`}
             >
-              Show Vote!
+              Next Question!
             </Button>
-            <Button size="small" onClick={this.props.resetQuestion}>
+            <Button
+              size="small"
+              href="/triviahimhers?id=1&type=question"
+              onClick={this.props.resetQuestion}
+            >
               Restart!
             </Button>
           </CardActions>
           <CardContent className={classes.body}>
             <Typography variant="h5" component="h2" align="center">
-              {`Question: ${this.props.question.text} ${this.props.question.id}`}
+              {`Vote: ${this.props.question.text} ${this.props.question.id}`}
+            </Typography>
+            <Typography color="textSecondary">
+              {'answer: ' + this.props.question.ans}
+            </Typography>
+            <Typography color="textSecondary">
+              {this.props.question.ansCntHim + ' of you answered him'}
+            </Typography>
+            <Typography color="textSecondary">
+              {this.props.question.ansCntHer + ' of you answered her'}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {this.props.question.users
+                ? JSON.stringify(
+                    this.props.question.users.map(user => user.email)
+                  )
+                : ''}
+              <br />
             </Typography>
           </CardContent>
-          <CardActions className={classes.answerBar}>
-            <Button
-              size="large"
-              onClick={() =>
-                this.props.voteQuestion(this.props.question.id, 'him', 1)
-              }
-            >
-              Him
-            </Button>
-
-            <Button
-              size="large"
-              onClick={() =>
-                this.props.voteQuestion(
-                  this.props.question.id,
-                  'her',
-                  this.props.user.id
-                )
-              }
-            >
-              Her
-            </Button>
-          </CardActions>
         </Card>
       </div>
     )
@@ -104,9 +110,6 @@ class TriviaHimHerQuestion extends React.Component {
 
 const mapState = state => ({user: state.user})
 const mapDispatch = dispatch => ({
-  voteQuestion: (id, ans, userId) => {
-    dispatch(voteQuestion(id, ans, userId))
-  },
   resetQuestion: () => {
     dispatch(resetQuestion())
   }
@@ -115,8 +118,6 @@ const mapDispatch = dispatch => ({
 export default connect(
   mapState,
   mapDispatch
-)(withStyles(styles)(TriviaHimHerQuestion))
+)(withStyles(styles)(TriviaHimHerVote))
 
-TriviaHimHerQuestion.propTypes = {
-  // email: PropTypes.string
-}
+TriviaHimHerVote.propTypes = {}

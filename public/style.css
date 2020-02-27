@@ -2,6 +2,19 @@ body {
   font-family: sans-serif;
 }
 
+body::after {
+  margin: 0;
+  content: '';
+  background: url('bg.jpg');
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  min-height: 100vw;
+}
 a {
   text-decoration: none;
 }

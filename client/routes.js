@@ -38,10 +38,10 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route path="/menu" component={Menu} />
             <Route path="/game" component={Game} />
-            <Route path="/TriviaHimHer" component={TriviaHimHer} />
-            <Route path="/TriviaTrueFalse" component={TriviaTrueFalse} />
-            <Route path="/TriviaMultiChoice" component={TriviaMultiChoice} />
-            <Route path="/TriviaGuessNumber" component={TriviaGuessNumber} />
+            <Route path="/TriviaHimHers" component={TriviaHimHer} />
+            <Route path="/TriviaTrueFalses" component={TriviaTrueFalse} />
+            <Route path="/TriviaMultiChoices" component={TriviaMultiChoice} />
+            <Route path="/TriviaGuessNumbers" component={TriviaGuessNumber} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}

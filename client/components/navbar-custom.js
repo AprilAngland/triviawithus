@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 // import {auth} from '../store'
 import socket from '../socket'
+import {withStyles} from '@material-ui/core/styles'
 import {AppBar, Tabs, Tab} from '@material-ui/core'
 //front end
 // // Listen for events
@@ -18,6 +19,29 @@ import {AppBar, Tabs, Tab} from '@material-ui/core'
 //     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 // });
 
+const styles = {
+  root: {
+    background: '#b1afd7',
+    color: 'black',
+    '&$disabled': {
+      color: 'white'
+    },
+    '&$hover': {
+      color: 'white'
+    }
+    // display: 'flex',
+    // flexGrow: 1,
+    // flexDirection: 'column',
+    // background: 'white',
+    // color: 'black',
+    // borderRadius: 3,
+    // justifyContent: 'flex-start',
+    // boxShadow: '0 3px 5px 2px',
+    // height: '50vh',
+    // margin: '20px'
+  }
+}
+
 class NavbarCustom extends React.Component {
   constructor(props) {
     super()
@@ -25,14 +49,15 @@ class NavbarCustom extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   handleChange = (event, newValue) => {
-    console.log(event, newValue)
+    // console.log(event, newValue)
     this.setState({value: newValue})
   }
   render() {
+    const {classes} = this.props
     return (
       <div>
         <h1>TRIVIA WITH US</h1>
-        <AppBar position="static">
+        <AppBar className={classes.root} position="static">
           <Tabs onChange={this.handleChange} value={this.state.value}>
             {!this.props.isLoggedIn ? (
               <Tab value={0} label="Login with Google" href="/auth/google" />
@@ -84,7 +109,7 @@ class NavbarCustom extends React.Component {
               <Tab
                 value={7}
                 label="TriviaHimHer"
-                to="/TriviaHimHer"
+                to="/TriviaHimHers"
                 component={Link}
               />
             ) : (
@@ -94,7 +119,7 @@ class NavbarCustom extends React.Component {
               <Tab
                 value={8}
                 label="TriviaMultiChoice"
-                to="/TriviaMultiChoice"
+                to="/TriviaMultiChoices"
                 component={Link}
               />
             ) : (
@@ -104,7 +129,7 @@ class NavbarCustom extends React.Component {
               <Tab
                 value={9}
                 label="TriviaTrueFalse"
-                to="/TriviaTrueFalse"
+                to="/TriviaTrueFalses"
                 component={Link}
               />
             ) : (
@@ -114,7 +139,7 @@ class NavbarCustom extends React.Component {
               <Tab
                 value={10}
                 label="TriviaGuessNumber"
-                to="/TriviaGuessNumber"
+                to="/TriviaGuessNumbers"
                 component={Link}
               />
             ) : (
@@ -160,7 +185,7 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(NavbarCustom)
+export default connect(mapState, mapDispatch)(withStyles(styles)(NavbarCustom))
 
 /**
  * PROP TYPES

@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
  */
 export const Menu = props => {
   // const {email} = props
-  console.log('menu component')
+  // console.log('menu component')
   return (
     <div className="wrapped">
       <h3>Menu</h3>
