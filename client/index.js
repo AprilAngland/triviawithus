@@ -7,8 +7,6 @@ import history from './history'
 import store, {persistor} from './store'
 import App from './app'
 
-// establishes socket connection
-
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

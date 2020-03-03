@@ -59,9 +59,6 @@ export default function(state = defaultQuestion, action) {
       return state
     case RESET_QUESTION:
       return state
-    // case NEXT_QUESTION:
-    //   console.log('switch next question')
-    //   return state
     default:
       return state
   }

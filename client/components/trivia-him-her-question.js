@@ -88,16 +88,6 @@ class TriviaHimHerQuestion extends React.Component {
                 : `问: ${this.props.question.translation} ${this.props.question.id}`}
             </Typography>
           </CardContent>
-          {/* {this.props.userVoteInfo.finished
-            ? `${JSON.stringify(
-                this.props.userVoteInfo.finished.find(
-                  question =>
-                    question &&
-                    question.questionType === 'himher' &&
-                    question.id === this.props.question.id
-                )
-              )}`
-            : 'No yet'} */}
 
           <CardActions className={classes.answerBar}>
             <Button
@@ -161,7 +151,6 @@ const mapDispatch = dispatch => ({
     dispatch(resetQuestion())
   },
   finishedDisplayedQuestion: question => {
-    // console.log(' dispatch(finishedDisplayedQuestion())')
     dispatch(finishedDisplayedQuestion(question))
   }
 })

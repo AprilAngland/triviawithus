@@ -12,9 +12,6 @@ import {
   Button,
   TextField
 } from '@material-ui/core'
-/**
- * COMPONENT
- */
 
 const styles = {
   root: {
@@ -27,7 +24,6 @@ const styles = {
     borderRadius: 3,
     justifyContent: 'flex-start',
     boxShadow: '0 3px 5px 2px',
-    // height: '60vh',
     margin: '20px',
     '& .MuiTextField-root': {
       margin: '10px',
@@ -52,9 +48,7 @@ class Home extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  componentDidMount() {
-    // this.props.getHome()
-  }
+  componentDidMount() {}
 
   static getDerivedStateFromProps(props, state) {
     // when it typed, it sends its props back to its state
@@ -67,7 +61,6 @@ class Home extends React.Component {
     } else {
       return state
     }
-    // return state
   }
   handleChange(event) {
     console.log('typing')
@@ -79,12 +72,10 @@ class Home extends React.Component {
     event.preventDefault()
     console.log('button submitted', this.state)
     this.props.updateInfo(this.state, this.props.user.id)
-    // this.props.submitEditRobot(this.state, this.props.selectedRobot.id)
   }
   render() {
     const {classes} = this.props
     const showEng = this.props.user.language === 'EN'
-    // const Home = this.props.Home
 
     return (
       <div>
@@ -94,8 +85,6 @@ class Home extends React.Component {
           onSubmit={this.handleSubmit}
         >
           <form noValidate autoComplete="off">
-            {/* <TextField id="standard-basic" label="Standard" /> */}
-            {/* <TextField id="filled-basic" label="Email" variant="filled" /> */}
             <TextField
               id="filled-basic"
               label={showEng ? 'Preferred Name' : `昵称`}
@@ -108,8 +97,8 @@ class Home extends React.Component {
               id="filled-basic"
               label={
                 showEng
-                  ? 'Expected Count(Including your plus ones)'
-                  : `大概来几个人`
+                  ? 'Expected Count(Including your plus ones: 0 if coming alone, 0.5 if not sure, 1 if coming, 2 if bringing spouse)'
+                  : `大概来几个人?`
               }
               variant="filled"
               name="expectedcount"
@@ -138,7 +127,7 @@ class Home extends React.Component {
               variant="filled"
             >
               {' '}
-              <option value="lamb">
+              <option value="Leg of Lamb Italian Style with Garlic">
                 {showEng
                   ? 'Leg of Lamb Italian Style with Garlic'
                   : `意大利羊腿 `}
@@ -169,11 +158,6 @@ class Home extends React.Component {
               value={this.state.notetochef}
               onChange={this.handleChange}
             />
-            {/* <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-            /> */}
             <Button variant="contained" color="primary" type="submit">
               Submit
             </Button>

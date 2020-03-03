@@ -107,7 +107,6 @@ class Menu extends React.Component {
               </Typography>
             ))}
           </CardContent>
-          {/* <CardActions className={classes.answerBar}></CardActions> */}
         </Card>
       </div>
     )

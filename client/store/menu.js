@@ -10,7 +10,6 @@ const gotMenu = menu => ({
 export const getMenu = () => async dispatch => {
   try {
     const {data} = await axios.get(`/api/menus`)
-    // data.displayType = 'question'
     dispatch(gotMenu(data))
   } catch (err) {
     console.error(err)

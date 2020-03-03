@@ -6,8 +6,6 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const TriviaMultiChoice = props => {
-  // const {email} = props
-  // console.log('TriviaMultiChoice component')
   return (
     <div className="wrapped">
       <h3>TriviaMultiChoice</h3>

@@ -59,13 +59,9 @@ class Game extends React.Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = state => ({
   question: state.userVoteInfo.question,
   finished: state.userVoteInfo.finished
-  // user: state.user
 })
 const mapDispatch = dispatch => ({
   setDisplayedQuestion: question => {

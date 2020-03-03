@@ -4,20 +4,9 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-// import {auth} from '../store'
 import socket from '../socket'
 import {withStyles} from '@material-ui/core/styles'
 import {AppBar, Tabs, Tab} from '@material-ui/core'
-//front end
-// // Listen for events
-// socket.on('chat', function(data){
-//     feedback.innerHTML = '';
-//     output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
-// });
-
-// socket.on('typing', function(data){
-//     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
-// });
 
 const styles = {
   root: {
@@ -30,16 +19,6 @@ const styles = {
     '&$hover': {
       color: 'white'
     }
-    // display: 'flex',
-    // flexGrow: 1,
-    // flexDirection: 'column',
-    // background: 'white',
-    // color: 'black',
-    // borderRadius: 3,
-    // justifyContent: 'flex-start',
-    // boxShadow: '0 3px 5px 2px',
-    // height: '50vh',
-    // margin: '20px'
   }
 }
 
@@ -61,12 +40,7 @@ class NavbarCustom extends React.Component {
       ''
     ) : (
       <div>
-        {/* <h1>TRIVIA WITH US</h1> */}
-        <AppBar
-          className={classes.root}
-          position="fixed"
-          // indicatorColor="secondary"
-        >
+        <AppBar className={classes.root} position="fixed">
           <Tabs
             onChange={this.handleChange}
             value={this.state.value}
@@ -190,11 +164,6 @@ class NavbarCustom extends React.Component {
             )}
           </Tabs>
         </AppBar>
-        {/* <Button
-          onClick={() => {
-            socket.emit('chat', {})
-          }}
-        ></Button> */}
       </div>
     )
   }

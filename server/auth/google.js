@@ -26,7 +26,6 @@ if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK
   }
-  // console.log('=====================New GoogleStrategy')
   const strategy = new GoogleStrategy(
     googleConfig,
     (token, refreshToken, profile, done) => {
