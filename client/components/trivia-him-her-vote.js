@@ -76,6 +76,13 @@ class TriviaHimHerVote extends React.Component {
                 Next Question!
               </Button>
               <Button
+                disabled={this.props.question.id !== NUM_QUESTIONS}
+                size="small"
+                href="/triviahimhers?type=winner"
+              >
+                Winner?
+              </Button>
+              <Button
                 size="small"
                 href="/triviahimhers?id=1&type=question"
                 onClick={this.props.resetQuestion}

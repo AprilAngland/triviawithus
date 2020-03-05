@@ -93,6 +93,13 @@ class TriviaHimHerQuestion extends React.Component {
                 Show Vote!
               </Button>
               <Button
+                disabled={true}
+                size="small"
+                href="/triviahimhers?type=winner"
+              >
+                Winner?
+              </Button>
+              <Button
                 size="small"
                 href="/triviahimhers?id=1&type=question"
                 onClick={() => {

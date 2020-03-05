@@ -4,7 +4,7 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const defaultQuestion = {}
+const defaultState = {curQuestion: {}, winner: 'unknown'}
 const GET_QUESTION = 'GET_QUESTION'
 const gotQuestion = question => ({type: GET_QUESTION, question})
 export const getQuestion = id => async dispatch => {
@@ -51,14 +51,31 @@ export const resetQuestion = () => async dispatch => {
   }
 }
 
-export default function(state = defaultQuestion, action) {
+const GET_WINNER = 'GET_WINNER'
+const gotWinner = winners => ({
+  type: GET_WINNER,
+  winners
+})
+
+export const getWinner = () => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/triviahimhers/winner`)
+    dispatch(gotWinner(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export default function(state = defaultState, action) {
   switch (action.type) {
     case GET_QUESTION:
-      return action.question
+      return {...state, curQuestion: action.question}
     case VOTE_QUESTION:
       return state
     case RESET_QUESTION:
       return state
+    case GET_WINNER:
+      return {...state, winners: action.winners}
     default:
       return state
   }

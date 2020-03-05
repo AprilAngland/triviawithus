@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
-import {TriviaHimHerQuestion, TriviaHimHerVote} from '.'
+import {TriviaHimHerQuestion, TriviaHimHerVote, TriviaHimHerWinner} from '.'
 import queryString from 'query-string'
 import {getQuestion} from '../store'
 
@@ -42,14 +42,18 @@ class TriviaHimHer extends React.Component {
         ) : this.props.question && this.state.type === 'vote' ? (
           <TriviaHimHerVote id={this.state.id} question={this.props.question} />
         ) : (
-          <div></div>
+          <TriviaHimHerWinner />
         )}
+        {/* <TriviaHimHerWinner /> */}
       </div>
     )
   }
 }
 
-const mapState = state => ({question: state.triviaHimHer, user: state.user})
+const mapState = state => ({
+  question: state.triviaHimHer.curQuestion,
+  user: state.user
+})
 const mapDispatch = dispatch => ({
   getQuestion: id => {
     dispatch(getQuestion(id))

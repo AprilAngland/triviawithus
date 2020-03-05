@@ -1,7 +1,6 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
 const {adminOnly, userOnly} = require('./utils')
-const {TriviaHimHer} = require('../db/models')
+const {TriviaHimHer, TriviaHimHerVote, User} = require('../db/models')
 
 module.exports = router
 
@@ -9,6 +8,31 @@ router.get('/', adminOnly, async (req, res, next) => {
   try {
     const triviahimhers = await TriviaHimHer.findAll({})
     res.json(triviahimhers)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/winner', adminOnly, async (req, res, next) => {
+  try {
+    const triviahimhers = await User.findAll({
+      include: [{model: TriviaHimHer}]
+      // include: [{model: Product, through: {attributes: ['quantity']}}], /
+      // attributes: ['userId']
+    })
+    const userCorrectCount = triviahimhers.map(user => ({
+      id: user.id,
+      nickName: user.nickname,
+      count: user.triviahimhers.length
+    }))
+    const maxCorrect = userCorrectCount[0].count
+    const winners = userCorrectCount
+      .filter(user => user.count === maxCorrect)
+      .sort((a, b) => b.count - a.count)
+    // res.json(triviahimhers)
+    // res.json(userCorrectCount)
+    res.json(winners)
+    // res.json({name: 'winnerName'})
   } catch (err) {
     next(err)
   }
