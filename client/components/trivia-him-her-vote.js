@@ -45,7 +45,7 @@ const styles = {
 class TriviaHimHerVote extends React.Component {
   componentDidMount() {}
   render() {
-    const NUM_QUESTIONS = 4
+    const NUM_QUESTIONS = 8
     const {classes} = this.props
     console.log(
       'rendering TriviaHimHerVote',

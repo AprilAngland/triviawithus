@@ -43,6 +43,26 @@ async function seed() {
       email: 'guest2@guest.cn',
       password: '122115',
       language: 'CN'
+    }),
+    User.create({
+      email: 'guest3@guest.cn',
+      password: '122115',
+      language: 'CN'
+    }),
+    User.create({
+      email: 'guest5@guest.cn',
+      password: '122115',
+      language: 'CN'
+    }),
+    User.create({
+      email: 'guest4@guest.cn',
+      password: '122115',
+      language: 'CN'
+    }),
+    User.create({
+      email: 'guest6@guest.cn',
+      password: '122115',
+      language: 'CN'
     })
   ])
 
@@ -183,6 +203,30 @@ async function seed() {
       translation: '天天向上',
       ans: 'her',
       type: 'dummy'
+    }),
+    TriviaHimHer.create({
+      text: 'TriviaHimHer Dummy Question',
+      translation: '天天向上',
+      ans: 'her',
+      type: 'dummy'
+    }),
+    TriviaHimHer.create({
+      text: 'TriviaHimHer Dummy Question',
+      translation: '天天向上',
+      ans: 'her',
+      type: 'dummy'
+    }),
+    TriviaHimHer.create({
+      text: 'TriviaHimHer Dummy Question',
+      translation: '天天向上',
+      ans: 'her',
+      type: 'dummy'
+    }),
+    TriviaHimHer.create({
+      text: 'TriviaHimHer Dummy Question',
+      translation: '天天向上',
+      ans: 'her',
+      type: 'dummy'
     })
   ])
   console.log(`seeded ${triviahimhers.length} triviahimhers`)
@@ -205,6 +249,30 @@ async function seed() {
     //   translation: '天天向上',
     //   ans: 'false'
     // }),
+    TriviaTrueFalse.create({
+      text: 'TriviaTrueFalse Dummy Question',
+      translation: '天天向上',
+      ans: 'true',
+      type: 'dummy'
+    }),
+    TriviaTrueFalse.create({
+      text: 'TriviaTrueFalse Dummy Question',
+      translation: '天天向上',
+      ans: 'true',
+      type: 'dummy'
+    }),
+    TriviaTrueFalse.create({
+      text: 'TriviaTrueFalse Dummy Question',
+      translation: '天天向上',
+      ans: 'true',
+      type: 'dummy'
+    }),
+    TriviaTrueFalse.create({
+      text: 'TriviaTrueFalse Dummy Question',
+      translation: '天天向上',
+      ans: 'true',
+      type: 'dummy'
+    }),
     TriviaTrueFalse.create({
       text: 'TriviaTrueFalse Dummy Question',
       translation: '天天向上',
@@ -273,6 +341,30 @@ async function seed() {
       translation: '天天向上',
       ans: 0,
       type: 'dummy'
+    }),
+    TriviaGuessNumber.create({
+      text: 'TriviaGuessNumber Dummy Question',
+      translation: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaGuessNumber.create({
+      text: 'TriviaGuessNumber Dummy Question',
+      translation: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaGuessNumber.create({
+      text: 'TriviaGuessNumber Dummy Question',
+      translation: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaGuessNumber.create({
+      text: 'TriviaGuessNumber Dummy Question',
+      translation: '天天向上',
+      ans: 0,
+      type: 'dummy'
     })
   ])
 
@@ -307,6 +399,54 @@ async function seed() {
     // }),
     TriviaMultiChoice.create({
       text: 'TriviaMultiChoice Dummy Question ',
+      translation: '天天向上',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
+      translation1: '天天向上',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
+      translation2: '天天向上',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
+      translation3: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaMultiChoice.create({
+      text: 'TriviaMultiChoice Dummy Question',
+      translation: '天天向上',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
+      translation1: '天天向上',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
+      translation2: '天天向上',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
+      translation3: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaMultiChoice.create({
+      text: 'TriviaMultiChoice Dummy Question',
+      translation: '天天向上',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
+      translation1: '天天向上',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
+      translation2: '天天向上',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
+      translation3: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaMultiChoice.create({
+      text: 'TriviaMultiChoice Dummy Question',
+      translation: '天天向上',
+      text1: 'TriviaMultiChoice Dummy Question Option 1',
+      translation1: '天天向上',
+      text2: 'TriviaMultiChoice Dummy Question Option 2',
+      translation2: '天天向上',
+      text3: 'TriviaMultiChoice Dummy Question Option 3',
+      translation3: '天天向上',
+      ans: 0,
+      type: 'dummy'
+    }),
+    TriviaMultiChoice.create({
+      text: 'TriviaMultiChoice Dummy Question',
       translation: '天天向上',
       text1: 'TriviaMultiChoice Dummy Question Option 1',
       translation1: '天天向上',

@@ -68,7 +68,7 @@ class TriviaHimHerQuestion extends React.Component {
   //   socket.emit('PromptQuestionFromHost')
   // }
   render() {
-    const NUM_QUESTIONS = 4
+    const NUM_QUESTIONS = 8
     const {classes} = this.props
     if (this.props.questions !== null && this.props.user.type === 'admin') {
       const toEmit = {
