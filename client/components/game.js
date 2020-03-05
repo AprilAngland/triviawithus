@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
-import {TriviaHimHerQuestion, TriviaHimHerVote, Loading} from '.'
+import {TriviaHimHerQuestion, TriviaHimHerVote, Wait} from '.'
 // import Loading from './loading.js'
 import {
   setDisplayedQuestion,
@@ -37,7 +37,7 @@ class Game extends React.Component {
           <div>
             {/* Please Wait for Host to Prompt Questions */}
             <div>
-              <Loading />
+              <Wait />
             </div>
           </div>
         ) : // <Loading />

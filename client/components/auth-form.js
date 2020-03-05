@@ -29,6 +29,7 @@ const styles = {
       width: '70vw'
     }
   },
+
   body: {
     flex: '5 0 15vh',
     textAlign: 'center'

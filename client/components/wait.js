@@ -34,7 +34,7 @@ const styles = {
     textAlign: 'center'
   }
 }
-class Loading extends React.Component {
+class Wait extends React.Component {
   render() {
     console.log('rendering loading')
     const {classes} = this.props
@@ -44,11 +44,11 @@ class Loading extends React.Component {
       <div>
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.body}>
-            <Typography variant="h5" component="h2" align="center">
+            {/* <Typography variant="h5" component="h2" align="center">
               {showEng
                 ? `Please wait for host to prompt question`
                 : `请等待主持人提问！`}
-            </Typography>
+            </Typography> */}
           </CardContent>
         </Card>
       </div>
@@ -59,4 +59,4 @@ const mapState = state => ({user: state.user})
 // const mapState = state => ({})
 // const mapDispatch = dispatch => ({})
 
-export default connect(mapState, null)(withStyles(styles)(Loading))
+export default connect(mapState, null)(withStyles(styles)(Wait))
