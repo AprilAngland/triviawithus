@@ -29,8 +29,6 @@ router.put('/:id', userOnly, async (req, res, next) => {
         plain: true
       }
     )
-    // console.log('!!!!!!updated ')
-    // console.log(users)
     res.json(users)
   } catch (err) {
     next(err)

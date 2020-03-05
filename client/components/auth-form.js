@@ -2,30 +2,68 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import {withStyles} from '@material-ui/core/styles'
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  Button,
+  TextField
+} from '@material-ui/core'
+
+const styles = {
+  root: {
+    marginTop: '10vh',
+    display: 'flex',
+    flexGrow: 1,
+    flexDirection: 'column',
+    background: '#b1afd7',
+    color: 'black',
+    borderRadius: 3,
+    justifyContent: 'flex-start',
+    boxShadow: '0 3px 5px 2px',
+    margin: '20px',
+    '& .MuiTextField-root': {
+      margin: '10px',
+      width: '70vw'
+    }
+  },
+  body: {
+    flex: '5 0 15vh',
+    textAlign: 'center'
+  }
+}
 
 const AuthForm = props => {
+  const {classes} = props
   const {name, displayName, handleSubmit, error} = props
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
+      <Card className={classes.root} variant="outlined" onSubmit={handleSubmit}>
+        <form noValidate autoComplete="off" onSubmit={handleSubmit} name={name}>
+          <TextField
+            id="filled-basic"
+            label="email"
+            variant="standard"
+            name="email"
+          />
+          <TextField
+            htmlFor="password"
+            id="filled-basic"
+            label="password"
+            variant="standard"
+            name="password"
+            type="password"
+          />
+
+          <Button variant="contained" color="primary" type="submit">
+            Submit
+          </Button>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </Card>
     </div>
   )
 }
@@ -58,7 +96,10 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
+// export default withStyles(styles)(HigherOrderComponent);
+export const Login = withStyles(styles)(
+  connect(mapLogin, mapDispatch)(AuthForm)
+)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
 
 /**

@@ -29,11 +29,9 @@ class NavbarCustom extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   handleChange = (event, newValue) => {
-    // console.log(event, newValue)
     this.setState({value: newValue})
   }
   render() {
-    console.log('navbar rendering', this.state, this.props)
     const {classes} = this.props
     const showEng = this.props.user.language === 'EN'
     return !this.props.user ? (

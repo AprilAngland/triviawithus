@@ -11,14 +11,20 @@ import {
   Typography,
   Button
 } from '@material-ui/core'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 const styles = {
   root: {
+    background: 'rgba(177, 175, 215, 0.6)',
     marginTop: '10vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    background: '#b1afd7',
+    // background: '#b1afd7',
     color: 'black',
     borderRadius: 3,
     justifyContent: 'flex-start',
@@ -39,10 +45,28 @@ const styles = {
     flex: '5 0 15vh',
     justifyContent: 'space-evenly',
     margin: '40px'
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: 'auto',
+    width: 'fit-content'
   }
 }
 class TriviaHimHerQuestion extends React.Component {
-  componentDidMount() {}
+  constructor() {
+    super()
+    this.state = {open: false}
+  }
+  handleClickOpen = () => {
+    this.setState({open: true})
+  }
+  handleClose = () => {
+    this.setState({open: false})
+  }
+  // componentDidMount() {
+  //   socket.emit('PromptQuestionFromHost')
+  // }
   render() {
     const NUM_QUESTIONS = 4
     const {classes} = this.props
@@ -55,6 +79,7 @@ class TriviaHimHerQuestion extends React.Component {
       socket.emit('FromHost', toEmit)
     }
     const showEng = this.props.user.language === 'EN'
+    // let answer = undefined
     return (
       <div>
         <Card className={classes.root} variant="outlined">
@@ -84,9 +109,10 @@ class TriviaHimHerQuestion extends React.Component {
           <CardContent className={classes.body}>
             <Typography variant="h5" component="h2" align="center">
               {showEng
-                ? `Question: ${this.props.question.text} ${this.props.question.id}`
+                ? `Vote: ${this.props.question.text} ${this.props.question.id}`
                 : `问: ${this.props.question.translation} ${this.props.question.id}`}
             </Typography>
+            <br />
           </CardContent>
 
           <CardActions className={classes.answerBar}>
@@ -101,13 +127,14 @@ class TriviaHimHerQuestion extends React.Component {
                 )
               }
               onClick={() => {
-                console.log(' dispatch(finishedDisplayedQuestion())')
+                let answer = 'him'
                 this.props.voteQuestion(
                   this.props.question.id,
-                  'him',
+                  answer,
                   this.props.user.id
                 )
                 this.props.finishedDisplayedQuestion(this.props.question)
+                this.handleClickOpen()
               }}
             >
               {showEng ? 'Him' : '他'}
@@ -124,17 +151,42 @@ class TriviaHimHerQuestion extends React.Component {
                 )
               }
               onClick={() => {
-                console.log(' dispatch(finishedDisplayedQuestion())')
+                let answer = 'her'
                 this.props.voteQuestion(
                   this.props.question.id,
-                  'her',
+                  answer,
                   this.props.user.id
                 )
                 this.props.finishedDisplayedQuestion(this.props.question)
+                this.handleClickOpen()
               }}
             >
               {showEng ? 'Her' : '她'}
             </Button>
+            <Dialog
+              open={this.state.open}
+              onClose={this.handleClose}
+              // fullWidth="true"
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {'Thank you for Voting!'}
+              </DialogTitle>
+              <DialogContent>
+                {/* <DialogContentText id="alert-dialog-description">
+                  {`You Chose ${answer}`}
+                </DialogContentText> */}
+                <DialogContentText id="alert-dialog-description">
+                  {`Too late to change your mind :}, please wait for host to show next question`}
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="primary" autoFocus>
+                  Okayyy
+                </Button>
+              </DialogActions>
+            </Dialog>
           </CardActions>
         </Card>
       </div>

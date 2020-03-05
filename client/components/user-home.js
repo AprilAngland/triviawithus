@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getHome, updateInfo} from '../store'
 import {withStyles} from '@material-ui/core/styles'
-
+import SaveIcon from '@material-ui/icons/Save'
+import socket from '../socket'
 import {
   Card,
   CardContent,
@@ -15,15 +16,18 @@ import {
 
 const styles = {
   root: {
+    background: 'rgba(255, 255,255, 0.8)',
     marginTop: '10vh',
+    marginBottom: '2vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    background: '#b1afd7',
+    flexWrap: 'nowrap',
+    // background: '#b1afd7',
     color: 'black',
-    borderRadius: 3,
+    // borderRadius: 3,
     justifyContent: 'flex-start',
-    boxShadow: '0 3px 5px 2px',
+    // boxShadow: '0 3px 5px 2px',
     margin: '20px',
     '& .MuiTextField-root': {
       margin: '10px',
@@ -43,17 +47,20 @@ class Home extends React.Component {
       expectedcount: '0',
       notetohost: '',
       notetochef: '',
-      menuchoice: 'not sure'
+      entreechoice: 'not sure'
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  componentDidMount() {}
+  componentDidMount() {
+    if (this.props.user.type === 'guest') {
+      socket.on('ToGuest', question => {
+        window.location.replace('/Game')
+      })
+    }
+  }
 
   static getDerivedStateFromProps(props, state) {
-    // when it typed, it sends its props back to its state
-    console.log('getDerivedStateFromProps')
-    console.dir(state)
     console.dir(props.user)
     // debugger;
     if (props.user && state.nickname === 'placeholder') {
@@ -63,7 +70,7 @@ class Home extends React.Component {
     }
   }
   handleChange(event) {
-    console.log('typing')
+    console.log('typing', event.target.name, event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -88,7 +95,7 @@ class Home extends React.Component {
             <TextField
               id="filled-basic"
               label={showEng ? 'Preferred Name' : `昵称`}
-              variant="filled"
+              variant="outlined"
               name="nickname"
               value={this.state.nickname}
               onChange={this.handleChange}
@@ -100,7 +107,7 @@ class Home extends React.Component {
                   ? 'Expected Count(Including your plus ones: 0 if coming alone, 0.5 if not sure, 1 if coming, 2 if bringing spouse)'
                   : `大概来几个人?`
               }
-              variant="filled"
+              variant="standard"
               name="expectedcount"
               value={this.state.expectedcount}
               onChange={this.handleChange}
@@ -108,7 +115,7 @@ class Home extends React.Component {
             <TextField
               id="filled-basic"
               label={showEng ? 'Note' : `备注`}
-              variant="filled"
+              variant="standard"
               name="notetohost"
               value={this.state.notetohost}
               onChange={this.handleChange}
@@ -117,17 +124,17 @@ class Home extends React.Component {
               id="standard-select-currency-native"
               select
               label={showEng ? 'Entree Selection' : `主菜选项`}
-              value={this.state.menuchoice}
-              name="menuchoice"
+              value={this.state.entreechoice}
+              name="entreechoice"
               onChange={this.handleChange}
               SelectProps={{
                 native: true
               }}
-              helperText="What do you want as Entree?"
-              variant="filled"
+              helperText=""
+              variant="standard"
             >
               {' '}
-              <option value="Leg of Lamb Italian Style with Garlic">
+              <option value="lamb">
                 {showEng
                   ? 'Leg of Lamb Italian Style with Garlic'
                   : `意大利羊腿 `}
@@ -153,13 +160,13 @@ class Home extends React.Component {
                   ? 'Special note to the chef(allergies, dietary restrictions, etc)'
                   : `有没有食物过敏或者忌口`
               }
-              variant="filled"
+              variant="standard"
               name="notetochef"
               value={this.state.notetochef}
               onChange={this.handleChange}
             />
-            <Button variant="contained" color="primary" type="submit">
-              Submit
+            <Button variant="contained" color="primary" type="submit" code>
+              Save Changes
             </Button>
           </form>
         </Card>

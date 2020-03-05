@@ -28,17 +28,11 @@ router.get('/:id', adminOnly, async (req, res, next) => {
 
 router.put('/:id', userOnly, async (req, res, next) => {
   try {
-    // console.log(+req.params.id, req.query.ans)
     const questionToUpdate = await TriviaHimHer.findByPk(+req.params.id)
     const user = await User.findByPk(req.query.userId)
-    // console.log(user.email)
     let ansCntHim = questionToUpdate.ansCntHim
     let ansCntHer = questionToUpdate.ansCntHer
     let ans = questionToUpdate.ans
-    // if (questionToUpdate.hasUser(user)) {
-    //   console.log('don;t cheat======')
-    //   res.json({})
-    // } else {
     if (req.query.ans === 'her') {
       ansCntHer++
     }
@@ -62,7 +56,6 @@ router.put('/:id', userOnly, async (req, res, next) => {
 router.delete('/', adminOnly, async (req, res, next) => {
   try {
     const [numUpdated, affectedRows] = await TriviaHimHer.update(
-      // const { affectedRows } = await Project.update(
       {
         ansCntHim: 0,
         ansCntHer: 0

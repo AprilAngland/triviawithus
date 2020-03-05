@@ -28,7 +28,8 @@ const User = db.define('user', {
     defaultValue: 'EN'
   },
   nickname: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: 'Anonymous excited guest'
   },
   type: {
     type: Sequelize.ENUM(['admin', 'guest']),
@@ -39,13 +40,16 @@ const User = db.define('user', {
     defaultValue: 'not sure'
   },
   expectedcount: {
-    type: Sequelize.INTEGER
+    type: Sequelize.FLOAT,
+    defaultValue: 0.5
   },
   notetohost: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: 'I am so excited for the weeding!'
   },
   notetochef: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    defaultValue: 'I am not a picky eater!'
   }
 })
 

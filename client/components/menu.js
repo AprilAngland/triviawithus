@@ -10,30 +10,24 @@ import {
   Typography,
   Button
 } from '@material-ui/core'
+import socket from '../socket'
 /**
  * COMPONENT
  */
 
 const styles = {
   root: {
+    // background: 'transparent',
+    background: 'rgba(255, 255,255, 0.8)',
     marginTop: '10vh',
+    marginBottom: '2vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    background: '#b1afd7',
     color: 'black',
-    borderRadius: 3,
     justifyContent: 'flex-start',
-    boxShadow: '0 3px 5px 2px',
-    // height: '502vh',
     margin: '20px'
   },
-  // buttonBar: {
-  //   margin: '5px',
-  //   flex: '2 0 3vh',
-  //   display: 'flex',
-  //   justifyContent: 'space-between'
-  // },
   body: {
     flex: '5 0 15vh',
     textAlign: 'center'
@@ -41,6 +35,11 @@ const styles = {
 }
 class Menu extends React.Component {
   componentDidMount() {
+    if (this.props.user.type === 'guest') {
+      socket.on('ToGuest', question => {
+        window.location.replace('/Game')
+      })
+    }
     this.props.getMenu()
   }
   render() {

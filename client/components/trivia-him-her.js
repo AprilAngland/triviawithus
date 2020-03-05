@@ -2,6 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import socket from '../socket'
 import {TriviaHimHerQuestion, TriviaHimHerVote} from '.'
 import queryString from 'query-string'
 import {getQuestion} from '../store'
@@ -13,6 +14,7 @@ class TriviaHimHer extends React.Component {
   }
 
   componentDidMount() {
+    // socket.emit('PromptQuestionFromHost')
     let id = parseInt(queryString.parse(this.props.location.search).id)
     let type = queryString.parse(this.props.location.search).type
     if (!id) {
@@ -24,13 +26,11 @@ class TriviaHimHer extends React.Component {
     this.setState({id, type})
     this.props.getQuestion(id)
   }
+
+  componentWillUnmount() {
+    socket.emit('SuspendQuestionFromHost')
+  }
   render() {
-    // console.log(
-    //   'rendering',
-    //   this.props.question,
-    //   this.state.type,
-    //   this.state.id
-    // )
     return (
       <div>
         <h3>TriviaHimHer</h3>

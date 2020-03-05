@@ -9,6 +9,7 @@ const adminOnly = (req, res, next) => {
 }
 
 const userOnly = (req, res, next) => {
+  // if (req.user && req.user === req.params.id) {
   if (req.user) {
     next()
   } else {

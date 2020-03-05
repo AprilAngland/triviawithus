@@ -14,11 +14,11 @@ import {
 
 const styles = {
   root: {
+    background: 'rgba(177, 175, 215, 0.6)',
     marginTop: '10vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    background: '#b1afd7',
     color: 'black',
     borderRadius: 3,
     justifyContent: 'flex-start',
@@ -65,23 +65,27 @@ class TriviaHimHerVote extends React.Component {
     return (
       <div>
         <Card className={classes.root} variant="outlined">
-          <CardActions className={classes.buttonBar}>
-            <Button
-              disabled={this.props.question.id === NUM_QUESTIONS}
-              size="small"
-              href={`/triviahimhers?id=${this.props.question.id +
-                1}&type=question`}
-            >
-              Next Question!
-            </Button>
-            <Button
-              size="small"
-              href="/triviahimhers?id=1&type=question"
-              onClick={this.props.resetQuestion}
-            >
-              Restart!
-            </Button>
-          </CardActions>
+          {this.props.user.type === 'admin' ? (
+            <CardActions className={classes.buttonBar}>
+              <Button
+                disabled={this.props.question.id === NUM_QUESTIONS}
+                size="small"
+                href={`/triviahimhers?id=${this.props.question.id +
+                  1}&type=question`}
+              >
+                Next Question!
+              </Button>
+              <Button
+                size="small"
+                href="/triviahimhers?id=1&type=question"
+                onClick={this.props.resetQuestion}
+              >
+                Restart!
+              </Button>
+            </CardActions>
+          ) : (
+            ''
+          )}
           <CardContent className={classes.body}>
             <Typography variant="h5" component="h2" align="center">
               {showEng
@@ -100,7 +104,7 @@ class TriviaHimHerVote extends React.Component {
             <Typography variant="body2" component="p">
               {this.props.question.users
                 ? JSON.stringify(
-                    this.props.question.users.map(user => user.email)
+                    this.props.question.users.map(user => user.nickname)
                   )
                 : ''}
               <br />

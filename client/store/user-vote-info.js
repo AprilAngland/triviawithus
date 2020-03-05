@@ -17,6 +17,13 @@ export const finishedDisplayedQuestion = question => ({
   type: FINISH_QUESTION,
   question
 })
+
+const SUSPEND_QUESTION = 'SUSPEND_QUESTION'
+export const suspendDisplayedQuestion = question => ({
+  type: SUSPEND_QUESTION,
+  question
+})
+
 const initialState = {question: {}, finished: []}
 export default function(state = initialState, action) {
   switch (action.type) {
@@ -26,6 +33,8 @@ export default function(state = initialState, action) {
       return {...state, finished: [...state.finished, action.question]}
     case ERASE_QUESTIONS:
       return initialState
+    case SUSPEND_QUESTION:
+      return {...state, question: {}}
     default:
       return state
   }

@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
 import {TriviaHimHerQuestion, TriviaHimHerVote} from '.'
-import {setDisplayedQuestion, eraseDisplayedQuestions} from '../store'
+import Loading from './loading.js'
+import {
+  setDisplayedQuestion,
+  eraseDisplayedQuestions,
+  suspendDisplayedQuestion
+} from '../store'
 
 class Game extends React.Component {
   constructor() {
@@ -12,36 +17,29 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(
-    //   'component did mount game',
-    //   'state',
-    //   this.state.question,
-    //   'props',
-    //   this.props
-    // )
     socket.on('ResetUserToGuest', () => {
-      // console.log('ResetUserToGuest')
       this.props.eraseDisplayedQuestions()
     })
     socket.on('ToGuest', question => {
       this.setState({question: question})
       this.props.setDisplayedQuestion(question)
     })
+    socket.on('SuspendQuestionToGuest', () => {
+      this.props.suspendDisplayedQuestion()
+    })
   }
 
   render() {
-    // console.log(
-    //   'rendering game',
-    //   'state',
-    //   this.state.question,
-    //   'props',
-    //   this.props.question
-    // )
     return (
       <div>
         <h3>Game</h3>
         {!this.props.question.text ? (
-          <div>LOADING</div>
+          <div>
+            {/* Please Wait for Host to Prompt Questions */}
+            <div>
+              <Loading />
+            </div>
+          </div>
         ) : // <Loading />
         this.props.question.displayType === 'question' ? (
           <TriviaHimHerQuestion
@@ -69,6 +67,9 @@ const mapDispatch = dispatch => ({
   },
   eraseDisplayedQuestions: () => {
     dispatch(eraseDisplayedQuestions())
+  },
+  suspendDisplayedQuestion: () => {
+    dispatch(suspendDisplayedQuestion())
   }
 })
 
