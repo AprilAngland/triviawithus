@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {resetQuestion} from '../store'
 import socket from '../socket'
+import {Wait} from '.'
 import {withStyles} from '@material-ui/core/styles'
 import {
   Card,
@@ -47,11 +48,11 @@ class TriviaHimHerVote extends React.Component {
   render() {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
-    console.log(
-      'rendering TriviaHimHerVote',
-      this.props.question,
-      this.props.user.type
-    )
+    // console.log(
+    //   'rendering TriviaHimHerVote',
+    //   this.props.question,
+    //   this.props.user.type
+    // )
 
     if (this.props.questions !== null && this.props.user.type === 'admin') {
       const toEmit = {
@@ -64,60 +65,62 @@ class TriviaHimHerVote extends React.Component {
     const showEng = this.props.user.language === 'EN'
     return (
       <div>
-        <Card className={classes.root} variant="outlined">
-          {this.props.user.type === 'admin' ? (
-            <CardActions className={classes.buttonBar}>
-              <Button
-                disabled={this.props.question.id === NUM_QUESTIONS}
-                size="small"
-                href={`/triviahimhers?id=${this.props.question.id +
-                  1}&type=question`}
-              >
-                Next Question!
-              </Button>
-              <Button
-                disabled={this.props.question.id !== NUM_QUESTIONS}
-                size="small"
-                href="/triviahimhers?type=winner"
-              >
-                Winner?
-              </Button>
-              <Button
-                size="small"
-                href="/triviahimhers?id=1&type=question"
-                onClick={this.props.resetQuestion}
-              >
-                Restart!
-              </Button>
-            </CardActions>
-          ) : (
-            ''
-          )}
-          <CardContent className={classes.body}>
-            <Typography variant="h5" component="h2" align="center">
-              {showEng
-                ? `Vote: ${this.props.question.text} ${this.props.question.id}`
-                : `问: ${this.props.question.translation} ${this.props.question.id}`}
-            </Typography>
-            <Typography color="textSecondary">
-              {'answer: ' + this.props.question.ans}
-            </Typography>
-            <Typography color="textSecondary">
-              {this.props.question.ansCntHim + ' of you answered him'}
-            </Typography>
-            <Typography color="textSecondary">
-              {this.props.question.ansCntHer + ' of you answered her'}
-            </Typography>
-            <Typography variant="body2" component="p">
-              {this.props.question.users
-                ? JSON.stringify(
-                    this.props.question.users.map(user => user.nickname)
-                  )
-                : ''}
-              <br />
-            </Typography>
-          </CardContent>
-        </Card>
+        {this.props.question.id ? (
+          <Card className={classes.root} variant="outlined">
+            {this.props.user.type === 'admin' ? (
+              <CardActions className={classes.buttonBar}>
+                <Button
+                  disabled={this.props.question.id === NUM_QUESTIONS}
+                  size="small"
+                  href={`/triviahimhers?id=${this.props.question.id +
+                    1}&type=question`}
+                >
+                  Next Question!
+                </Button>
+                {this.props.question.id === NUM_QUESTIONS && (
+                  <Button size="small" href="/triviahimhers?type=winner">
+                    Winner?
+                  </Button>
+                )}
+                <Button
+                  size="small"
+                  href="/triviahimhers?id=1&type=question"
+                  onClick={this.props.resetQuestion}
+                >
+                  Restart!
+                </Button>
+              </CardActions>
+            ) : (
+              ''
+            )}
+            <CardContent className={classes.body}>
+              <Typography variant="h5" component="h2" align="center">
+                {showEng
+                  ? `Vote: ${this.props.question.text} ${this.props.question.id}`
+                  : `问: ${this.props.question.translation} ${this.props.question.id}`}
+              </Typography>
+              <Typography color="textSecondary">
+                {'answer: ' + this.props.question.ans}
+              </Typography>
+              <Typography color="textSecondary">
+                {this.props.question.ansCntHim + ' of you answered him'}
+              </Typography>
+              <Typography color="textSecondary">
+                {this.props.question.ansCntHer + ' of you answered her'}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {this.props.question.users
+                  ? JSON.stringify(
+                      this.props.question.users.map(user => user.nickname)
+                    )
+                  : ''}
+                <br />
+              </Typography>
+            </CardContent>
+          </Card>
+        ) : (
+          <Wait from="loading" />
+        )}
       </div>
     )
   }

@@ -44,14 +44,15 @@ router.put('/:id', userOnly, async (req, res, next) => {
         plain: true
       }
     )
-    sendEmail({
-      from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
-      to: req.body.email, // list of receivers
-      subject: `Wedding Invitation from April & John Angland`, // Subject line
-      // text: `${req.body.user.userName}, thank you for your order`, // plain text body
-      html: `<b> Thank you for your order ${req.body.nickname}.
-      Your order will be shipped to. =</b>` // html body
-    })
+    // const emailBody = {
+    //   from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
+    //   to: req.body.email, // list of receivers
+    //   subject: `Wedding Invitation from April & John Angland`, // Subject line
+    //   // text: `${req.body.user.userName}, thank you for your order`, // plain text body
+    //   html: `<b> Thank you for your order ${req.body.nickname}.
+    //   Your order will be shipped to. =</b>` // html body
+    // }
+    sendEmail(req.body)
     res.json(users)
   } catch (err) {
     next(err)

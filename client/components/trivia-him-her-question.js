@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
+import {Wait} from '.'
 import {voteQuestion, resetQuestion, finishedDisplayedQuestion} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -64,9 +65,6 @@ class TriviaHimHerQuestion extends React.Component {
   handleClose = () => {
     this.setState({open: false})
   }
-  // componentDidMount() {
-  //   socket.emit('PromptQuestionFromHost')
-  // }
   render() {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
@@ -82,120 +80,121 @@ class TriviaHimHerQuestion extends React.Component {
     // let answer = undefined
     return (
       <div>
-        <Card className={classes.root} variant="outlined">
-          {this.props.user.type === 'admin' ? (
-            <CardActions className={classes.buttonBar}>
+        {this.props.question.id ? (
+          <Card className={classes.root} variant="outlined">
+            {this.props.user.type === 'admin' ? (
+              <CardActions className={classes.buttonBar}>
+                <Button
+                  size="small"
+                  id={1}
+                  href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
+                >
+                  Show Vote!
+                </Button>
+                <Button
+                  size="small"
+                  href="/triviahimhers?id=1&type=question"
+                  onClick={() => {
+                    this.props.resetQuestion()
+                    socket.emit('ResetUserFromHost')
+                  }}
+                >
+                  Restart!
+                </Button>
+              </CardActions>
+            ) : (
+              ''
+            )}
+            <CardContent className={classes.body}>
+              <Typography variant="h5" component="h2" align="center">
+                {showEng
+                  ? `Vote: ${this.props.question.text} ${this.props.question.id}`
+                  : `问: ${this.props.question.translation} ${this.props.question.id}`}
+              </Typography>
+              <br />
+            </CardContent>
+
+            <CardActions className={classes.answerBar}>
               <Button
-                size="small"
-                id={1}
-                href={`/triviahimhers?id=${this.props.question.id}&type=vote`}
-              >
-                Show Vote!
-              </Button>
-              <Button
-                disabled={true}
-                size="small"
-                href="/triviahimhers?type=winner"
-              >
-                Winner?
-              </Button>
-              <Button
-                size="small"
-                href="/triviahimhers?id=1&type=question"
+                size="large"
+                disabled={
+                  this.props.user.type === 'admin' ||
+                  !!this.props.userVoteInfo.finished.find(
+                    question =>
+                      question &&
+                      question.questionType === 'himher' &&
+                      question.id === this.props.question.id
+                  )
+                }
                 onClick={() => {
-                  this.props.resetQuestion()
-                  socket.emit('ResetUserFromHost')
+                  let answer = 'him'
+                  this.props.this.props.voteQuestion(
+                    this.props.question.id,
+                    answer,
+                    this.props.user.id
+                  )
+                  this.props.finishedDisplayedQuestion(this.props.question)
+                  this.handleClickOpen()
                 }}
               >
-                Restart!
+                {showEng ? 'Him' : '他'}
               </Button>
-            </CardActions>
-          ) : (
-            ''
-          )}
-          <CardContent className={classes.body}>
-            <Typography variant="h5" component="h2" align="center">
-              {showEng
-                ? `Vote: ${this.props.question.text} ${this.props.question.id}`
-                : `问: ${this.props.question.translation} ${this.props.question.id}`}
-            </Typography>
-            <br />
-          </CardContent>
 
-          <CardActions className={classes.answerBar}>
-            <Button
-              size="large"
-              disabled={
-                !!this.props.userVoteInfo.finished.find(
-                  question =>
-                    question &&
-                    question.questionType === 'himher' &&
-                    question.id === this.props.question.id
-                )
-              }
-              onClick={() => {
-                let answer = 'him'
-                this.props.voteQuestion(
-                  this.props.question.id,
-                  answer,
-                  this.props.user.id
-                )
-                this.props.finishedDisplayedQuestion(this.props.question)
-                this.handleClickOpen()
-              }}
-            >
-              {showEng ? 'Him' : '他'}
-            </Button>
-
-            <Button
-              size="large"
-              disabled={
-                !!this.props.userVoteInfo.finished.find(
-                  question =>
-                    question &&
-                    question.questionType === 'himher' &&
-                    question.id === this.props.question.id
-                )
-              }
-              onClick={() => {
-                let answer = 'her'
-                this.props.voteQuestion(
-                  this.props.question.id,
-                  answer,
-                  this.props.user.id
-                )
-                this.props.finishedDisplayedQuestion(this.props.question)
-                this.handleClickOpen()
-              }}
-            >
-              {showEng ? 'Her' : '她'}
-            </Button>
-            <Dialog
-              open={this.state.open}
-              onClose={this.handleClose}
-              // fullWidth="true"
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogTitle id="alert-dialog-title">
-                {'Thank you for Voting!'}
-              </DialogTitle>
-              <DialogContent>
-                {/* <DialogContentText id="alert-dialog-description">
+              <Button
+                size="large"
+                disabled={
+                  this.props.user.type === 'admin' ||
+                  !!this.props.userVoteInfo.finished.find(
+                    question =>
+                      question &&
+                      question.questionType === 'himher' &&
+                      question.id === this.props.question.id
+                  )
+                }
+                onClick={() => {
+                  let answer = 'her'
+                  this.props.voteQuestion(
+                    this.props.question.id,
+                    answer,
+                    this.props.user.id
+                  )
+                  this.props.finishedDisplayedQuestion(this.props.question)
+                  this.handleClickOpen()
+                }}
+              >
+                {showEng ? 'Her' : '她'}
+              </Button>
+              <Dialog
+                open={this.state.open}
+                onClose={this.handleClose}
+                // fullWidth="true"
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {'Thank you for Voting!'}
+                </DialogTitle>
+                <DialogContent>
+                  {/* <DialogContentText id="alert-dialog-description">
                   {`You Chose ${answer}`}
                 </DialogContentText> */}
-                <DialogContentText id="alert-dialog-description">
-                  {`Too late to change your mind :}, please wait for host to show next question`}
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={this.handleClose} color="primary" autoFocus>
-                  Okayyy
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </CardActions>
-        </Card>
+                  <DialogContentText id="alert-dialog-description">
+                    {showEng
+                      ? `Too late to change your mind :}, please wait for host to show next question`
+                      : '现在已经不能反悔了， 请等待下一道题目！'}
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={this.handleClose} color="primary" autoFocus>
+                    Okayyy
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </CardActions>
+          </Card>
+        ) : (
+          <Wait from="loading" />
+        )}
       </div>
     )
   }

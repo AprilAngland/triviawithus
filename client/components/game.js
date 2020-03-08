@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
-import {TriviaHimHerQuestion, TriviaHimHerVote, Wait} from '.'
+import {
+  TriviaHimHerQuestion,
+  TriviaHimHerVote,
+  Wait,
+  TriviaHimHerWinner
+} from '.'
 // import Loading from './loading.js'
 import {
   setDisplayedQuestion,
@@ -30,27 +35,42 @@ class Game extends React.Component {
   }
 
   render() {
+    // console.log('render game state', Object.keys(this.state), this.state)
+    // console.log(
+    //   'render game props',
+    //   Object.keys(this.props.question),
+    //   this.props.question
+    // )
+    // console.log('render game props', Object.keys(this.props), this.props)
     return (
       <div>
         <h3>Game</h3>
-        {!this.props.question.text ? (
+        {!this.props.question.displayType && ( //
           <div>
-            {/* Please Wait for Host to Prompt Questions */}
-            <div>
-              <Wait />
-            </div>
+            <Wait from="host" />
           </div>
-        ) : // <Loading />
-        this.props.question.displayType === 'question' ? (
+        )}
+        {this.props.question.displayType && !this.props.question.text && (
+          <div>
+            <Wait from="loading" />
+          </div>
+        )}
+        {(this.props.question.displayType &&
+          this.props.question.text &&
+          this.props.question.displayType) === 'question' && (
           <TriviaHimHerQuestion
             id={this.props.question.id}
             question={this.props.question}
           />
-        ) : (
-          <TriviaHimHerVote
-            id={this.props.question.id}
-            question={this.props.question}
-          />
+        )}
+        {(this.props.question.displayType &&
+          this.props.question.text &&
+          this.props.question.displayType) === 'vote' && (
+          <Wait from="host" />
+          // <TriviaHimHerVote
+          //   id={this.props.question.id}
+          //   question={this.props.question}
+          // />
         )}
       </div>
     )

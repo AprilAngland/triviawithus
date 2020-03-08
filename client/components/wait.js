@@ -44,11 +44,13 @@ class Wait extends React.Component {
       <div>
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.body}>
-            {/* <Typography variant="h5" component="h2" align="center">
-              {showEng
-                ? `Please wait for host to prompt question`
-                : `请等待主持人提问！`}
-            </Typography> */}
+            {this.props.from === 'host' && (
+              <Typography variant="h5" component="h2" align="center">
+                {showEng
+                  ? `Please wait for host to prompt question`
+                  : `请等待主持人提问！`}
+              </Typography>
+            )}
           </CardContent>
         </Card>
       </div>

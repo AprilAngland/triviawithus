@@ -13,7 +13,11 @@ import {
   Button,
   TextField
 } from '@material-ui/core'
-
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 const styles = {
   root: {
     background: 'rgba(255, 255,255, 0.8)',
@@ -50,7 +54,8 @@ class Home extends React.Component {
       expectedcount: '0',
       notetohost: '',
       notetochef: '',
-      entreechoice: 'not sure'
+      entreechoice: 'not sure',
+      open: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -62,7 +67,12 @@ class Home extends React.Component {
       })
     }
   }
-
+  handleClickOpen = () => {
+    this.setState({open: true})
+  }
+  handleClose = () => {
+    this.setState({open: false})
+  }
   static getDerivedStateFromProps(props, state) {
     console.dir(props.user)
     // debugger;
@@ -95,6 +105,15 @@ class Home extends React.Component {
           onSubmit={this.handleSubmit}
         >
           <form noValidate autoComplete="off">
+            <TextField
+              id="filled-basic"
+              label={showEng ? 'Login Email' : `邮箱`}
+              variant="outlined"
+              name="email"
+              value={this.state.email}
+              disabled="disabled"
+              onChange={this.handleChange}
+            />
             <TextField
               id="filled-basic"
               label={showEng ? 'Preferred Name' : `昵称`}
@@ -174,9 +193,38 @@ class Home extends React.Component {
               color="primary"
               type="submit"
               code
+              onClick={() => {
+                this.handleClickOpen()
+              }}
             >
-              Save Changes and get Email invitation
+              {showEng ? 'Save Changes and get Email invitation' : '保存更改'}
             </Button>
+            <Dialog
+              open={this.state.open}
+              onClose={this.handleClose}
+              // fullWidth="true"
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">
+                {'Thank you for Voting!'}
+              </DialogTitle>
+              <DialogContent>
+                {/* <DialogContentText id="alert-dialog-description">
+                  {`You Chose ${answer}`}
+                </DialogContentText> */}
+                <DialogContentText id="alert-dialog-description">
+                  {showEng
+                    ? `Thank you! A email invitation has been sent to your email ${this.props.user.email}, we are looking forward to seeing you!`
+                    : `谢谢， 我们欢迎你的光临！`}
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleClose} color="primary" autoFocus>
+                  Yay!!
+                </Button>
+              </DialogActions>
+            </Dialog>
           </form>
         </Card>
       </div>

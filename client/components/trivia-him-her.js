@@ -44,7 +44,6 @@ class TriviaHimHer extends React.Component {
         ) : (
           <TriviaHimHerWinner />
         )}
-        {/* <TriviaHimHerWinner /> */}
       </div>
     )
   }

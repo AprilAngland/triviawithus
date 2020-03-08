@@ -17,6 +17,23 @@ const userOnly = (req, res, next) => {
   }
 }
 
+let hogan = require('hogan.js')
+let fs = require('fs')
+
+function readFileAsString(file) {
+  return fs.readFileSync(__dirname + file).toString()
+}
+function getTemplate(file) {
+  let template = ''
+  // read file as string
+  template = readFileAsString(file)
+  return template
+}
+
+let compiledTemplate = hogan.compile(
+  getTemplate('/../../public/Confirmation.html')
+)
+
 const nodemailer = require('nodemailer')
 const {google} = require('googleapis')
 const OAuth2 = google.auth.OAuth2
@@ -31,12 +48,12 @@ oauth2Client.setCredentials({
   refresh_token: process.env.GOOGLE_REFRESH_TOKEN
 })
 
-async function sendEmail(emailBody) {
+async function sendEmail(reqBody) {
   let mailConfig = {}
   // if (process.env.NODE_ENV === 'production') {
   if (
-    process.env.NODE_ENV === 'production' ||
-    process.env.NODE_ENV === 'development'
+    process.env.NODE_ENV === 'production'
+    // process.env.NODE_ENV === 'development'
   ) {
     // this actually delivers the emails,
     const accessToken = oauth2Client.getAccessToken()
@@ -44,7 +61,7 @@ async function sendEmail(emailBody) {
       service: 'gmail',
       auth: {
         type: 'OAuth2',
-        user: 'aprilsunnew@gmail.com',
+        user: process.env.GOOGLE_EMAIL_ADDRESS,
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
@@ -66,6 +83,22 @@ async function sendEmail(emailBody) {
   const transporter = nodemailer.createTransport(mailConfig)
 
   // send mail with defined transport object
+  let context = {
+    name: reqBody.nickname,
+    notetohost: reqBody.notetohost,
+    notetochef: reqBody.notetochef,
+    entreechoice: reqBody.entreechoice,
+    email: reqBody.email,
+    expectedcount: reqBody.expectedcount
+  }
+
+  const emailBody = {
+    from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
+    to: reqBody.email, // list of receivers
+    subject: `Wedding Invitation from April & John Angland`, // Subject line
+    // text: `${req.body.user.userName}, thank you for your order`, // plain text body
+    html: compiledTemplate.render(context).toString()
+  }
   let info = await transporter.sendMail(emailBody)
 
   console.log('Message sent: %s', info.messageId)
