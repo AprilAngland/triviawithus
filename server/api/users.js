@@ -19,9 +19,23 @@ router.get('/', adminOnly, async (req, res, next) => {
 
 router.put('/:id', userOnly, async (req, res, next) => {
   try {
+    // console.log(r)
+    const {
+      email,
+      nickname,
+      entreechoice,
+      expectedcount,
+      notetohost,
+      notetochef
+    } = req.body
     const [numUpdated, users] = await User.update(
       {
-        ...req.body,
+        email,
+        nickname,
+        entreechoice,
+        expectedcount,
+        notetohost,
+        notetochef,
         firstTimer: false
       },
       {

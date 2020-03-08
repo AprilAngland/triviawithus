@@ -32,10 +32,13 @@ oauth2Client.setCredentials({
 })
 
 async function sendEmail(emailBody) {
-  let mailConfig
-  if (process.env.NODE_ENV === 'production') {
+  let mailConfig = {}
+  // if (process.env.NODE_ENV === 'production') {
+  if (
+    process.env.NODE_ENV === 'production' ||
+    process.env.NODE_ENV === 'development'
+  ) {
     // this actually delivers the emails,
-    // if (true) {
     const accessToken = oauth2Client.getAccessToken()
     mailConfig = {
       service: 'gmail',
