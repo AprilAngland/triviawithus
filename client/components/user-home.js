@@ -197,7 +197,7 @@ class Home extends React.Component {
                 this.handleClickOpen()
               }}
             >
-              {showEng ? 'Save Changes and get Email invitation' : '保存更改'}
+              {showEng ? 'Save Changes and accept invitation' : '保存更改'}
             </Button>
             <Dialog
               open={this.state.open}
@@ -206,16 +206,14 @@ class Home extends React.Component {
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
             >
-              <DialogTitle id="alert-dialog-title">
-                {'Thank you for Voting!'}
-              </DialogTitle>
+              <DialogTitle id="alert-dialog-title">Thank you!</DialogTitle>
               <DialogContent>
                 {/* <DialogContentText id="alert-dialog-description">
                   {`You Chose ${answer}`}
                 </DialogContentText> */}
                 <DialogContentText id="alert-dialog-description">
                   {showEng
-                    ? `Thank you! A email invitation has been sent to your email ${this.props.user.email}, we are looking forward to seeing you!`
+                    ? `Thank you! A email confirmation has been sent to your email ${this.props.user.email}, we are looking forward to seeing you!`
                     : `谢谢， 我们欢迎你的光临！`}
                 </DialogContentText>
               </DialogContent>

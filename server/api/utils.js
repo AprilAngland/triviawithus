@@ -95,7 +95,7 @@ async function sendEmail(reqBody) {
   const emailBody = {
     from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
     to: reqBody.email, // list of receivers
-    subject: `Wedding Invitation from April & John Angland`, // Subject line
+    subject: `Thank you for accepting our Wedding Invitation`, // Subject line
     // text: `${req.body.user.userName}, thank you for your order`, // plain text body
     html: compiledTemplate.render(context).toString()
   }

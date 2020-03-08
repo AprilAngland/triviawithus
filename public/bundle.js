@@ -1861,7 +1861,7 @@ function (_React$Component) {
         onClick: function onClick() {
           _this2.handleClickOpen();
         }
-      }, showEng ? 'Save Changes and get Email invitation' : '保存更改'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, showEng ? 'Save Changes and accept invitation' : '保存更改'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_8__["default"], {
         open: this.state.open,
         onClose: this.handleClose // fullWidth="true"
         ,
@@ -1869,9 +1869,9 @@ function (_React$Component) {
         "aria-describedby": "alert-dialog-description"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_12__["default"], {
         id: "alert-dialog-title"
-      }, 'Thank you for Voting!'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }, 'Thank you!'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_11__["default"], {
         id: "alert-dialog-description"
-      }, showEng ? "Thank you! A email invitation has been sent to your email ".concat(this.props.user.email, ", we are looking forward to seeing you!") : "\u8C22\u8C22\uFF0C \u6211\u4EEC\u6B22\u8FCE\u4F60\u7684\u5149\u4E34\uFF01")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__["Button"], {
+      }, showEng ? "Thank you! A email confirmation has been sent to your email ".concat(this.props.user.email, ", we are looking forward to seeing you!") : "\u8C22\u8C22\uFF0C \u6211\u4EEC\u6B22\u8FCE\u4F60\u7684\u5149\u4E34\uFF01")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__["Button"], {
         onClick: this.handleClose,
         color: "primary",
         autoFocus: true
