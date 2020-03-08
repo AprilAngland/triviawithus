@@ -8,6 +8,10 @@ const User = db.define('user', {
     unique: true,
     allowNull: false
   },
+  firstTimer: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true
+  },
   password: {
     type: Sequelize.STRING,
     get() {

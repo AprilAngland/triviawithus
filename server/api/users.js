@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
-const {adminOnly, userOnly} = require('./utils')
+const {adminOnly, userOnly, sendEmail} = require('./utils')
 module.exports = router
 
 router.get('/', adminOnly, async (req, res, next) => {
@@ -21,7 +21,8 @@ router.put('/:id', userOnly, async (req, res, next) => {
   try {
     const [numUpdated, users] = await User.update(
       {
-        ...req.body
+        ...req.body,
+        firstTimer: false
       },
       {
         where: {id: +req.params.id},
@@ -29,6 +30,14 @@ router.put('/:id', userOnly, async (req, res, next) => {
         plain: true
       }
     )
+    sendEmail({
+      from: process.env.GOOGLE_EMAIL_ADDRESS, // sender address
+      to: req.body.email, // list of receivers
+      subject: `Wedding Invitation from April & John Angland`, // Subject line
+      // text: `${req.body.user.userName}, thank you for your order`, // plain text body
+      html: `<b> Thank you for your order ${req.body.nickname}.
+      Your order will be shipped to. =</b>` // html body
+    })
     res.json(users)
   } catch (err) {
     next(err)

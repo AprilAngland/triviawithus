@@ -37,6 +37,9 @@ const styles = {
   body: {
     flex: '5 0 15vh',
     textAlign: 'center'
+  },
+  button: {
+    margin: '20px'
   }
 }
 class Home extends React.Component {
@@ -104,7 +107,7 @@ class Home extends React.Component {
               id="filled-basic"
               label={
                 showEng
-                  ? 'Expected Count(Including your plus ones: 0 if coming alone, 0.5 if not sure, 1 if coming, 2 if bringing spouse)'
+                  ? 'Expected Count(0 if coming alone, 1 if coming, 2 if bringing spouse)'
                   : `大概来几个人?`
               }
               variant="standard"
@@ -165,8 +168,14 @@ class Home extends React.Component {
               value={this.state.notetochef}
               onChange={this.handleChange}
             />
-            <Button variant="contained" color="primary" type="submit" code>
-              Save Changes
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              type="submit"
+              code
+            >
+              Save Changes and get Email invitation
             </Button>
           </form>
         </Card>
