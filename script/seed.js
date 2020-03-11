@@ -544,9 +544,9 @@ async function seedAssociation() {
 }
 
 async function seed() {
-  await seedUserMenu()
+  // await seedUserMenu()
   await seedGames()
-  await seedAssociation()
+  // await seedAssociation()
 }
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
