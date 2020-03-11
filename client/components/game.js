@@ -8,7 +8,7 @@ import {
   Wait,
   TriviaHimHerWinner
 } from '.'
-// import Loading from './loading.js'
+
 import {
   setDisplayedQuestion,
   eraseDisplayedQuestions,
@@ -35,13 +35,6 @@ class Game extends React.Component {
   }
 
   render() {
-    // console.log('render game state', Object.keys(this.state), this.state)
-    // console.log(
-    //   'render game props',
-    //   Object.keys(this.props.question),
-    //   this.props.question
-    // )
-    // console.log('render game props', Object.keys(this.props), this.props)
     return (
       <div>
         <h3>Game</h3>
@@ -65,13 +58,7 @@ class Game extends React.Component {
         )}
         {(this.props.question.displayType &&
           this.props.question.text &&
-          this.props.question.displayType) === 'vote' && (
-          <Wait from="host" />
-          // <TriviaHimHerVote
-          //   id={this.props.question.id}
-          //   question={this.props.question}
-          // />
-        )}
+          this.props.question.displayType) === 'vote' && <Wait from="host" />}
       </div>
     )
   }
@@ -94,7 +81,3 @@ const mapDispatch = dispatch => ({
 })
 
 export default connect(mapState, mapDispatch)(Game)
-
-Game.propTypes = {
-  // email: PropTypes.string
-}

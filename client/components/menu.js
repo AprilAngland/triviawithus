@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getMenu} from '../store'
 import {withStyles} from '@material-ui/core/styles'
-import {
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Button
-} from '@material-ui/core'
+import {Card, CardContent, Typography} from '@material-ui/core'
 import socket from '../socket'
 /**
  * COMPONENT
@@ -17,7 +11,6 @@ import socket from '../socket'
 
 const styles = {
   root: {
-    // background: 'transparent',
     background: 'rgba(255, 255,255, 0.8)',
     marginTop: '10vh',
     marginBottom: '2vh',
@@ -120,7 +113,3 @@ const mapDispatch = dispatch => ({
 })
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(Menu))
-
-Menu.propTypes = {
-  // email: PropTypes.string
-}

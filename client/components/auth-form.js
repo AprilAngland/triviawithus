@@ -3,14 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
 import {withStyles} from '@material-ui/core/styles'
-import {
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Button,
-  TextField
-} from '@material-ui/core'
+import {Card, Button, TextField} from '@material-ui/core'
 
 const styles = {
   root: {
@@ -97,18 +90,7 @@ const mapDispatch = dispatch => {
   }
 }
 
-// export default withStyles(styles)(HigherOrderComponent);
 export const Login = withStyles(styles)(
   connect(mapLogin, mapDispatch)(AuthForm)
 )
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
-
-/**
- * PROP TYPES
- */
-AuthForm.propTypes = {
-  name: PropTypes.string.isRequired,
-  displayName: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  error: PropTypes.object
-}

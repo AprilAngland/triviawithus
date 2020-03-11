@@ -11,10 +11,12 @@ const {
 } = require('../server/db/models')
 require('../secrets')
 
-async function seed() {
-  await db.sync({force: true})
-  console.log('db synced!')
+async function seedUserMenu() {
+  // await db.sync({force: true})
+  await db.sync()
 
+  console.log('db synced!')
+  User.destroy({where: {}})
   const users = await Promise.all([
     User.create({
       email: process.env.ADMIN1_EMAIL,
@@ -69,6 +71,7 @@ async function seed() {
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 
+  Menu.destroy({where: {}})
   const menus = await Promise.all([
     Menu.create({
       section: 'Hors D doeuvre',
@@ -163,7 +166,14 @@ async function seed() {
 
   console.log(`seeded ${menus.length} menus`)
   console.log(`seeded successfully`)
-
+}
+async function seedGames() {
+  // TriviaHimHer.destroy({
+  //   where: {},
+  //   truncate: true
+  // })
+  await db.sync()
+  TriviaHimHer.destroy({where: {}})
   const triviahimhers = await Promise.all([
     // TriviaHimHer.create({
     //   text: 'Who steals apple pie at night?',
@@ -232,6 +242,7 @@ async function seed() {
   console.log(`seeded ${triviahimhers.length} triviahimhers`)
   console.log(`seeded successfully`)
 
+  TriviaTrueFalse.destroy({where: {}})
   const triviatruefalses = await Promise.all([
     // TriviaTrueFalse.create({
     //   text: 'John ordered Asian Stir Fry more often than April',
@@ -301,7 +312,7 @@ async function seed() {
 
   console.log(`seeded ${triviatruefalses.length} triviatruefalses`)
   console.log(`seeded successfully`)
-
+  TriviaGuessNumber.destroy({where: {}})
   const triviaguessnumber = await Promise.all([
     // TriviaGuessNumber.create({
     //   text: 'How many days between the first date and the wedding',
@@ -370,33 +381,33 @@ async function seed() {
 
   console.log(`seeded ${triviaguessnumber.length} triviaguessnumber`)
   console.log(`seeded successfully`)
-
+  TriviaMultiChoice.destroy({where: {}})
   const triviamultichoice = await Promise.all([
-    // TriviaMultiChoice.create({
-    //   text: 'What was the criteria John used to pick first date restaurant?',
-    //   translation: '首次约会john选择餐馆的标准是什么？',
-    //   text1: 'He likes the restaurant to be quite so it allows conversation',
-    //   translation1: '他问女生喜欢什么菜系',
-    //   text2: 'He picks the restaurant near his aparment to save commute',
-    //   translation2: '他选离家近的,省的麻烦',
-    //   ans: 0
-    // }),
-    // TriviaMultiChoice.create({
-    //   text: 'What did John and April eat at first date?',
-    //   text1: 'Spanish tapa, sangria',
-    //   text2: 'Japanese Bento, green tea crepe cake',
-    //   text3: 'Sushi, sashimi and black sesame ice cream',
-    //   translation: '首次约会John和April吃了什么？',
-    //   translation1: '西班牙小食， 水果酒',
-    //   translation2: '日式便当，绿茶千层蛋糕',
-    //   translation3: '寿司，黑芝麻冰淇淋',
-    //   ans: 0
-    // }),
-    // TriviaMultiChoice.create({
-    //   text1: 'How many days between the first date and the city hall wedding',
-    //   translation1: '天天向上',
-    //   ans: 100
-    // }),
+    TriviaMultiChoice.create({
+      text: 'What was the criteria John used to pick first date restaurant?',
+      translation: '首次约会john选择餐馆的标准是什么？',
+      text1: 'He likes the restaurant to be quite so it allows conversation',
+      translation1: '他问女生喜欢什么菜系',
+      text2: 'He picks the restaurant near his aparment to save commute',
+      translation2: '他选离家近的,省的麻烦',
+      ans: 0
+    }),
+    TriviaMultiChoice.create({
+      text: 'What did John and April eat at first date?',
+      text1: 'Spanish tapa, sangria',
+      text2: 'Japanese Bento, green tea crepe cake',
+      text3: 'Sushi, sashimi and black sesame ice cream',
+      translation: '首次约会John和April吃了什么？',
+      translation1: '西班牙小食， 水果酒',
+      translation2: '日式便当，绿茶千层蛋糕',
+      translation3: '寿司，黑芝麻冰淇淋',
+      ans: 0
+    }),
+    TriviaMultiChoice.create({
+      text1: 'How many days between the first date and the city hall wedding',
+      translation1: '天天向上',
+      ans: 100
+    }),
     TriviaMultiChoice.create({
       text: 'TriviaMultiChoice Dummy Question ',
       translation: '天天向上',
@@ -531,14 +542,21 @@ async function seedAssociation() {
   }
   console.log(`seeded association successfully`)
 }
+
+async function seed() {
+  await seedUserMenu()
+  await seedGames()
+  await seedAssociation()
+}
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
 async function runSeed() {
   console.log('seeding...')
   try {
-    await seed()
-    await seedAssociation()
+    // await seedUserMenu()
+    await seedGames()
+    // await seedAssociation()
   } catch (err) {
     console.error(err)
     process.exitCode = 1

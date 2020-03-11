@@ -60,7 +60,3 @@ const mapDispatch = dispatch => ({
 })
 
 export default connect(mapState, mapDispatch)(TriviaHimHer)
-
-TriviaHimHer.propTypes = {
-  // email: PropTypes.string
-}

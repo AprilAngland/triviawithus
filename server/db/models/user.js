@@ -33,7 +33,7 @@ const User = db.define('user', {
   },
   nickname: {
     type: Sequelize.STRING,
-    defaultValue: 'Anonymous excited guest'
+    defaultValue: ''
   },
   type: {
     type: Sequelize.ENUM(['admin', 'guest']),

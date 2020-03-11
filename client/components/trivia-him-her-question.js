@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
 import {Wait} from '.'
@@ -217,7 +216,3 @@ export default connect(
   mapState,
   mapDispatch
 )(withStyles(styles)(TriviaHimHerQuestion))
-
-TriviaHimHerQuestion.propTypes = {
-  // email: PropTypes.string
-}

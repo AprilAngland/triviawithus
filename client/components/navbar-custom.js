@@ -1,16 +1,13 @@
 /* eslint-disable complexity */
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import socket from '../socket'
 import {withStyles} from '@material-ui/core/styles'
 import {AppBar, Tabs, Tab} from '@material-ui/core'
 
 const styles = {
   root: {
-    // marginBottom: '100px',
     background: '#b1afd7',
     color: 'black',
     '&$disabled': {
@@ -184,12 +181,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(NavbarCustom))
-
-/**
- * PROP TYPES
- */
-// NavbarCustom.propTypes = {
-//   handleClick: PropTypes.func.isRequired,
-//   isLoggedIn: PropTypes.bool.isRequired,
-//   isAdmin: PropTypes.bool.isRequired
-// }

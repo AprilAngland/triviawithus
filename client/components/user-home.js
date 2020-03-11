@@ -73,15 +73,26 @@ class Home extends React.Component {
   handleClose = () => {
     this.setState({open: false})
   }
+  s
+  // component did mount does not work
+  //
+
+  // componentDidMount() {
+  //   console.log('component did mount props', this.props.user)
+  //   console.log('component did mount state', this.state)
+  //   this.setState(this.props.user)
+  //   console.log('component did mount state', this.state)
+  // }
   static getDerivedStateFromProps(props, state) {
     console.dir(props.user)
-    // debugger;
+    // if (props.user && state.nickname === 'placeholder') {
     if (props.user && state.nickname === 'placeholder') {
       return props.user
     } else {
       return state
     }
   }
+
   handleChange(event) {
     console.log('typing', event.target.name, event.target.value)
     this.setState({
@@ -238,7 +249,3 @@ const mapDispatch = dispatch => ({
 })
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(Home))
-
-Home.propTypes = {
-  // email: PropTypes.string
-}

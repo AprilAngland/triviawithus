@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import {connect} from 'react-redux'
 
 export const TriviaGuessNumber = props => {
@@ -12,7 +12,3 @@ export const TriviaGuessNumber = props => {
 const mapState = state => ({})
 
 export default connect(mapState)(TriviaGuessNumber)
-
-TriviaGuessNumber.propTypes = {
-  // email: PropTypes.string
-}
