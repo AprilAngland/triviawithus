@@ -1,14 +1,17 @@
+/* eslint-disable no-new */
 import React from 'react'
 import {connect} from 'react-redux'
 import {resetQuestion} from '../store'
 import socket from '../socket'
 import {Wait} from '.'
 import {withStyles} from '@material-ui/core/styles'
+import {TriviaHimHerVoteChart} from '.'
 import {
   Card,
   CardContent,
   CardActions,
   Typography,
+  CardMedia,
   Button
 } from '@material-ui/core'
 
@@ -32,13 +35,17 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between'
   },
-  body: {
-    flex: '5 0 15vh'
+  media: {
+    display: 'flex',
+    flex: '0 0 30vh',
+    justifyContent: 'center'
   },
-  answerBar: {
-    flex: '5 0 15vh',
-    justifyContent: 'space-evenly',
-    marginBottom: '20px'
+  body: {
+    flex: '0 0 5vh'
+  },
+
+  graphContainer: {
+    flex: '3 0 35vh'
   }
 }
 
@@ -47,11 +54,6 @@ class TriviaHimHerVote extends React.Component {
   render() {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
-    // console.log(
-    //   'rendering TriviaHimHerVote',
-    //   this.props.question,
-    //   this.props.user.type
-    // )
 
     if (this.props.questions !== null && this.props.user.type === 'admin') {
       const toEmit = {
@@ -62,6 +64,7 @@ class TriviaHimHerVote extends React.Component {
       socket.emit('FromHost', toEmit)
     }
     const showEng = this.props.user.language === 'EN'
+
     return (
       <div>
         {this.props.question.id ? (
@@ -101,13 +104,12 @@ class TriviaHimHerVote extends React.Component {
                   ? `Vote: ${this.props.question.text} ${this.props.question.id}`
                   : `问: ${this.props.question.translation} ${this.props.question.id}`}
               </Typography>
-              <Typography color="textSecondary">
-                {'answer: ' + this.props.question.ans}
-              </Typography>
-              <Typography color="textSecondary">
+              <Typography>{'answer: ' + this.props.question.ans}</Typography>
+
+              <Typography>
                 {this.props.question.ansCntHim + ' of you answered him'}
               </Typography>
-              <Typography color="textSecondary">
+              <Typography>
                 {this.props.question.ansCntHer + ' of you answered her'}
               </Typography>
               <Typography variant="body2" component="p">
@@ -119,6 +121,9 @@ class TriviaHimHerVote extends React.Component {
                 <br />
               </Typography>
             </CardContent>
+            <CardMedia className={classes.media} title="Paella dish">
+              <TriviaHimHerVoteChart question={this.props.question} />
+            </CardMedia>
           </Card>
         ) : (
           <Wait from="loading" />

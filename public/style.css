@@ -10,7 +10,7 @@ body::after {
   height: 500%;
   /* overflow: auto; */
   z-index: -10;
-  opacity: 0.3;
+  opacity: 0.1;
   top: 0;
   left: 0;
   bottom: 0;
