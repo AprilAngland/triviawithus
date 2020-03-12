@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getMenu} from '../store'
 import {withStyles} from '@material-ui/core/styles'
@@ -36,7 +35,7 @@ const styles = {
 }
 class Wait extends React.Component {
   render() {
-    console.log('rendering loading')
+    // console.log('rendering loading')
     const {classes} = this.props
     const showEng = this.props.user.language === 'EN'
 

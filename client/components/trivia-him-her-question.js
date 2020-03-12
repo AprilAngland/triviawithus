@@ -127,7 +127,7 @@ class TriviaHimHerQuestion extends React.Component {
                 }
                 onClick={() => {
                   let answer = 'him'
-                  this.props.this.props.voteQuestion(
+                  this.props.voteQuestion(
                     this.props.question.id,
                     answer,
                     this.props.user.id

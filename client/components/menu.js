@@ -1,7 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {getMenu} from '../store'
+import {getMenu, setDisplayedQuestion} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import {Card, CardContent, Typography} from '@material-ui/core'
 import socket from '../socket'
@@ -30,9 +29,11 @@ class Menu extends React.Component {
   componentDidMount() {
     if (this.props.user.type === 'guest') {
       socket.on('ToGuest', question => {
+        this.props.setDisplayedQuestion(question)
         window.location.replace('/Game')
       })
     }
+
     this.props.getMenu()
   }
   render() {
@@ -109,6 +110,9 @@ const mapState = state => ({user: state.user, menu: state.menu.menuAll})
 const mapDispatch = dispatch => ({
   getMenu: () => {
     dispatch(getMenu())
+  },
+  setDisplayedQuestion: question => {
+    dispatch(setDisplayedQuestion(question))
   }
 })
 

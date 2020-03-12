@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getMenu} from '../store'
 import {getWinner} from '../store'
@@ -47,7 +46,7 @@ class TriviaHimHerWinner extends React.Component {
     this.props.getWinner()
   }
   render() {
-    console.log('rendering loading')
+    // console.log('rendering loading')
     const {classes} = this.props
     const showEng = this.props.user.language === 'EN'
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import socket from '../socket'
 import {
@@ -22,14 +21,18 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
+    console.log('on component did mount, socket connected? ', socket.connected)
     socket.on('ResetUserToGuest', () => {
+      console.log('get socket ResetUserToGuest')
       this.props.eraseDisplayedQuestions()
     })
     socket.on('ToGuest', question => {
+      console.log('get socket Question action SET_QUESTION')
       this.setState({question: question})
       this.props.setDisplayedQuestion(question)
     })
     socket.on('SuspendQuestionToGuest', () => {
+      console.log('get SuspendQuestionToGuest  action SUSPEND_QUESTION')
       this.props.suspendDisplayedQuestion()
     })
   }

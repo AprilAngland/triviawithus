@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 /**
@@ -19,7 +18,3 @@ export const TriviaMultiChoice = props => {
 const mapState = state => ({})
 
 export default connect(mapState)(TriviaMultiChoice)
-
-TriviaMultiChoice.propTypes = {
-  // email: PropTypes.string
-}

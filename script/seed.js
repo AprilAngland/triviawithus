@@ -16,7 +16,7 @@ async function seedUserMenu() {
   await db.sync()
 
   console.log('db synced!')
-  User.destroy({where: {}})
+  User.truncate({restartIdentity: true, cascade: true})
   const users = await Promise.all([
     User.create({
       email: process.env.ADMIN1_EMAIL,
@@ -71,7 +71,7 @@ async function seedUserMenu() {
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 
-  Menu.destroy({where: {}})
+  Menu.truncate({restartIdentity: true, cascade: true})
   const menus = await Promise.all([
     Menu.create({
       section: 'Hors D doeuvre',
@@ -173,7 +173,7 @@ async function seedGames() {
   //   truncate: true
   // })
   await db.sync()
-  TriviaHimHer.destroy({where: {}})
+  TriviaHimHer.truncate({restartIdentity: true, cascade: true})
   const triviahimhers = await Promise.all([
     // TriviaHimHer.create({
     //   text: 'Who steals apple pie at night?',
@@ -242,7 +242,7 @@ async function seedGames() {
   console.log(`seeded ${triviahimhers.length} triviahimhers`)
   console.log(`seeded successfully`)
 
-  TriviaTrueFalse.destroy({where: {}})
+  TriviaTrueFalse.truncate({restartIdentity: true, cascade: true})
   const triviatruefalses = await Promise.all([
     // TriviaTrueFalse.create({
     //   text: 'John ordered Asian Stir Fry more often than April',
@@ -312,7 +312,7 @@ async function seedGames() {
 
   console.log(`seeded ${triviatruefalses.length} triviatruefalses`)
   console.log(`seeded successfully`)
-  TriviaGuessNumber.destroy({where: {}})
+  TriviaGuessNumber.truncate({restartIdentity: true, cascade: true})
   const triviaguessnumber = await Promise.all([
     // TriviaGuessNumber.create({
     //   text: 'How many days between the first date and the wedding',
@@ -381,7 +381,7 @@ async function seedGames() {
 
   console.log(`seeded ${triviaguessnumber.length} triviaguessnumber`)
   console.log(`seeded successfully`)
-  TriviaMultiChoice.destroy({where: {}})
+  TriviaMultiChoice.truncate({restartIdentity: true, cascade: true})
   const triviamultichoice = await Promise.all([
     TriviaMultiChoice.create({
       text: 'What was the criteria John used to pick first date restaurant?',

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {resetQuestion} from '../store'
 import socket from '../socket'
@@ -85,7 +84,10 @@ class TriviaHimHerVote extends React.Component {
                 <Button
                   size="small"
                   href="/triviahimhers?id=1&type=question"
-                  onClick={this.props.resetQuestion}
+                  onClick={() => {
+                    this.props.resetQuestion()
+                    socket.emit('ResetUserFromHost')
+                  }}
                 >
                   Restart!
                 </Button>
@@ -137,5 +139,3 @@ export default connect(
   mapState,
   mapDispatch
 )(withStyles(styles)(TriviaHimHerVote))
-
-TriviaHimHerVote.propTypes = {}

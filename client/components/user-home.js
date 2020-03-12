@@ -1,7 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {getHome, updateInfo} from '../store'
+import {getHome, updateInfo, setDisplayedQuestion} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import SaveIcon from '@material-ui/icons/Save'
 import socket from '../socket'
@@ -84,7 +83,7 @@ class Home extends React.Component {
   //   console.log('component did mount state', this.state)
   // }
   static getDerivedStateFromProps(props, state) {
-    console.dir(props.user)
+    // console.dir(props.user)
     // if (props.user && state.nickname === 'placeholder') {
     if (props.user && state.nickname === 'placeholder') {
       return props.user
@@ -94,7 +93,7 @@ class Home extends React.Component {
   }
 
   handleChange(event) {
-    console.log('typing', event.target.name, event.target.value)
+    // console.log('typing', event.target.name, event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -122,7 +121,7 @@ class Home extends React.Component {
               variant="outlined"
               name="email"
               value={this.state.email}
-              disabled="disabled"
+              disabled={true}
               onChange={this.handleChange}
             />
             <TextField
@@ -203,7 +202,6 @@ class Home extends React.Component {
               variant="contained"
               color="primary"
               type="submit"
-              code
               onClick={() => {
                 this.handleClickOpen()
               }}
@@ -245,6 +243,10 @@ const mapState = state => ({user: state.user, Home: state.menu.menuAll})
 const mapDispatch = dispatch => ({
   updateInfo: (info, id) => {
     dispatch(updateInfo(info, id))
+  },
+
+  setDisplayedQuestion: question => {
+    dispatch(setDisplayedQuestion(question))
   }
 })
 

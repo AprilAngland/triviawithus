@@ -9,13 +9,7 @@ import {AppBar, Tabs, Tab} from '@material-ui/core'
 const styles = {
   root: {
     background: '#b1afd7',
-    color: 'black',
-    '&$disabled': {
-      color: 'white'
-    },
-    '&$hover': {
-      color: 'white'
-    }
+    color: 'black'
   }
 }
 
