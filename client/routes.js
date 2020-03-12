@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-
+import {setDisplayedQuestion} from './store'
+import socket from './socket'
 import {
   Login,
   UserHome,
@@ -17,6 +18,15 @@ import {me} from './store'
 
 class Routes extends Component {
   componentDidMount() {
+    if (this.props.user.type === 'guest') {
+      console.log(
+        'in route, conponent did mout, it is subscribed to sockect to guest'
+      )
+      socket.on('ToGuest', question => {
+        this.props.setDisplayedQuestion(question)
+        window.location.replace('/Game')
+      })
+    }
     this.props.loadInitialData()
   }
 
@@ -45,13 +55,17 @@ class Routes extends Component {
 }
 
 const mapState = state => ({
-  isLoggedIn: !!state.user.id
+  isLoggedIn: !!state.user.id,
+  user: state.user
 })
 
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+    },
+    setDisplayedQuestion: question => {
+      dispatch(setDisplayedQuestion(question))
     }
   }
 }

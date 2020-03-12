@@ -20,7 +20,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 const styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '10vh',
+    marginTop: '20vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',

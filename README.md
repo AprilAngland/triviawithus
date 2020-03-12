@@ -1,3 +1,8 @@
+# Seeding
+
+- npm run seed-users
+- npm run seed-questions
+
 # Sending invitation
 
 - Be careful to only run it once!!

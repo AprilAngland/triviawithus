@@ -12,7 +12,7 @@ const styles = {
   root: {
     background: 'rgba(255, 255,255, 0.8)',
     marginTop: '10vh',
-    marginBottom: '2vh',
+    marginBottom: '5vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',

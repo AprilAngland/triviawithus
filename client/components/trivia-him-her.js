@@ -32,7 +32,6 @@ class TriviaHimHer extends React.Component {
   render() {
     return (
       <div>
-        <h3>TriviaHimHer</h3>
         {this.props.question && this.state.type === 'question' ? (
           <TriviaHimHerQuestion
             id={this.state.id}

@@ -6,7 +6,7 @@ import {Card, Button, TextField} from '@material-ui/core'
 
 const styles = {
   root: {
-    marginTop: '10vh',
+    marginTop: '20vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -25,6 +25,9 @@ const styles = {
   body: {
     flex: '5 0 15vh',
     textAlign: 'center'
+  },
+  button: {
+    margin: '20px'
   }
 }
 

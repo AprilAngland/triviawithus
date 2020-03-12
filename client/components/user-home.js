@@ -2,16 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getHome, updateInfo, setDisplayedQuestion} from '../store'
 import {withStyles} from '@material-ui/core/styles'
-import SaveIcon from '@material-ui/icons/Save'
 import socket from '../socket'
-import {
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Button,
-  TextField
-} from '@material-ui/core'
+import {Card, Button, TextField} from '@material-ui/core'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -21,16 +13,13 @@ const styles = {
   root: {
     background: 'rgba(255, 255,255, 0.8)',
     marginTop: '10vh',
-    marginBottom: '2vh',
+    marginBottom: '5vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
     flexWrap: 'nowrap',
-    // background: '#b1afd7',
     color: 'black',
-    // borderRadius: 3,
     justifyContent: 'flex-start',
-    // boxShadow: '0 3px 5px 2px',
     margin: '20px',
     '& .MuiTextField-root': {
       margin: '10px',
@@ -66,10 +55,10 @@ class Home extends React.Component {
       })
     }
   }
-  handleClickOpen = () => {
+  handleClickOpenYes = () => {
     this.setState({open: true})
   }
-  handleClose = () => {
+  handleCloseYes = () => {
     this.setState({open: false})
   }
   s
@@ -126,8 +115,13 @@ class Home extends React.Component {
             />
             <TextField
               id="filled-basic"
+              error={this.state.nickname === ''}
+              required
+              helperText={
+                this.state.nickname === '' && 'Nickname Cannot be Empty'
+              }
               label={showEng ? 'Preferred Name' : `昵称`}
-              variant="outlined"
+              variant="standard"
               name="nickname"
               value={this.state.nickname}
               onChange={this.handleChange}
@@ -136,11 +130,13 @@ class Home extends React.Component {
               id="filled-basic"
               label={
                 showEng
-                  ? 'Expected Count(0 if coming alone, 1 if coming, 2 if bringing spouse)'
+                  ? 'Head Count (1 if coming, 2 if bringing +1)'
                   : `大概来几个人?`
               }
+              // helperText="1 if coming, 2 if bringing +1"
               variant="standard"
               name="expectedcount"
+              type="number"
               value={this.state.expectedcount}
               onChange={this.handleChange}
             />
@@ -154,6 +150,12 @@ class Home extends React.Component {
             />
             <TextField
               id="standard-select-currency-native"
+              required
+              helperText={
+                this.state.entreechoice === 'not sure' &&
+                'Menu Choice is not Optional'
+              }
+              error={this.state.entreechoice === 'not sure'}
               select
               label={showEng ? 'Entree Selection' : `主菜选项`}
               value={this.state.entreechoice}
@@ -162,7 +164,6 @@ class Home extends React.Component {
               SelectProps={{
                 native: true
               }}
-              helperText=""
               variant="standard"
             >
               {' '}
@@ -189,7 +190,7 @@ class Home extends React.Component {
               id="filled-basic"
               label={
                 showEng
-                  ? 'Special note to the chef(allergies, dietary restrictions, etc)'
+                  ? 'Allergies or Dietary Restrictions'
                   : `有没有食物过敏或者忌口`
               }
               variant="standard"
@@ -203,14 +204,16 @@ class Home extends React.Component {
               color="primary"
               type="submit"
               onClick={() => {
-                this.handleClickOpen()
+                this.state.entreechoice !== 'not sure' &&
+                  this.state.nickName !== '' &&
+                  this.handleClickOpenYes()
               }}
             >
               {showEng ? 'Save Changes and accept invitation' : '保存更改'}
             </Button>
             <Dialog
               open={this.state.open}
-              onClose={this.handleClose}
+              onClose={this.handleCloseYes}
               // fullWidth="true"
               aria-labelledby="alert-dialog-title"
               aria-describedby="alert-dialog-description"
@@ -227,7 +230,7 @@ class Home extends React.Component {
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button onClick={this.handleClose} color="primary" autoFocus>
+                <Button onClick={this.handleCloseYes} color="primary" autoFocus>
                   Yay!!
                 </Button>
               </DialogActions>

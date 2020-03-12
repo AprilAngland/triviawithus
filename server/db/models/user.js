@@ -44,16 +44,16 @@ const User = db.define('user', {
     defaultValue: 'not sure'
   },
   expectedcount: {
-    type: Sequelize.FLOAT,
-    defaultValue: 0.5
+    type: Sequelize.INTEGER,
+    defaultValue: 0
   },
   notetohost: {
     type: Sequelize.STRING,
-    defaultValue: 'I am so excited for the weeding!'
+    defaultValue: ''
   },
   notetochef: {
     type: Sequelize.STRING,
-    defaultValue: 'I am not a picky eater!'
+    defaultValue: ''
   }
 })
 

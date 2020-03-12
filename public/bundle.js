@@ -135,7 +135,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var styles = {
   root: {
-    marginTop: '10vh',
+    marginTop: '20vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -153,6 +153,9 @@ var styles = {
   body: {
     flex: '5 0 15vh',
     textAlign: 'center'
+  },
+  button: {
+    margin: '20px'
   }
 };
 
@@ -306,7 +309,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Game"), !this.props.question.displayType && //
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, !this.props.question.displayType && //
       react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_3__["Wait"], {
         from: "host"
       })), this.props.question.displayType && !this.props.question.text && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_3__["Wait"], {
@@ -467,7 +470,7 @@ var styles = {
   root: {
     background: 'rgba(255, 255,255, 0.8)',
     marginTop: '10vh',
-    marginBottom: '2vh',
+    marginBottom: '5vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -873,7 +876,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '10vh',
+    marginTop: '20vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -1108,7 +1111,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '10vh',
+    marginTop: '20vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -1281,7 +1284,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '10vh',
+    marginTop: '20vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -1470,7 +1473,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "TriviaHimHer"), this.props.question && this.state.type === 'question' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_3__["TriviaHimHerQuestion"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.question && this.state.type === 'question' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_3__["TriviaHimHerQuestion"], {
         id: this.state.id,
         question: this.props.question
       }) : this.props.question && this.state.type === 'vote' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_3__["TriviaHimHerVote"], {
@@ -1581,15 +1584,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
-/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/icons/Save */ "./node_modules/@material-ui/icons/Save.js");
-/* harmony import */ var _material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Save__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../socket */ "./client/socket.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
-/* harmony import */ var _material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Dialog */ "./node_modules/@material-ui/core/esm/Dialog/index.js");
-/* harmony import */ var _material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/DialogActions */ "./node_modules/@material-ui/core/esm/DialogActions/index.js");
-/* harmony import */ var _material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/DialogContent */ "./node_modules/@material-ui/core/esm/DialogContent/index.js");
-/* harmony import */ var _material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/DialogContentText */ "./node_modules/@material-ui/core/esm/DialogContentText/index.js");
-/* harmony import */ var _material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/DialogTitle */ "./node_modules/@material-ui/core/esm/DialogTitle/index.js");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../socket */ "./client/socket.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
+/* harmony import */ var _material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/Dialog */ "./node_modules/@material-ui/core/esm/Dialog/index.js");
+/* harmony import */ var _material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/DialogActions */ "./node_modules/@material-ui/core/esm/DialogActions/index.js");
+/* harmony import */ var _material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/DialogContent */ "./node_modules/@material-ui/core/esm/DialogContent/index.js");
+/* harmony import */ var _material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/DialogContentText */ "./node_modules/@material-ui/core/esm/DialogContentText/index.js");
+/* harmony import */ var _material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/DialogTitle */ "./node_modules/@material-ui/core/esm/DialogTitle/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1621,21 +1622,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
 var styles = {
   root: {
     background: 'rgba(255, 255,255, 0.8)',
     marginTop: '10vh',
-    marginBottom: '2vh',
+    marginBottom: '5vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
     flexWrap: 'nowrap',
-    // background: '#b1afd7',
     color: 'black',
-    // borderRadius: 3,
     justifyContent: 'flex-start',
-    // boxShadow: '0 3px 5px 2px',
     margin: '20px',
     '& .MuiTextField-root': {
       margin: '10px',
@@ -1663,13 +1660,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this));
 
-    _defineProperty(_assertThisInitialized(_this), "handleClickOpen", function () {
+    _defineProperty(_assertThisInitialized(_this), "handleClickOpenYes", function () {
       _this.setState({
         open: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleClose", function () {
+    _defineProperty(_assertThisInitialized(_this), "handleCloseYes", function () {
       _this.setState({
         open: false
       });
@@ -1701,7 +1698,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       if (this.props.user.type === 'guest') {
-        _socket__WEBPACK_IMPORTED_MODULE_5__["default"].on('ToGuest', function (question) {
+        _socket__WEBPACK_IMPORTED_MODULE_4__["default"].on('ToGuest', function (question) {
           window.location.replace('/Game');
         });
       }
@@ -1719,14 +1716,14 @@ function (_React$Component) {
 
       var classes = this.props.classes;
       var showEng = this.props.user.language === 'EN';
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["Card"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Card"], {
         className: classes.root,
         variant: "outlined",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         noValidate: true,
         autoComplete: "off"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["TextField"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["TextField"], {
         id: "filled-basic",
         label: showEng ? 'Login Email' : "\u90AE\u7BB1",
         variant: "outlined",
@@ -1734,29 +1731,37 @@ function (_React$Component) {
         value: this.state.email,
         disabled: true,
         onChange: this.handleChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["TextField"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["TextField"], {
         id: "filled-basic",
+        error: this.state.nickname === '',
+        required: true,
+        helperText: this.state.nickname === '' && 'Nickname Cannot be Empty',
         label: showEng ? 'Preferred Name' : "\u6635\u79F0",
-        variant: "outlined",
+        variant: "standard",
         name: "nickname",
         value: this.state.nickname,
         onChange: this.handleChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["TextField"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["TextField"], {
         id: "filled-basic",
-        label: showEng ? 'Expected Count(0 if coming alone, 1 if coming, 2 if bringing spouse)' : "\u5927\u6982\u6765\u51E0\u4E2A\u4EBA?",
+        label: showEng ? 'Head Count (1 if coming, 2 if bringing +1)' : "\u5927\u6982\u6765\u51E0\u4E2A\u4EBA?" // helperText="1 if coming, 2 if bringing +1"
+        ,
         variant: "standard",
         name: "expectedcount",
+        type: "number",
         value: this.state.expectedcount,
         onChange: this.handleChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["TextField"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["TextField"], {
         id: "filled-basic",
         label: showEng ? 'Note' : "\u5907\u6CE8",
         variant: "standard",
         name: "notetohost",
         value: this.state.notetohost,
         onChange: this.handleChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["TextField"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["TextField"], {
         id: "standard-select-currency-native",
+        required: true,
+        helperText: this.state.entreechoice === 'not sure' && 'Menu Choice is not Optional',
+        error: this.state.entreechoice === 'not sure',
         select: true,
         label: showEng ? 'Entree Selection' : "\u4E3B\u83DC\u9009\u9879",
         value: this.state.entreechoice,
@@ -1765,7 +1770,6 @@ function (_React$Component) {
         SelectProps: {
           "native": true
         },
-        helperText: "",
         variant: "standard"
       }, ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "lamb"
@@ -1775,33 +1779,33 @@ function (_React$Component) {
         value: "risotto"
       }, showEng ? 'Roasted Vegetable risotto for vegetarians' : "\u852C\u83DC\u5976\u6CB9\u7117\u996D"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "not sure"
-      }, showEng ? "I don't know, surprise me" : "\u968F\u4FBF\uFF01")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["TextField"], {
+      }, showEng ? "I don't know, surprise me" : "\u968F\u4FBF\uFF01")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["TextField"], {
         id: "filled-basic",
-        label: showEng ? 'Special note to the chef(allergies, dietary restrictions, etc)' : "\u6709\u6CA1\u6709\u98DF\u7269\u8FC7\u654F\u6216\u8005\u5FCC\u53E3",
+        label: showEng ? 'Allergies or Dietary Restrictions' : "\u6709\u6CA1\u6709\u98DF\u7269\u8FC7\u654F\u6216\u8005\u5FCC\u53E3",
         variant: "standard",
         name: "notetochef",
         value: this.state.notetochef,
         onChange: this.handleChange
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Button"], {
         className: classes.button,
         variant: "contained",
         color: "primary",
         type: "submit",
         onClick: function onClick() {
-          _this2.handleClickOpen();
+          _this2.state.entreechoice !== 'not sure' && _this2.state.nickName !== '' && _this2.handleClickOpenYes();
         }
-      }, showEng ? 'Save Changes and accept invitation' : '保存更改'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      }, showEng ? 'Save Changes and accept invitation' : '保存更改'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_6__["default"], {
         open: this.state.open,
-        onClose: this.handleClose // fullWidth="true"
+        onClose: this.handleCloseYes // fullWidth="true"
         ,
         "aria-labelledby": "alert-dialog-title",
         "aria-describedby": "alert-dialog-description"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_10__["default"], {
         id: "alert-dialog-title"
-      }, "Thank you!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_9__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, "Thank you!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_9__["default"], {
         id: "alert-dialog-description"
-      }, showEng ? "Thank you! A email confirmation has been sent to your email ".concat(this.props.user.email, ", we are looking forward to seeing you!") : "\u8C22\u8C22\uFF0C \u6211\u4EEC\u6B22\u8FCE\u4F60\u7684\u5149\u4E34\uFF01")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_8__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["Button"], {
-        onClick: this.handleClose,
+      }, showEng ? "Thank you! A email confirmation has been sent to your email ".concat(this.props.user.email, ", we are looking forward to seeing you!") : "\u8C22\u8C22\uFF0C \u6211\u4EEC\u6B22\u8FCE\u4F60\u7684\u5149\u4E34\uFF01")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_7__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["Button"], {
+        onClick: this.handleCloseYes,
         color: "primary",
         autoFocus: true
       }, "Yay!!"))))));
@@ -1897,7 +1901,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 var styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '10vh',
+    marginTop: '20vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -2028,8 +2032,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./client/components/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./client/store/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./client/store/index.js");
+/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./socket */ "./client/socket.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components */ "./client/components/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2054,6 +2059,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var Routes =
 /*#__PURE__*/
 function (_Component) {
@@ -2068,6 +2075,17 @@ function (_Component) {
   _createClass(Routes, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this = this;
+
+      if (this.props.user.type === 'guest') {
+        console.log('in route, conponent did mout, it is subscribed to sockect to guest');
+        _socket__WEBPACK_IMPORTED_MODULE_4__["default"].on('ToGuest', function (question) {
+          _this.props.setDisplayedQuestion(question);
+
+          window.location.replace('/Game');
+        });
+      }
+
       this.props.loadInitialData();
     }
   }, {
@@ -2076,28 +2094,28 @@ function (_Component) {
       var isLoggedIn = this.props.isLoggedIn;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/login",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["Login"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["Login"]
       }), isLoggedIn && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/home",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["UserHome"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["UserHome"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/menu",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["Menu"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["Menu"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/game",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["Game"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["Game"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/TriviaHimHers",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["TriviaHimHer"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["TriviaHimHer"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/TriviaTrueFalses",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["TriviaTrueFalse"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["TriviaTrueFalse"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/TriviaMultiChoices",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["TriviaMultiChoice"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["TriviaMultiChoice"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/TriviaGuessNumbers",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["TriviaGuessNumber"]
+        component: _components__WEBPACK_IMPORTED_MODULE_5__["TriviaGuessNumber"]
       })));
     }
   }]);
@@ -2107,14 +2125,18 @@ function (_Component) {
 
 var mapState = function mapState(state) {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    user: state.user
   };
 };
 
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     loadInitialData: function loadInitialData() {
-      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_4__["me"])());
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["me"])());
+    },
+    setDisplayedQuestion: function setDisplayedQuestion(question) {
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_3__["setDisplayedQuestion"])(question));
     }
   };
 }; // The `withRouter` wrapper makes sure that updates are not blocked
@@ -3525,35 +3547,6 @@ function _typeof(obj) {
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/extends.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/extends.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _extends() {
-  module.exports = _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-module.exports = _extends;
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime/helpers/inheritsLoose.js":
 /*!**************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inheritsLoose.js ***!
@@ -3568,23 +3561,6 @@ function _inheritsLoose(subClass, superClass) {
 }
 
 module.exports = _inheritsLoose;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-
-module.exports = _interopRequireDefault;
 
 /***/ }),
 
@@ -38663,75 +38639,6 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 
 module.exports = hoistNonReactStatics;
 
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/icons/Save.js":
-/*!*************************************************!*\
-  !*** ./node_modules/@material-ui/icons/Save.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
-
-var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
-  d: "M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"
-}), 'Save');
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/icons/utils/createSvgIcon.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@material-ui/icons/utils/createSvgIcon.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = createSvgIcon;
-
-var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _SvgIcon = _interopRequireDefault(__webpack_require__(/*! @material-ui/core/SvgIcon */ "./node_modules/@material-ui/core/esm/SvgIcon/index.js"));
-
-function createSvgIcon(path, displayName) {
-  var Component = _react.default.memo(_react.default.forwardRef(function (props, ref) {
-    return _react.default.createElement(_SvgIcon.default, (0, _extends2.default)({
-      ref: ref
-    }, props), path);
-  }));
-
-  if (true) {
-    Component.displayName = "".concat(displayName, "Icon");
-  }
-
-  Component.muiName = _SvgIcon.default.muiName;
-  return Component;
-}
 
 /***/ }),
 
