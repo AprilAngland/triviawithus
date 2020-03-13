@@ -19,7 +19,6 @@ class TriviaHimHerVoteChart extends Component {
     Chart.defaults.global.defaultFontColor = 'black'
     Chart.defaults.global.defaultFontSize = '24'
     console.log(Object.keys(Chart))
-    // Chart.Canvas.parentNode.style.width = '100vw'
     console.log(
       new Chart(myChartRef, {
         type: 'bar',
@@ -76,14 +75,6 @@ class TriviaHimHerVoteChart extends Component {
           legend: {
             display: false
           },
-          // layout: {
-          //   padding: {
-          //     left: '5vh',
-          //     right: '5vh',
-          //     top: 0,
-          //     bottom: '5vh'
-          //   }
-          // },
           scales: {
             xAxes: [
               {

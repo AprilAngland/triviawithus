@@ -33,7 +33,7 @@ const styles = {
 
 const AuthForm = props => {
   const {classes} = props
-  const {name, displayName, handleSubmit, error} = props
+  const {name, handleSubmit, error} = props
 
   return (
     <div>

@@ -18,12 +18,6 @@ import {me} from './store'
 
 class Routes extends Component {
   componentDidMount() {
-    // if (this.props.user.type === 'guest') {
-    //   socket.on('ResumeQuestionToGuest', question => {
-    //     // console.log('ResumeQuestionToGuest', question)
-    //     window.location.replace('/Game')
-    //   })
-    // }
     this.props.loadInitialData()
   }
 

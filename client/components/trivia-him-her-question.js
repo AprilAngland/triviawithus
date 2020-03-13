@@ -100,7 +100,6 @@ class TriviaHimHerQuestion extends React.Component {
                   onClick={() => {
                     this.props.resetQuestion()
                     socket.emit('ResetUserFromHost')
-                    // socket.emit('FromHost', this.props.)
                   }}
                 >
                   Restart!
@@ -131,7 +130,7 @@ class TriviaHimHerQuestion extends React.Component {
                   )
                 }
                 onClick={() => {
-                  let answer = 'him'
+                  let answer = 'Him'
                   this.props.voteQuestion(
                     this.props.question.id,
                     answer,
@@ -156,7 +155,7 @@ class TriviaHimHerQuestion extends React.Component {
                   )
                 }
                 onClick={() => {
-                  let answer = 'her'
+                  let answer = 'Her'
                   this.props.voteQuestion(
                     this.props.question.id,
                     answer,
@@ -171,7 +170,6 @@ class TriviaHimHerQuestion extends React.Component {
               <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
-                // fullWidth="true"
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
               >
@@ -179,9 +177,6 @@ class TriviaHimHerQuestion extends React.Component {
                   {'Thank you for Voting!'}
                 </DialogTitle>
                 <DialogContent>
-                  {/* <DialogContentText id="alert-dialog-description">
-                  {`You Chose ${answer}`}
-                </DialogContentText> */}
                   <DialogContentText id="alert-dialog-description">
                     {showEng
                       ? `Too late to change your mind :}, please wait for host to show next question`

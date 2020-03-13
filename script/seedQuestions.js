@@ -16,6 +16,7 @@ async function seedGames() {
   //   where: {},
   //   truncate: true
   // })
+  // await db.sync({force: true})
   await db.sync()
 
   Menu.truncate({restartIdentity: true, cascade: true})

@@ -17,22 +17,20 @@ router.get('/winner', adminOnly, async (req, res, next) => {
   try {
     const triviahimhers = await User.findAll({
       include: [{model: TriviaHimHer}]
-      // include: [{model: Product, through: {attributes: ['quantity']}}], /
-      // attributes: ['userId']
     })
     const userCorrectCount = triviahimhers.map(user => ({
       id: user.id,
       nickName: user.nickname,
-      count: user.triviahimhers.length
+      email: user.email,
+      count: user.triviahimhers.filter(
+        entry => entry.triviahimhervote.correct === true
+      ).length
     }))
     const maxCorrect = userCorrectCount[0].count
     const winners = userCorrectCount
       .filter(user => user.count === maxCorrect)
       .sort((a, b) => b.count - a.count)
-    // res.json(triviahimhers)
-    // res.json(userCorrectCount)
     res.json(winners)
-    // res.json({name: 'winnerName'})
   } catch (err) {
     next(err)
   }
@@ -41,10 +39,18 @@ router.get('/winner', adminOnly, async (req, res, next) => {
 router.get('/:id', adminOnly, async (req, res, next) => {
   try {
     const triviahimher = await TriviaHimHer.findAll({
-      include: [{model: User}],
+      include: [{model: User, through: {attributes: ['ans']}}],
       where: {id: req.params.id}
     })
-    res.json(triviahimher[0])
+    let resObj = triviahimher[0]
+    resObj.ansCntHim = resObj.users.filter(
+      user => user.triviahimhervote.ans === 'Him'
+    ).length
+    resObj.ansCntHer = resObj.users.filter(
+      user => user.triviahimhervote.ans === 'Her'
+    ).length
+    resObj.save()
+    res.json(resObj)
   } catch (err) {
     next(err)
   }
@@ -54,24 +60,15 @@ router.put('/:id', userOnly, async (req, res, next) => {
   try {
     const questionToUpdate = await TriviaHimHer.findByPk(+req.params.id)
     const user = await User.findByPk(req.query.userId)
-    let ansCntHim = questionToUpdate.ansCntHim
-    let ansCntHer = questionToUpdate.ansCntHer
-    let ans = questionToUpdate.ans
-    if (req.query.ans === 'her') {
-      ansCntHer++
-    }
-    if (req.query.ans === 'him') {
-      ansCntHim++
-    }
-    if (req.query.ans === ans) {
-      questionToUpdate.addUser([user])
-    }
-    questionToUpdate.update({
-      ansCntHim,
-      ansCntHer
+
+    questionToUpdate.addUser(user, {
+      through: {
+        ans: req.query.ans,
+        correct: questionToUpdate.ans === req.query.ans
+      }
     })
+
     res.json({})
-    // }
   } catch (err) {
     next(err)
   }
@@ -79,26 +76,19 @@ router.put('/:id', userOnly, async (req, res, next) => {
 
 router.delete('/', adminOnly, async (req, res, next) => {
   try {
-    const [numUpdated, affectedRows] = await TriviaHimHer.update(
-      {
-        ansCntHim: 0,
-        ansCntHer: 0
-      },
-      {
-        where: {},
-        returning: true,
-        plain: true
-      }
-    )
     const triviahimhers = await TriviaHimHer.findAll({})
     const users = await User.findAll({})
     for (const triviahimher of triviahimhers) {
+      triviahimher.ansCntHer = 0
+      triviahimher.ansCntHim = 0
+      triviahimher.save()
       for (const user of users) {
         triviahimher.removeUser(user)
         user.removeTriviahimher(triviahimher)
       }
     }
-    res.json(affectedRows)
+
+    res.json({})
   } catch (err) {
     next(err)
   }

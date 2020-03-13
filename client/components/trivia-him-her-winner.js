@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getMenu} from '../store'
 import {getWinner} from '../store'
+import socket from '../socket'
 import {withStyles} from '@material-ui/core/styles'
 import {
   Card,
@@ -21,7 +22,6 @@ const styles = {
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    // background: '#b1afd7',
     color: 'black',
     borderRadius: 3,
     justifyContent: 'flex-start',
@@ -48,7 +48,6 @@ class TriviaHimHerWinner extends React.Component {
   render() {
     // console.log('rendering loading')
     const {classes} = this.props
-    const showEng = this.props.user.language === 'EN'
 
     return (
       <div>
@@ -77,9 +76,15 @@ class TriviaHimHerWinner extends React.Component {
           </CardActions>
           <CardContent className={classes.body}>
             <Typography variant="h5" component="h2" align="center">
-              {showEng
-                ? `Winner is ...?     ${JSON.stringify(this.props.winners)} !!!`
-                : ` 获奖者是。。。？  ${this.props.winner} ！！！！`}
+              {/* {this.props.winners && */}
+              {this.props.winners &&
+                this.props.winners.map(winner => (
+                  <div key={winner.id}>
+                    <Typography variant="h5" component="h2" align="center">
+                      {winner.nickName ? winner.nickName : winner.email}
+                    </Typography>
+                  </div>
+                ))}
             </Typography>
           </CardContent>
         </Card>

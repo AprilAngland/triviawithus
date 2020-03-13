@@ -1,18 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import socket from '../socket'
-import {
-  TriviaHimHerQuestion,
-  TriviaHimHerVote,
-  Wait,
-  TriviaHimHerWinner
-} from '.'
-
-import {
-  setDisplayedQuestion,
-  eraseDisplayedQuestions,
-  suspendDisplayedQuestion
-} from '../store'
+import {TriviaHimHerQuestion, Wait} from '.'
 
 class Game extends React.Component {
   constructor() {
@@ -20,49 +8,40 @@ class Game extends React.Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    // console.log('on component did mount, socket connected? ', socket.connected)
-    // socket.on('ResetUserToGuest', () => {
-    //   console.log('get socket ResetUserToGuest')
-    //   this.props.eraseDisplayedQuestions()
-    //   this.props.setDisplayedQuestion(question)
-    // })
-    // socket.on('ToGuest', question => {
-    //   console.log('get socket Question action SET_QUESTION', question)
-    //   this.setState({question: question})
-    //   this.props.setDisplayedQuestion(question)
-    // })
-    // socket.on('SuspendQuestionToGuest', () => {
-    //   console.log('get SuspendQuestionToGuest  action SUSPEND_QUESTION')
-    //   this.props.suspendDisplayedQuestion()
-    // })
-  }
+  componentDidMount() {}
 
   render() {
     console.dir(this.props.question)
     return (
       <div>
-        {!this.props.question.displayType && ( //
-          <div>
-            <Wait from="host" />
-          </div>
-        )}
         {this.props.question.displayType && !this.props.question.text && (
           <div>
             <Wait from="loading" />
           </div>
         )}
-        {(this.props.question.displayType &&
-          this.props.question.text &&
-          this.props.question.displayType) === 'question' && (
-          <TriviaHimHerQuestion
-            id={this.props.question.id}
-            question={this.props.question}
-          />
+        {/* {!this.props.question.displayType && (
+          <div>
+            <Wait from="host" />
+          </div>
+        )} */}
+        {this.props.status === 'paused' && (
+          <div>
+            <Wait from="host" />
+          </div>
         )}
         {(this.props.question.displayType &&
           this.props.question.text &&
-          this.props.question.displayType) === 'vote' && <Wait from="host" />}
+          this.props.question.displayType) === 'question' &&
+          this.props.status === 'playing' && (
+            <TriviaHimHerQuestion
+              id={this.props.question.id}
+              question={this.props.question}
+            />
+          )}
+        {(this.props.question.displayType &&
+          this.props.question.text &&
+          this.props.question.displayType) === 'vote' &&
+          this.props.status === 'playing' && <Wait from="host" />}
       </div>
     )
   }
@@ -70,18 +49,9 @@ class Game extends React.Component {
 
 const mapState = state => ({
   question: state.userVoteInfo.question,
+  status: state.userVoteInfo.status,
   finished: state.userVoteInfo.finished
 })
-const mapDispatch = dispatch => ({
-  // setDisplayedQuestion: question => {
-  //   dispatch(setDisplayedQuestion(question))
-  // },
-  // eraseDisplayedQuestions: () => {
-  //   dispatch(eraseDisplayedQuestions())
-  // },
-  // suspendDisplayedQuestion: () => {
-  //   dispatch(suspendDisplayedQuestion())
-  // }
-})
+const mapDispatch = dispatch => ({})
 
 export default connect(mapState, mapDispatch)(Game)

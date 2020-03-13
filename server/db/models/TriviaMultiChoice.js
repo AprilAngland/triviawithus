@@ -23,7 +23,6 @@ const TriviaMultiChoice = db.define('triviamultichoice', {
   text3: {
     type: Sequelize.STRING
   },
-  //CREATE DATABASE wedding_bilingual WITH ENCODING 'UTF8' LC_COLLATE='zh_CN' LC_CTYPE='zh_CN' TEMPLATE=template0;
   translation3: {
     type: Sequelize.STRING
   },

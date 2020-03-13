@@ -71,15 +71,7 @@ class Home extends React.Component {
   handleCloseNo = () => {
     this.setState({openNo: false})
   }
-  // component did mount does not work
-  //
 
-  // componentDidMount() {
-  //   console.log('component did mount props', this.props.user)
-  //   console.log('component did mount state', this.state)
-  //   this.setState(this.props.user)
-  //   console.log('component did mount state', this.state)
-  // }
   static getDerivedStateFromProps(props, state) {
     // console.dir(props.user)
     // if (props.user && state.nickname === 'placeholder') {
@@ -91,7 +83,6 @@ class Home extends React.Component {
   }
 
   handleChange(event) {
-    // console.log('typing', event.target.name, event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -197,12 +188,6 @@ class Home extends React.Component {
             </TextField>
             <TextField
               id="standard-select-currency-native"
-              // required
-              // helperText={
-              //   this.state.entreechoice === 'not sure' &&
-              //   'Menu Choice is not Optional'
-              // }
-              // error={this.state.entreechoice === 'not sure'}
               select
               label={showEng ? 'Entree Selection for Plus One' : `家属主菜选项`}
               value={this.state.entreechoice1}
