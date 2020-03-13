@@ -44,7 +44,8 @@ class Home extends React.Component {
       notetochef: '',
       entreechoice: 'not sure',
       entreechoice1: 'not sure',
-      open: false
+      openYes: false,
+      openNo: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -58,12 +59,18 @@ class Home extends React.Component {
     // }
   }
   handleClickOpenYes = () => {
-    this.setState({open: true})
+    this.setState({openYes: true})
   }
   handleCloseYes = () => {
-    this.setState({open: false})
+    this.setState({openYes: false})
   }
-  s
+
+  handleClickOpenNo = () => {
+    this.setState({openNo: true})
+  }
+  handleCloseNo = () => {
+    this.setState({openNo: false})
+  }
   // component did mount does not work
   //
 
@@ -245,14 +252,15 @@ class Home extends React.Component {
               type="submit"
               onClick={() => {
                 this.state.entreechoice !== 'not sure' &&
-                  this.state.nickName !== '' &&
-                  this.handleClickOpenYes()
+                this.state.nickName !== ''
+                  ? this.handleClickOpenYes()
+                  : this.handleClickOpenNo()
               }}
             >
               {showEng ? 'Save Changes and accept invitation' : '保存更改'}
             </Button>
             <Dialog
-              open={this.state.open}
+              open={this.state.openYes}
               onClose={this.handleCloseYes}
               // fullWidth="true"
               aria-labelledby="alert-dialog-title"
@@ -271,6 +279,30 @@ class Home extends React.Component {
               </DialogContent>
               <DialogActions>
                 <Button onClick={this.handleCloseYes} color="primary" autoFocus>
+                  Yay!!
+                </Button>
+              </DialogActions>
+            </Dialog>
+            <Dialog
+              open={this.state.openNo}
+              onClose={this.handleCloseNo}
+              // fullWidth="true"
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">Thank you!</DialogTitle>
+              <DialogContent>
+                {/* <DialogContentText id="alert-dialog-description">
+                  {`You Chose ${answer}`}
+                </DialogContentText> */}
+                <DialogContentText id="alert-dialog-description">
+                  {showEng
+                    ? `Make sure you made menu choice and fill in your nick name`
+                    : `菜单选项不能为空！`}
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.handleCloseNo} color="primary" autoFocus>
                   Yay!!
                 </Button>
               </DialogActions>
