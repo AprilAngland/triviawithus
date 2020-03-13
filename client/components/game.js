@@ -25,12 +25,13 @@ class Game extends React.Component {
     socket.on('ResetUserToGuest', () => {
       console.log('get socket ResetUserToGuest')
       this.props.eraseDisplayedQuestions()
+      this.props.setDisplayedQuestion(question)
     })
-    // socket.on('ToGuest', question => {
-    //   console.log('get socket Question action SET_QUESTION', question)
-    //   this.setState({question: question})
-    //   this.props.setDisplayedQuestion(question)
-    // })
+    socket.on('ToGuest', question => {
+      console.log('get socket Question action SET_QUESTION', question)
+      this.setState({question: question})
+      this.props.setDisplayedQuestion(question)
+    })
     socket.on('SuspendQuestionToGuest', () => {
       console.log('get SuspendQuestionToGuest  action SUSPEND_QUESTION')
       this.props.suspendDisplayedQuestion()

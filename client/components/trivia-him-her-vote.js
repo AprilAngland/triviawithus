@@ -101,14 +101,6 @@ class TriviaHimHerVote extends React.Component {
                   ? `Vote: ${this.props.question.text} ${this.props.question.id}`
                   : `问: ${this.props.question.translation} ${this.props.question.id}`}
               </Typography>
-              {/* <Typography>{'answer: ' + this.props.question.ans}</Typography>
-
-              <Typography>
-                {this.props.question.ansCntHim + ' of you answered him'}
-              </Typography>
-              <Typography>
-                {this.props.question.ansCntHer + ' of you answered her'}
-              </Typography> */}
               <Typography variant="body2" component="p" align="center">
                 {this.props.question.users &&
                 this.props.question.users.length > 0

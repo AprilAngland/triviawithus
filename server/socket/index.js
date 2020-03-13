@@ -19,6 +19,13 @@ module.exports = io => {
       socket.broadcast.emit('SuspendQuestionToGuest')
     })
 
+    socket.on('ResumeQuestionFromHost', () => {
+      // console.log(
+      //   'socket ==ResumeQuestionFromHost== served from host to guest'
+      // )
+      socket.broadcast.emit('ResumeQuestionToGuest')
+    })
+
     socket.on('disconnect', () => {
       console.log(`Connection ${socket.id} has left the building`)
     })
