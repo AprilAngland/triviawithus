@@ -2149,7 +2149,7 @@ socket.on('connect', function () {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: persistor, default, me, auth, logout, updateInfo, eraseDisplayedQuestions, setDisplayedQuestion, finishedDisplayedQuestion, suspendDisplayedQuestion, getMenu, getQuestion, voteQuestion, resetQuestion, getWinner */
+/*! exports provided: persistor, default, me, auth, logout, updateInfo, getMenu, eraseDisplayedQuestions, setDisplayedQuestion, finishedDisplayedQuestion, suspendDisplayedQuestion, getQuestion, voteQuestion, resetQuestion, getWinner */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
