@@ -37,15 +37,12 @@ const styles = {
   },
   media: {
     display: 'flex',
-    flex: '0 0 30vh',
-    justifyContent: 'center'
+    flex: '5 0 40vh',
+    justifyContent: 'center',
+    marginBottom: '10vh'
   },
   body: {
     flex: '0 0 5vh'
-  },
-
-  graphContainer: {
-    flex: '3 0 35vh'
   }
 }
 
@@ -104,24 +101,25 @@ class TriviaHimHerVote extends React.Component {
                   ? `Vote: ${this.props.question.text} ${this.props.question.id}`
                   : `问: ${this.props.question.translation} ${this.props.question.id}`}
               </Typography>
-              <Typography>{'answer: ' + this.props.question.ans}</Typography>
+              {/* <Typography>{'answer: ' + this.props.question.ans}</Typography>
 
               <Typography>
                 {this.props.question.ansCntHim + ' of you answered him'}
               </Typography>
               <Typography>
                 {this.props.question.ansCntHer + ' of you answered her'}
-              </Typography>
-              <Typography variant="body2" component="p">
-                {this.props.question.users
-                  ? JSON.stringify(
-                      this.props.question.users.map(user => user.nickname)
-                    )
+              </Typography> */}
+              <Typography variant="body2" component="p" align="center">
+                {this.props.question.users &&
+                this.props.question.users.length > 0
+                  ? `Winners: ${this.props.question.users
+                      .map(user => user.nickname || user.email)
+                      .join(', ')}`
                   : ''}
                 <br />
               </Typography>
             </CardContent>
-            <CardMedia className={classes.media} title="Paella dish">
+            <CardMedia className={classes.media}>
               <TriviaHimHerVoteChart question={this.props.question} />
             </CardMedia>
           </Card>

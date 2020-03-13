@@ -24,6 +24,7 @@ router.put('/:id', userOnly, async (req, res, next) => {
       email,
       nickname,
       entreechoice,
+      entreechoice1,
       expectedcount,
       notetohost,
       notetochef
@@ -33,6 +34,7 @@ router.put('/:id', userOnly, async (req, res, next) => {
         email,
         nickname,
         entreechoice,
+        entreechoice1,
         expectedcount,
         notetohost,
         notetochef,

@@ -43,6 +43,7 @@ class Home extends React.Component {
       notetohost: '',
       notetochef: '',
       entreechoice: 'not sure',
+      entreechoice1: 'not sure',
       open: false
     }
     this.handleChange = this.handleChange.bind(this)
@@ -126,7 +127,7 @@ class Home extends React.Component {
               value={this.state.nickname}
               onChange={this.handleChange}
             />
-            <TextField
+            {/* <TextField
               id="filled-basic"
               label={
                 showEng
@@ -139,7 +140,7 @@ class Home extends React.Component {
               type="number"
               value={this.state.expectedcount}
               onChange={this.handleChange}
-            />
+            /> */}
             <TextField
               id="filled-basic"
               label={showEng ? 'Note' : `备注`}
@@ -184,6 +185,44 @@ class Home extends React.Component {
               </option>
               <option value="not sure">
                 {showEng ? "I don't know, surprise me" : `随便！`}
+              </option>
+            </TextField>
+            <TextField
+              id="standard-select-currency-native"
+              // required
+              // helperText={
+              //   this.state.entreechoice === 'not sure' &&
+              //   'Menu Choice is not Optional'
+              // }
+              // error={this.state.entreechoice === 'not sure'}
+              select
+              label={showEng ? 'Entree Selection for Plus One' : `家属主菜选项`}
+              value={this.state.entreechoice1}
+              name="entreechoice1"
+              onChange={this.handleChange}
+              SelectProps={{
+                native: true
+              }}
+              variant="standard"
+            >
+              {' '}
+              <option value="lamb">
+                {showEng
+                  ? 'Leg of Lamb Italian Style with Garlic'
+                  : `意大利羊腿 `}
+              </option>
+              <option value="sea bass">
+                {showEng
+                  ? 'Atlantic Sea Bass with Lemon & Herbs'
+                  : `亚特兰大黑鲈鱼`}
+              </option>
+              <option value="risotto">
+                {showEng
+                  ? 'Roasted Vegetable risotto for vegetarians'
+                  : `蔬菜奶油焗饭`}
+              </option>
+              <option value="not sure">
+                {showEng ? 'I am coming alone' : `我不带家属！`}
               </option>
             </TextField>
             <TextField
@@ -245,6 +284,7 @@ class Home extends React.Component {
 const mapState = state => ({user: state.user, Home: state.menu.menuAll})
 const mapDispatch = dispatch => ({
   updateInfo: (info, id) => {
+    console.log('dispatched info', info)
     dispatch(updateInfo(info, id))
   },
 

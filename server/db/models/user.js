@@ -43,6 +43,18 @@ const User = db.define('user', {
     type: Sequelize.ENUM(['lamb', 'sea bass', 'risotto', 'not sure']),
     defaultValue: 'not sure'
   },
+  entreechoice1: {
+    type: Sequelize.ENUM(['lamb', 'sea bass', 'risotto', 'not sure']),
+    defaultValue: 'not sure'
+  },
+  // entreechoice2: {
+  //   type: Sequelize.ENUM(['lamb', 'sea bass', 'risotto', 'not sure']),
+  //   defaultValue: 'not sure'
+  // },
+  // entreechoice3: {
+  //   type: Sequelize.ENUM(['lamb', 'sea bass', 'risotto', 'not sure']),
+  //   defaultValue: 'not sure'
+  // },
   expectedcount: {
     type: Sequelize.INTEGER,
     defaultValue: 0
