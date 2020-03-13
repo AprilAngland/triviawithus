@@ -37,9 +37,9 @@ const styles = {
   },
   media: {
     display: 'flex',
-    flex: '5 0 40vh',
+    flex: '5 2 40vh',
     justifyContent: 'center',
-    marginBottom: '10vh'
+    marginBottom: '5vh'
   },
   body: {
     flex: '0 0 5vh'

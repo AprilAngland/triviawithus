@@ -21,21 +21,21 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    console.log('on component did mount, socket connected? ', socket.connected)
-    socket.on('ResetUserToGuest', () => {
-      console.log('get socket ResetUserToGuest')
-      this.props.eraseDisplayedQuestions()
-      this.props.setDisplayedQuestion(question)
-    })
-    socket.on('ToGuest', question => {
-      console.log('get socket Question action SET_QUESTION', question)
-      this.setState({question: question})
-      this.props.setDisplayedQuestion(question)
-    })
-    socket.on('SuspendQuestionToGuest', () => {
-      console.log('get SuspendQuestionToGuest  action SUSPEND_QUESTION')
-      this.props.suspendDisplayedQuestion()
-    })
+    // console.log('on component did mount, socket connected? ', socket.connected)
+    // socket.on('ResetUserToGuest', () => {
+    //   console.log('get socket ResetUserToGuest')
+    //   this.props.eraseDisplayedQuestions()
+    //   this.props.setDisplayedQuestion(question)
+    // })
+    // socket.on('ToGuest', question => {
+    //   console.log('get socket Question action SET_QUESTION', question)
+    //   this.setState({question: question})
+    //   this.props.setDisplayedQuestion(question)
+    // })
+    // socket.on('SuspendQuestionToGuest', () => {
+    //   console.log('get SuspendQuestionToGuest  action SUSPEND_QUESTION')
+    //   this.props.suspendDisplayedQuestion()
+    // })
   }
 
   render() {
@@ -73,15 +73,15 @@ const mapState = state => ({
   finished: state.userVoteInfo.finished
 })
 const mapDispatch = dispatch => ({
-  setDisplayedQuestion: question => {
-    dispatch(setDisplayedQuestion(question))
-  },
-  eraseDisplayedQuestions: () => {
-    dispatch(eraseDisplayedQuestions())
-  },
-  suspendDisplayedQuestion: () => {
-    dispatch(suspendDisplayedQuestion())
-  }
+  // setDisplayedQuestion: question => {
+  //   dispatch(setDisplayedQuestion(question))
+  // },
+  // eraseDisplayedQuestions: () => {
+  //   dispatch(eraseDisplayedQuestions())
+  // },
+  // suspendDisplayedQuestion: () => {
+  //   dispatch(suspendDisplayedQuestion())
+  // }
 })
 
 export default connect(mapState, mapDispatch)(Game)

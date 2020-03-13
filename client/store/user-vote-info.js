@@ -33,8 +33,8 @@ export default function(state = initialState, action) {
       return {...state, finished: [...state.finished, action.question]}
     case ERASE_QUESTIONS:
       return initialState
-    // case SUSPEND_QUESTION:
-    //   return {...state, question: {}}
+    case SUSPEND_QUESTION:
+      return state
     default:
       return state
   }
