@@ -12,8 +12,8 @@ const {
 require('../secrets')
 
 async function seedUserMenu() {
-  await db.sync({force: true})
-  // await db.sync()
+  // await db.sync({force: true})
+  await db.sync()
 
   console.log('db synced!')
   User.truncate({restartIdentity: true, cascade: true})

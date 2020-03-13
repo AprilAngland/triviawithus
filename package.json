@@ -17,6 +17,7 @@
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
     "postinstall": "touch secrets.js",
     "seed-users": "node script/seedUsers.js",
+    "seed": "node script/seed.js",
     "seed-questions": "node script/seedQuestions.js",
     "invitation": "node script/invitation.js",
     "start": "node server",
