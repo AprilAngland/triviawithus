@@ -1,6 +1,14 @@
 import axios from 'axios'
 import history from '../history'
-
+const defaultQuestion = {
+  id: 1,
+  text: 'Default Question',
+  translation: '',
+  ans: 'Her',
+  ansCntHim: 0,
+  ansCntHer: 1,
+  type: 'dummy'
+}
 /**
  * ACTION TYPES
  */

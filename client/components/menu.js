@@ -27,12 +27,12 @@ const styles = {
 }
 class Menu extends React.Component {
   componentDidMount() {
-    if (this.props.user.type === 'guest') {
-      socket.on('ToGuest', question => {
-        this.props.setDisplayedQuestion(question)
-        window.location.replace('/Game')
-      })
-    }
+    // if (this.props.user.type === 'guest') {
+    //   socket.on('ToGuest', question => {
+    //     this.props.setDisplayedQuestion(question)
+    //     window.location.replace('/Game')
+    //   })
+    // }
 
     this.props.getMenu()
   }

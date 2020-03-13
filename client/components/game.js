@@ -26,11 +26,11 @@ class Game extends React.Component {
       console.log('get socket ResetUserToGuest')
       this.props.eraseDisplayedQuestions()
     })
-    socket.on('ToGuest', question => {
-      console.log('get socket Question action SET_QUESTION')
-      this.setState({question: question})
-      this.props.setDisplayedQuestion(question)
-    })
+    // socket.on('ToGuest', question => {
+    //   console.log('get socket Question action SET_QUESTION', question)
+    //   this.setState({question: question})
+    //   this.props.setDisplayedQuestion(question)
+    // })
     socket.on('SuspendQuestionToGuest', () => {
       console.log('get SuspendQuestionToGuest  action SUSPEND_QUESTION')
       this.props.suspendDisplayedQuestion()
@@ -38,6 +38,7 @@ class Game extends React.Component {
   }
 
   render() {
+    console.dir(this.props.question)
     return (
       <div>
         {!this.props.question.displayType && ( //

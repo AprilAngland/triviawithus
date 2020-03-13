@@ -16,7 +16,7 @@ const TriviaHimHer = db.define('triviahimher', {
     defaultValue: 0
   },
   ansCntHer: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
     defaultValue: 0
   },
   type: {

@@ -50,11 +50,12 @@ class Home extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   componentDidMount() {
-    if (this.props.user.type === 'guest') {
-      socket.on('ToGuest', question => {
-        window.location.replace('/Game')
-      })
-    }
+    // if (this.props.user.type === 'guest') {
+    //   socket.on('ToGuest', question => {
+    //     window.location.replace('/Game')
+    //     this.props.setDisplayedQuestion(question)
+    //   })
+    // }
   }
   handleClickOpenYes = () => {
     this.setState({open: true})

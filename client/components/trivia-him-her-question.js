@@ -64,6 +64,9 @@ class TriviaHimHerQuestion extends React.Component {
   handleClose = () => {
     this.setState({open: false})
   }
+  componentDidMount() {
+    console.log('Component Did Mount TriviaHimHerQuestion')
+  }
   render() {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
@@ -73,6 +76,7 @@ class TriviaHimHerQuestion extends React.Component {
         displayType: 'question',
         questionType: 'himher'
       }
+      console.log('FromHost', this.props.question)
       socket.emit('FromHost', toEmit)
     }
     const showEng = this.props.user.language === 'EN'
@@ -96,6 +100,7 @@ class TriviaHimHerQuestion extends React.Component {
                   onClick={() => {
                     this.props.resetQuestion()
                     socket.emit('ResetUserFromHost')
+                    // socket.emit('FromHost', this.props.)
                   }}
                 >
                   Restart!
