@@ -5,7 +5,6 @@ const {
   User,
   Menu,
   TriviaHimHer,
-  TriviaHimHerVote,
   TriviaGuessNumber,
   TriviaMultiChoice,
   TriviaTrueFalse
@@ -17,7 +16,7 @@ async function seedUserMenu() {
   // await db.sync()
 
   console.log('db synced!')
-  User.truncate({restartIdentity: true, cascade: true})
+  // User.truncate({restartIdentity: true, cascade: true})
   const users = await Promise.all([
     User.create({
       email: process.env.ADMIN1_EMAIL,
@@ -72,7 +71,7 @@ async function seedUserMenu() {
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 
-  Menu.truncate({restartIdentity: true, cascade: true})
+  // Menu.truncate({restartIdentity: true, cascade: true})
   const menus = await Promise.all([
     Menu.create({
       section: 'Hors D doeuvre',
@@ -167,7 +166,7 @@ async function seedUserMenu() {
 
   console.log(`seeded ${menus.length} menus`)
   console.log(`seeded successfully`)
-  TriviaHimHer.truncate({restartIdentity: true, cascade: true})
+  // TriviaHimHer.truncate({restartIdentity: true, cascade: true})
   const triviahimhers = await Promise.all([
     // TriviaHimHer.create({
     //   text: 'Who steals apple pie at night?',
@@ -236,7 +235,7 @@ async function seedUserMenu() {
   console.log(`seeded ${triviahimhers.length} triviahimhers`)
   console.log(`seeded successfully`)
 
-  TriviaTrueFalse.truncate({restartIdentity: true, cascade: true})
+  // TriviaTrueFalse.truncate({restartIdentity: true, cascade: true})
   const triviatruefalses = await Promise.all([
     // TriviaTrueFalse.create({
     //   text: 'John ordered Asian Stir Fry more often than April',
@@ -306,7 +305,7 @@ async function seedUserMenu() {
 
   console.log(`seeded ${triviatruefalses.length} triviatruefalses`)
   console.log(`seeded successfully`)
-  TriviaGuessNumber.truncate({restartIdentity: true, cascade: true})
+  // TriviaGuessNumber.truncate({restartIdentity: true, cascade: true})
   const triviaguessnumber = await Promise.all([
     // TriviaGuessNumber.create({
     //   text: 'How many days between the first date and the wedding',
@@ -375,7 +374,7 @@ async function seedUserMenu() {
 
   console.log(`seeded ${triviaguessnumber.length} triviaguessnumber`)
   console.log(`seeded successfully`)
-  TriviaMultiChoice.truncate({restartIdentity: true, cascade: true})
+  // TriviaMultiChoice.truncate({restartIdentity: true, cascade: true})
   const triviamultichoice = await Promise.all([
     // TriviaMultiChoice.create({
     //   text: 'What was the criteria John used to pick first date restaurant?',

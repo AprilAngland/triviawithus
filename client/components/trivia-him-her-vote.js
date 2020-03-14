@@ -105,7 +105,7 @@ class TriviaHimHerVote extends React.Component {
                 {this.props.question.users &&
                 this.props.question.users.length > 0
                   ? `Winners: ${this.props.question.users
-                      .map(user => user.nickname)
+                      .map(user => (user.nickname ? user.nickname : user.email))
                       .join(', ')}`
                   : ''}
                 <br />
