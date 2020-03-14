@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getMenu} from '../store'
-import {getWinner} from '../store'
+import {getWinner, resetQuestion} from '../store'
 import socket from '../socket'
 import {withStyles} from '@material-ui/core/styles'
 import {
@@ -100,6 +99,9 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   getWinner: () => {
     dispatch(getWinner())
+  },
+  resetQuestion: () => {
+    dispatch(resetQuestion())
   }
 })
 

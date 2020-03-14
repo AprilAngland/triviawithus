@@ -103,11 +103,17 @@ class TriviaHimHerVote extends React.Component {
               </Typography>
               <Typography variant="body2" component="p" align="center">
                 {this.props.question.users &&
-                this.props.question.users.length > 0
+                this.props.question.users.filter(
+                  user => user.triviahimhervote.ans === this.props.question.ans
+                ).length > 0
                   ? `Winners: ${this.props.question.users
+                      .filter(
+                        user =>
+                          user.triviahimhervote.ans === this.props.question.ans
+                      )
                       .map(user => (user.nickname ? user.nickname : user.email))
                       .join(', ')}`
-                  : ''}
+                  : 'Oh no, no one got this right?'}
                 <br />
               </Typography>
             </CardContent>
