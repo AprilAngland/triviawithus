@@ -5,6 +5,7 @@ const {
   User,
   Menu,
   TriviaHimHer,
+  TriviaHimHerVote,
   TriviaGuessNumber,
   TriviaMultiChoice,
   TriviaTrueFalse

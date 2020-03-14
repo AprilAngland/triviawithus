@@ -1,6 +1,7 @@
 # Seeding
 
 - for production run heroku run bash first
+- npm run seed (this resets all data)
 - npm run seed-users
 - npm run seed-questions
 
