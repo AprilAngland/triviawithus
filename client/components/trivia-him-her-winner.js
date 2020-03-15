@@ -36,7 +36,7 @@ const styles = {
     textAlign: 'center'
   },
   winners: {display: 'flex', flexWrap: 'wrap', justifyContent: 'center'},
-  winner: {width: '29vw', marginTop: '1vh', marginBottom: '1vh'},
+  winner: {width: '45vw', marginTop: '1vh', marginBottom: '1vh'},
 
   buttonBar: {
     margin: '5px',

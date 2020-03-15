@@ -24,13 +24,13 @@ const theme = {
       h4: {
         fontSize: '2rem',
         [breakpoints.down('xs')]: {
-          fontSize: '1.9rem'
+          fontSize: '1.5rem'
         }
       },
       h3: {
         fontSize: '2.3rem',
         [breakpoints.down('xs')]: {
-          fontSize: '2.2rem'
+          fontSize: '1.8rem'
         }
       },
       h2: {

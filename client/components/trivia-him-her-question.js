@@ -37,6 +37,18 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between'
   },
+  ansButton: {
+    transform: 'scale(5)',
+    '&:hover': {
+      transform: 'scale(6)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      transform: 'scale(3)',
+      '&:hover': {
+        transform: 'scale(4)'
+      }
+    }
+  },
   body: {
     flex: '5 0 15vh'
   },
@@ -158,9 +170,9 @@ class TriviaHimHerQuestion extends React.Component {
             </CardContent>
 
             <CardActions className={classes.answerBar}>
-              <Button
-                size="large"
-                // disabled={this.props.user.type === 'admin'}
+              <div
+                size="small"
+                className={classes.ansButton}
                 onClick={() => {
                   let ans = 'Him'
                   socket.emit('AnswerFromGuest', {
@@ -171,12 +183,13 @@ class TriviaHimHerQuestion extends React.Component {
                   this.handleClickOpen()
                 }}
               >
-                {showEng ? 'Him' : '他'}
-              </Button>
+                <i className="fas fa-male"></i>
+                {/* {showEng ? 'Him' : '他'} */}
+              </div>
 
-              <Button
-                size="large"
-                // disabled={this.state.question.displayType === 'question'}
+              <div
+                size="small"
+                className={classes.ansButton}
                 onClick={() => {
                   let ans = 'Her'
                   socket.emit('AnswerFromGuest', {
@@ -187,8 +200,9 @@ class TriviaHimHerQuestion extends React.Component {
                   this.handleClickOpen()
                 }}
               >
-                {showEng ? 'Her' : '她'}
-              </Button>
+                <i className="fas fa-female"></i>
+                {/* {showEng ? 'Her' : '她'} */}
+              </div>
               <Dialog
                 open={this.state.open}
                 onClose={this.handleClose}
