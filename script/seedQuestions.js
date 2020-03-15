@@ -22,43 +22,43 @@ async function seedGames() {
 
   const TriviaHimHer2 = await TriviaHimHer.findOne({where: {id: 2}})
   TriviaHimHer2.text = 'Who is the blanket thief?'
-  TriviaHimHer1.ans = 'Him'
+  TriviaHimHer2.ans = 'Him'
   await TriviaHimHer2.save()
   console.log('triviaHimHer2  updated')
 
   const TriviaHimHer3 = await TriviaHimHer.findOne({where: {id: 3}})
   TriviaHimHer3.text = 'Who is more opinionated about how to make rice'
-  TriviaHimHer1.ans = 'Him'
+  TriviaHimHer3.ans = 'Him'
   await TriviaHimHer3.save()
   console.log('triviaHimHer3  updated')
 
   const TriviaHimHer4 = await TriviaHimHer.findOne({where: {id: 4}})
   TriviaHimHer4.text = 'Who is better at math'
-  TriviaHimHer1.ans = 'Her'
+  TriviaHimHer4.ans = 'Her'
   await TriviaHimHer4.save()
   console.log('triviaHimHer4  updated')
 
   const TriviaHimHer5 = await TriviaHimHer.findOne({where: {id: 5}})
   TriviaHimHer5.text = 'Who is a better chef'
-  TriviaHimHer1.ans = 'Him'
+  TriviaHimHer5.ans = 'Him'
   await TriviaHimHer5.save()
   console.log('triviaHimHer5  updated')
 
   const TriviaHimHer6 = await TriviaHimHer.findOne({where: {id: 6}})
   TriviaHimHer6.text = 'Who is the bad cop'
-  TriviaHimHer1.ans = 'Him'
+  TriviaHimHer6.ans = 'Him'
   await TriviaHimHer6.save()
   console.log('triviaHimHer6  updated')
 
   const TriviaHimHer7 = await TriviaHimHer.findOne({where: {id: 7}})
   TriviaHimHer7.text = 'Who likes disney'
-  TriviaHimHer1.ans = 'Her'
+  TriviaHimHer7.ans = 'Her'
   await TriviaHimHer7.save()
   console.log('triviaHimHer7  updated')
 
   const TriviaHimHer8 = await TriviaHimHer.findOne({where: {id: 8}})
   TriviaHimHer8.text = 'Who sings more'
-  TriviaHimHer1.ans = 'Him'
+  TriviaHimHer8.ans = 'Him'
   await TriviaHimHer8.save()
   console.log('triviaHimHer8  updated')
 
