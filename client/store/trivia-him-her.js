@@ -12,7 +12,7 @@ const defaultQuestion = {
 /**
  * ACTION TYPES
  */
-const defaultState = {curQuestion: {}, winner: 'unknown'}
+const defaultState = {curQuestion: {}, winners: []}
 const HOST_GET_QUESTION = 'HOST_GET_QUESTION'
 const gotQuestion = question => ({type: HOST_GET_QUESTION, question})
 export const getQuestion = id => async dispatch => {
@@ -83,7 +83,7 @@ export default function(state = defaultState, action) {
     case HOST_RECORD_QUESTION:
       return {...state, curQuestion: action.question}
     case HOST_RESET_QUESTION:
-      return state
+      return {...defaultState}
     case HOST_GET_WINNER:
       return {...state, winners: action.winners}
     default:

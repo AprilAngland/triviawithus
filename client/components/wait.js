@@ -16,17 +16,16 @@ import {
 const styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '20vh',
+    marginTop: '12vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    // background: '#b1afd7',
     color: 'black',
     borderRadius: 3,
     justifyContent: 'flex-start',
     boxShadow: '0 3px 5px 2px',
-    height: '60vh',
-    margin: '20px'
+    height: '76vh',
+    margin: '10px'
   },
   body: {
     flex: '5 0 15vh',

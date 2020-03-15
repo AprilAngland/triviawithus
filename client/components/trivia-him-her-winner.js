@@ -47,6 +47,7 @@ const styles = {
 }
 class TriviaHimHerWinner extends React.Component {
   componentDidMount() {
+    // console.log('winner page mounted')
     this.props.getWinner()
   }
   render() {

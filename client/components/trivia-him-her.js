@@ -39,8 +39,10 @@ class TriviaHimHer extends React.Component {
           />
         ) : this.props.question && this.state.type === 'vote' ? (
           <TriviaHimHerVote id={this.state.id} question={this.props.question} />
-        ) : (
+        ) : this.props.question && this.state.type === 'winner' ? (
           <TriviaHimHerWinner />
+        ) : (
+          ''
         )}
       </div>
     )
