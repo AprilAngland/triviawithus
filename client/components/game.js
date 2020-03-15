@@ -36,7 +36,7 @@ class Game extends React.Component {
         {(this.props.question.displayType &&
           this.props.question.text &&
           this.props.question.displayType) === 'vote' &&
-          this.props.status === 'playing' && <Wait from="host" />}
+          this.props.status === 'playing' && <Wait from="screen" />}
       </div>
     )
   }

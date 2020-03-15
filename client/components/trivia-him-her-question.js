@@ -176,7 +176,7 @@ class TriviaHimHerQuestion extends React.Component {
 
               <Button
                 size="large"
-                // disabled={this.props.user.type === 'admin'}
+                // disabled={this.state.question.displayType === 'question'}
                 onClick={() => {
                   let ans = 'Her'
                   socket.emit('AnswerFromGuest', {

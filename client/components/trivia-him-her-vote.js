@@ -54,15 +54,14 @@ class TriviaHimHerVote extends React.Component {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
 
-    // if (this.props.questions !== null && this.props.user.type === 'admin') {
-    //   socket.emit()
-    //   // const toEmit = {
-    //   //   ...this.props.question,
-    //   //   displayType: 'vote',
-    //   //   questionType: 'himher'
-    //   // }
-    //   // socket.emit('FromHost', toEmit)
-    // }
+    if (this.props.questions !== null && this.props.user.type === 'admin') {
+      const toEmit = {
+        ...this.props.question,
+        displayType: 'vote',
+        questionType: 'himher'
+      }
+      socket.emit('FromHost', toEmit)
+    }
     const showEng = this.props.user.language === 'EN'
 
     return (

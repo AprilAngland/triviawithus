@@ -48,6 +48,13 @@ class Wait extends React.Component {
                   : `请等待主持人提问！`}
               </Typography>
             )}
+            {this.props.from === 'screen' && (
+              <Typography variant="h4" component="h4" align="center">
+                {showEng
+                  ? `Look up, host will reveal the result!!`
+                  : `请等待主持揭晓答案！`}
+              </Typography>
+            )}
           </CardContent>
         </Card>
       </div>
