@@ -17,7 +17,7 @@ import {
 const styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '20vh',
+    marginTop: '12vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -25,13 +25,18 @@ const styles = {
     borderRadius: 3,
     justifyContent: 'flex-start',
     boxShadow: '0 3px 5px 2px',
-    height: '60vh',
-    margin: '20px'
+    height: '76vh',
+    margin: '10px'
   },
   body: {
-    flex: '5 0 15vh',
+    flex: '5 5 15vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     textAlign: 'center'
   },
+  winners: {display: 'flex', flexWrap: 'wrap', justifyContent: 'center'},
+  winner: {width: '29vw', marginTop: '1vh', marginBottom: '1vh'},
 
   buttonBar: {
     margin: '5px',
@@ -74,17 +79,29 @@ class TriviaHimHerWinner extends React.Component {
             </Button>
           </CardActions>
           <CardContent className={classes.body}>
-            <Typography variant="h5" component="h2" align="center">
+            {/* <CardContent className={classes.body}> */}
+            <Typography
+              className={classes.winners}
+              variant="h2"
+              component="h2"
+              align="center"
+            >
               {/* {this.props.winners && */}
               {this.props.winners &&
                 this.props.winners.map(winner => (
                   <div key={winner.id}>
-                    <Typography variant="h5" component="h2" align="center">
+                    <Typography
+                      className={classes.winner}
+                      variant="h2"
+                      component="h2"
+                      align="center"
+                    >
                       {winner.nickName ? winner.nickName : winner.email}
                     </Typography>
                   </div>
                 ))}
             </Typography>
+            {/* </CardContent> */}
           </CardContent>
         </Card>
       </div>

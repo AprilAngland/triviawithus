@@ -17,20 +17,19 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
-const styles = {
+const styles = theme => ({
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '20vh',
+    marginTop: '12vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    // background: '#b1afd7',
     color: 'black',
     borderRadius: 3,
     justifyContent: 'flex-start',
     boxShadow: '0 3px 5px 2px',
-    height: '60vh',
-    margin: '20px'
+    height: '76vh',
+    margin: '10px'
   },
   buttonBar: {
     margin: '5px',
@@ -52,7 +51,7 @@ const styles = {
     margin: 'auto',
     width: 'fit-content'
   }
-}
+})
 class TriviaHimHerQuestion extends React.Component {
   constructor() {
     super()
@@ -109,10 +108,16 @@ class TriviaHimHerQuestion extends React.Component {
               ''
             )}
             <CardContent className={classes.body}>
-              <Typography variant="h5" component="h2" align="center">
+              <Typography variant="h4" component="h1" align="center">
                 {showEng
-                  ? `Vote: ${this.props.question.text} ${this.props.question.id}`
-                  : `问: ${this.props.question.translation} ${this.props.question.id}`}
+                  ? `Question ${this.props.question.id}/${NUM_QUESTIONS}:`
+                  : `问 ${this.props.question.id}/${NUM_QUESTIONS}:`}
+              </Typography>
+              <br />
+              <Typography variant="h3" component="h3" align="center">
+                {showEng
+                  ? `${this.props.question.text}`
+                  : `${this.props.question.text}`}
               </Typography>
               <br />
             </CardContent>

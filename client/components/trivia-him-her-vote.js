@@ -18,7 +18,7 @@ import {
 const styles = {
   root: {
     background: 'rgba(177, 175, 215, 0.6)',
-    marginTop: '20vh',
+    marginTop: '12vh',
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
@@ -26,8 +26,8 @@ const styles = {
     borderRadius: 3,
     justifyContent: 'flex-start',
     boxShadow: '0 3px 5px 2px',
-    height: '60vh',
-    margin: '20px'
+    height: '76vh',
+    margin: '10px'
   },
   buttonBar: {
     margin: '5px',
@@ -96,12 +96,19 @@ class TriviaHimHerVote extends React.Component {
               ''
             )}
             <CardContent className={classes.body}>
-              <Typography variant="h5" component="h2" align="center">
+              <Typography variant="h4" component="h1" align="center">
                 {showEng
-                  ? `Vote: ${this.props.question.text} ${this.props.question.id}`
-                  : `问: ${this.props.question.translation} ${this.props.question.id}`}
+                  ? `Question ${this.props.question.id}/${NUM_QUESTIONS}:`
+                  : `问 ${this.props.question.id}/${NUM_QUESTIONS}:`}
               </Typography>
-              <Typography variant="body2" component="p" align="center">
+              <br />
+              <Typography variant="h3" component="h3" align="center">
+                {showEng
+                  ? `${this.props.question.text}`
+                  : `${this.props.question.text}`}
+              </Typography>
+              <br />
+              <Typography variant="h4" component="p" align="center">
                 {this.props.question.users &&
                 this.props.question.users.filter(
                   user => user.triviahimhervote.ans === this.props.question.ans

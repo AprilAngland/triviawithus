@@ -26,10 +26,11 @@ router.get('/winner', adminOnly, async (req, res, next) => {
         entry => entry.triviahimhervote.correct === true
       ).length
     }))
-    const maxCorrect = userCorrectCount[0].count
-    const winners = userCorrectCount
-      .filter(user => user.count === maxCorrect)
-      .sort((a, b) => b.count - a.count)
+    let maxCorrect = userCorrectCount.sort((a, b) => b.count - a.count)[0].count
+    // maxCorrect = Math.max(maxCorrect, 1)
+    const winners = userCorrectCount.filter(user => user.count === maxCorrect)
+    // .sort((a, b) => a.count - b.count)
+    // const idx = Math.floor(Math.random())
     res.json(winners)
   } catch (err) {
     next(err)
