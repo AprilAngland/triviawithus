@@ -18,6 +18,9 @@ const theme = {
   ...defaultTheme,
   overrides: {
     MuiTypography: {
+      h5: {
+        fontSize: '1.3rem'
+      },
       h4: {
         fontSize: '2rem',
         [breakpoints.down('xs')]: {
@@ -32,9 +35,6 @@ const theme = {
       },
       h2: {
         fontSize: '2.4rem'
-        // [breakpoints.down('xs')]: {
-        //   fontSize: '2.2rem'
-        // }
       }
     }
   }

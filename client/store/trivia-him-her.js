@@ -13,41 +13,43 @@ const defaultQuestion = {
  * ACTION TYPES
  */
 const defaultState = {curQuestion: {}, winner: 'unknown'}
-const GET_QUESTION = 'GET_QUESTION'
-const gotQuestion = question => ({type: GET_QUESTION, question})
+const HOST_GET_QUESTION = 'HOST_GET_QUESTION'
+const gotQuestion = question => ({type: HOST_GET_QUESTION, question})
 export const getQuestion = id => async dispatch => {
   try {
     const {data} = await axios.get(`/api/triviahimhers/${id}`)
-    // data.displayType = 'question'
+
     dispatch(gotQuestion(data || defaultQuestion))
   } catch (err) {
     console.error(err)
   }
 }
-// const NEXT_QUESTION = 'NEXT_QUESTION'
-// export const nextQuestion = () => ({
-//   type: NEXT_QUESTION
-// })
-const VOTE_QUESTION = 'VOTE_QUESTION'
-const votedQuestion = vote => ({
-  type: VOTE_QUESTION,
-  vote
+
+const HOST_RECORD_QUESTION = 'HOST_RECORD_QUESTION'
+const hostRecordedQuestion = question => ({
+  type: HOST_RECORD_QUESTION,
+  question
 })
 
-export const voteQuestion = (id, ans, userId) => async dispatch => {
+export const hostRecordQuestion = (
+  user
+  // questionId,
+  // ans,
+  // userId
+) => async dispatch => {
   try {
     const {data} = await axios.put(
-      `/api/triviahimhers/${id}?&ans=${ans}&userId=${userId}`
+      `/api/triviahimhers/${user.questionId}?&ans=${user.ans}&userId=${user.id}`
     )
-    dispatch(votedQuestion(ans))
+    dispatch(hostRecordedQuestion(data))
   } catch (err) {
     console.error(err)
   }
 }
 
-const RESET_QUESTION = 'RESET_QUESTION'
+const HOST_RESET_QUESTION = 'HOST_RESET_QUESTION'
 const resetedQuestion = () => ({
-  type: RESET_QUESTION
+  type: HOST_RESET_QUESTION
 })
 
 export const resetQuestion = () => async dispatch => {
@@ -59,9 +61,9 @@ export const resetQuestion = () => async dispatch => {
   }
 }
 
-const GET_WINNER = 'GET_WINNER'
+const HOST_GET_WINNER = 'HOST_GET_WINNER'
 const gotWinner = winners => ({
-  type: GET_WINNER,
+  type: HOST_GET_WINNER,
   winners
 })
 
@@ -76,13 +78,13 @@ export const getWinner = () => async dispatch => {
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-    case GET_QUESTION:
+    case HOST_GET_QUESTION:
       return {...state, curQuestion: action.question}
-    case VOTE_QUESTION:
+    case HOST_RECORD_QUESTION:
+      return {...state, curQuestion: action.question}
+    case HOST_RESET_QUESTION:
       return state
-    case RESET_QUESTION:
-      return state
-    case GET_WINNER:
+    case HOST_GET_WINNER:
       return {...state, winners: action.winners}
     default:
       return state

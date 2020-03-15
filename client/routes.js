@@ -55,12 +55,7 @@ const mapDispatch = dispatch => {
     loadInitialData() {
       dispatch(me())
     }
-    //   setDisplayedQuestion: question => {
-    //     dispatch(setDisplayedQuestion(question))
-    //   }
   }
 }
 
-// The `withRouter` wrapper makes sure that updates are not blocked
-// when the url changes
 export default withRouter(connect(mapState, mapDispatch)(Routes))

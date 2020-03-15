@@ -35,7 +35,6 @@ const styles = {
 }
 class Wait extends React.Component {
   render() {
-    // console.log('rendering loading')
     const {classes} = this.props
     const showEng = this.props.user.language === 'EN'
 
@@ -44,7 +43,7 @@ class Wait extends React.Component {
         <Card className={classes.root} variant="outlined">
           <CardContent className={classes.body}>
             {this.props.from === 'host' && (
-              <Typography variant="h5" component="h2" align="center">
+              <Typography variant="h4" component="h4" align="center">
                 {showEng
                   ? `Please wait for host to prompt question`
                   : `请等待主持人提问！`}

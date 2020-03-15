@@ -50,19 +50,13 @@ const updatedInfo = info => ({
 
 export const updateInfo = (info, id) => async dispatch => {
   try {
-    // console.log('redux, put request body', info)
-    // console.log(info)
     const {data} = await axios.put(`/api/users/${id}`, info)
-    // console.log('put response', data)
-    // console.log(data)
     dispatch(updatedInfo(data))
   } catch (err) {
     console.error(err)
   }
 }
-/**
- * REDUCER
- */
+
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:

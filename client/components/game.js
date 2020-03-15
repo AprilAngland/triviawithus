@@ -19,11 +19,6 @@ class Game extends React.Component {
             <Wait from="loading" />
           </div>
         )}
-        {/* {!this.props.question.displayType && (
-          <div>
-            <Wait from="host" />
-          </div>
-        )} */}
         {this.props.status === 'paused' && (
           <div>
             <Wait from="host" />

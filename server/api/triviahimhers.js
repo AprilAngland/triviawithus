@@ -27,21 +27,18 @@ router.get('/winner', adminOnly, async (req, res, next) => {
       ).length
     }))
     let maxCorrect = userCorrectCount.sort((a, b) => b.count - a.count)[0].count
-    // maxCorrect = Math.max(maxCorrect, 1)
     const winners = userCorrectCount.filter(user => user.count === maxCorrect)
-    // .sort((a, b) => a.count - b.count)
-    // const idx = Math.floor(Math.random())
     res.json(winners)
   } catch (err) {
     next(err)
   }
 })
 
-router.get('/:id', adminOnly, async (req, res, next) => {
+router.get('/:questionId', adminOnly, async (req, res, next) => {
   try {
     const triviahimher = await TriviaHimHer.findAll({
-      include: [{model: User, through: {attributes: ['ans']}}],
-      where: {id: req.params.id}
+      include: [{model: User, through: {attributes: ['ans', 'correct']}}],
+      where: {id: req.params.questionId}
     })
     let resObj = triviahimher[0]
     resObj.ansCntHim = resObj.users.filter(
@@ -57,19 +54,26 @@ router.get('/:id', adminOnly, async (req, res, next) => {
   }
 })
 
-router.put('/:id', userOnly, async (req, res, next) => {
+router.put('/:questionId', adminOnly, async (req, res, next) => {
   try {
-    const questionToUpdate = await TriviaHimHer.findByPk(+req.params.id)
-    const user = await User.findByPk(req.query.userId)
-
-    questionToUpdate.addUser(user, {
+    const questionToUpdate = await TriviaHimHer.findOne({
+      include: [{model: User, through: {attributes: ['ans', 'correct']}}],
+      where: {id: req.params.questionId}
+    })
+    console.log(req.params.questionId, req.query.userId)
+    const user = await User.findOne({
+      where: {id: +req.query.userId}
+    })
+    await questionToUpdate.addUser(user, {
       through: {
         ans: req.query.ans,
         correct: questionToUpdate.ans === req.query.ans
       }
     })
 
-    res.json({})
+    await questionToUpdate.reload()
+    // console.log(questionToUpdate)
+    res.json(questionToUpdate)
   } catch (err) {
     next(err)
   }

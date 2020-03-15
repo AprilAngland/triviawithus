@@ -50,7 +50,6 @@ class TriviaHimHerWinner extends React.Component {
     this.props.getWinner()
   }
   render() {
-    // console.log('rendering loading')
     const {classes} = this.props
 
     return (

@@ -11,7 +11,6 @@ const styles = {
     flexGrow: 1,
     flexDirection: 'column',
     background: '#b1afd7',
-    // background: 'white',
     color: 'black',
     borderRadius: 3,
     justifyContent: 'flex-start',

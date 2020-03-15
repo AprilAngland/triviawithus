@@ -19,7 +19,6 @@ router.get('/', adminOnly, async (req, res, next) => {
 
 router.put('/:id', userOnly, async (req, res, next) => {
   try {
-    // console.log(r)
     const {
       email,
       nickname,

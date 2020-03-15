@@ -13,7 +13,6 @@ class TriviaHimHer extends React.Component {
   }
 
   componentDidMount() {
-    console.log('Component Did Mount TriviaHimHer')
     socket.emit('ResumeQuestionFromHost')
     let id = parseInt(queryString.parse(this.props.location.search).id)
     let type = queryString.parse(this.props.location.search).type

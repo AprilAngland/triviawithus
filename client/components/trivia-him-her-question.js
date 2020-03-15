@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import socket from '../socket'
 import {Wait} from '.'
-import {voteQuestion, resetQuestion, finishedDisplayedQuestion} from '../store'
+import {resetQuestion} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import {
   Card,
@@ -45,12 +45,8 @@ const styles = theme => ({
     justifyContent: 'space-evenly',
     margin: '40px'
   },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: 'fit-content'
-  }
+  voters: {display: 'flex', flexWrap: 'wrap', justifyContent: 'center'},
+  voter: {width: '17vw', marginTop: '1vh', marginBottom: '1vh'}
 })
 class TriviaHimHerQuestion extends React.Component {
   constructor() {
@@ -63,11 +59,8 @@ class TriviaHimHerQuestion extends React.Component {
   handleClose = () => {
     this.setState({open: false})
   }
-  componentDidMount() {
-    console.log('Component Did Mount TriviaHimHerQuestion')
-  }
   render() {
-    const NUM_QUESTIONS = 8
+    let NUM_QUESTIONS = 8
     const {classes} = this.props
     if (this.props.questions !== null && this.props.user.type === 'admin') {
       const toEmit = {
@@ -75,11 +68,10 @@ class TriviaHimHerQuestion extends React.Component {
         displayType: 'question',
         questionType: 'himher'
       }
-      console.log('FromHost', this.props.question)
       socket.emit('FromHost', toEmit)
     }
     const showEng = this.props.user.language === 'EN'
-    // let answer = undefined
+
     return (
       <div>
         {this.props.question.id ? (
@@ -120,28 +112,62 @@ class TriviaHimHerQuestion extends React.Component {
                   : `${this.props.question.text}`}
               </Typography>
               <br />
+              {this.props.user.type === 'admin' && (
+                <Typography variant="h4" component="h3" align="center">
+                  {this.props.userVoteInfo.length > 0
+                    ? `Voters:`
+                    : `No Voters Yet!`}
+                </Typography>
+              )}
+              {this.props.user.type === 'admin' && (
+                <Typography
+                  align="center"
+                  className={classes.voters}
+                  component="h4"
+                >
+                  {this.props.userVoteInfo.length > 0 &&
+                    this.props.userVoteInfo.map(voter => (
+                      // [
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo
+                      // ].map(voter => (
+                      <Typography
+                        key={voter.id}
+                        className={classes.voter}
+                        component="p"
+                        align="center"
+                      >
+                        {voter.nickname ? voter.nickname : voter.email}
+                      </Typography>
+                    ))}
+                  <br />
+                </Typography>
+              )}
             </CardContent>
 
             <CardActions className={classes.answerBar}>
               <Button
                 size="large"
-                disabled={
-                  this.props.user.type === 'admin' ||
-                  !!this.props.userVoteInfo.finished.find(
-                    question =>
-                      question &&
-                      question.questionType === 'himher' &&
-                      question.id === this.props.question.id
-                  )
-                }
+                // disabled={this.props.user.type === 'admin'}
                 onClick={() => {
-                  let answer = 'Him'
-                  this.props.voteQuestion(
-                    this.props.question.id,
-                    answer,
-                    this.props.user.id
-                  )
-                  this.props.finishedDisplayedQuestion(this.props.question)
+                  let ans = 'Him'
+                  socket.emit('AnswerFromGuest', {
+                    ...this.props.user,
+                    ans,
+                    questionId: this.props.question.id
+                  })
                   this.handleClickOpen()
                 }}
               >
@@ -150,23 +176,14 @@ class TriviaHimHerQuestion extends React.Component {
 
               <Button
                 size="large"
-                disabled={
-                  this.props.user.type === 'admin' ||
-                  !!this.props.userVoteInfo.finished.find(
-                    question =>
-                      question &&
-                      question.questionType === 'himher' &&
-                      question.id === this.props.question.id
-                  )
-                }
+                // disabled={this.props.user.type === 'admin'}
                 onClick={() => {
-                  let answer = 'Her'
-                  this.props.voteQuestion(
-                    this.props.question.id,
-                    answer,
-                    this.props.user.id
-                  )
-                  this.props.finishedDisplayedQuestion(this.props.question)
+                  let ans = 'Her'
+                  socket.emit('AnswerFromGuest', {
+                    ...this.props.user,
+                    ans,
+                    questionId: this.props.question.id
+                  })
                   this.handleClickOpen()
                 }}
               >
@@ -184,8 +201,8 @@ class TriviaHimHerQuestion extends React.Component {
                 <DialogContent>
                   <DialogContentText id="alert-dialog-description">
                     {showEng
-                      ? `Too late to change your mind :}, please wait for host to show next question`
-                      : '现在已经不能反悔了， 请等待下一道题目！'}
+                      ? `You can still change your mind, otherwise wait for host to reveal result!!`
+                      : '现在还可以反悔哦！或者请等待下一道题目！'}
                   </DialogContentText>
                 </DialogContent>
                 <DialogActions>
@@ -204,16 +221,13 @@ class TriviaHimHerQuestion extends React.Component {
   }
 }
 
-const mapState = state => ({user: state.user, userVoteInfo: state.userVoteInfo})
+const mapState = state => ({
+  user: state.user,
+  userVoteInfo: state.triviaHimHer.curQuestion.users
+})
 const mapDispatch = dispatch => ({
-  voteQuestion: (id, ans, userId) => {
-    dispatch(voteQuestion(id, ans, userId))
-  },
   resetQuestion: () => {
     dispatch(resetQuestion())
-  },
-  finishedDisplayedQuestion: question => {
-    dispatch(finishedDisplayedQuestion(question))
   }
 })
 

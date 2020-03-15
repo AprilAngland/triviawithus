@@ -15,7 +15,7 @@ const persistConfig = {
 }
 const reducer = persistReducer(
   persistConfig,
-  combineReducers({user, triviaHimHer, userVoteInfo: userVoteInfo, menu})
+  combineReducers({user, triviaHimHer, userVoteInfo, menu})
 )
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

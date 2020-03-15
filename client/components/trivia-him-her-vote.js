@@ -43,7 +43,9 @@ const styles = {
   },
   body: {
     flex: '0 0 5vh'
-  }
+  },
+  voters: {display: 'flex', flexWrap: 'wrap', justifyContent: 'center'},
+  voter: {width: '17vw', marginTop: '1vh', marginBottom: '1vh'}
 }
 
 class TriviaHimHerVote extends React.Component {
@@ -52,14 +54,15 @@ class TriviaHimHerVote extends React.Component {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
 
-    if (this.props.questions !== null && this.props.user.type === 'admin') {
-      const toEmit = {
-        ...this.props.question,
-        displayType: 'vote',
-        questionType: 'himher'
-      }
-      socket.emit('FromHost', toEmit)
-    }
+    // if (this.props.questions !== null && this.props.user.type === 'admin') {
+    //   socket.emit()
+    //   // const toEmit = {
+    //   //   ...this.props.question,
+    //   //   displayType: 'vote',
+    //   //   questionType: 'himher'
+    //   // }
+    //   // socket.emit('FromHost', toEmit)
+    // }
     const showEng = this.props.user.language === 'EN'
 
     return (
@@ -108,21 +111,47 @@ class TriviaHimHerVote extends React.Component {
                   : `${this.props.question.text}`}
               </Typography>
               <br />
-              <Typography variant="h4" component="p" align="center">
-                {this.props.question.users &&
-                this.props.question.users.filter(
-                  user => user.triviahimhervote.ans === this.props.question.ans
-                ).length > 0
-                  ? `Winners: ${this.props.question.users
-                      .filter(
-                        user =>
-                          user.triviahimhervote.ans === this.props.question.ans
-                      )
-                      .map(user => (user.nickname ? user.nickname : user.email))
-                      .join(', ')}`
-                  : 'Oh no, no one got this right?'}
-                <br />
+              <Typography variant="h4" component="h3" align="center">
+                {this.props.userVoteInfo.length > 0
+                  ? `Winners:`
+                  : `No Winners!`}
               </Typography>
+              {this.props.user.type === 'admin' && (
+                <Typography
+                  align="center"
+                  className={classes.voters}
+                  component="h4"
+                >
+                  {this.props.userVoteInfo.length > 0 &&
+                    this.props.userVoteInfo.map(voter => (
+                      // [
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo,
+                      //   ...this.props.userVoteInfo
+                      // ].map(voter => (
+                      <Typography
+                        key={voter.id}
+                        className={classes.voter}
+                        component="p"
+                        align="center"
+                      >
+                        {voter.nickname ? voter.nickname : voter.email}
+                      </Typography>
+                    ))}
+                  <br />
+                </Typography>
+              )}
             </CardContent>
             <CardMedia className={classes.media}>
               <TriviaHimHerVoteChart question={this.props.question} />
@@ -136,7 +165,14 @@ class TriviaHimHerVote extends React.Component {
   }
 }
 
-const mapState = state => ({user: state.user})
+const mapState = state => ({
+  user: state.user,
+  userVoteInfo: state.triviaHimHer.curQuestion.users
+    ? state.triviaHimHer.curQuestion.users.filter(
+        user => user.triviahimhervote.correct === true
+      )
+    : []
+})
 const mapDispatch = dispatch => ({
   resetQuestion: () => {
     dispatch(resetQuestion())

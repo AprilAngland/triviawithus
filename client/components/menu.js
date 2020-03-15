@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 import {getMenu} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import {Card, CardContent, Typography} from '@material-ui/core'
-import socket from '../socket'
-/**
- * COMPONENT
- */
 
 const styles = {
   root: {
