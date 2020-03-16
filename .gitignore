@@ -8,5 +8,5 @@ secretsAprilSunNew.js
 npm-debug.log
 yarn-error.log
 /script/Invitation.js
-public/Invitation.html
-public/Confirmation.html
+/public/Invitation.html
+/public/Confirmation.html

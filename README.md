@@ -56,7 +56,7 @@ npm run seed-questions
 
 - Be careful to only run it once!!
 - edit mailing list in script/InvitationPublic.js rename the file into Invitation.js
-- edit the email template in public/Invitation.html
+- edit the email template in public/InvitationPublic.html and rename the file into Invitation.html
 - Run the below command to send out invitation
 
 ```
