@@ -42,10 +42,10 @@ class NavbarCustom extends React.Component {
             ) : (
               ''
             )}
-            {!this.props.isLoggedIn ? (
+            {/* {!this.props.isLoggedIn ? (
               <Tab
                 value={1}
-                label="Login as Admin"
+                label="Login"
                 to="/login"
                 component={Link}
                 onClick={() => {
@@ -54,12 +54,12 @@ class NavbarCustom extends React.Component {
               />
             ) : (
               ''
-            )}
+            )} */}
             {!this.props.isLoggedIn ? (
               <Tab
                 value={2}
                 label="中文用户登陆"
-                to="/login"
+                to="/logincn"
                 component={Link}
                 onClick={() => {
                   this.setState({value: false})
@@ -88,7 +88,7 @@ class NavbarCustom extends React.Component {
             ) : (
               ''
             )}
-            {this.props.isLoggedIn && !this.props.isAdmin ? (
+            {/* {this.props.isLoggedIn && !this.props.isAdmin ? (
               <Tab
                 value={4}
                 label={showEng ? 'Trivia!' : '有奖竞猜'}
@@ -97,7 +97,7 @@ class NavbarCustom extends React.Component {
               />
             ) : (
               ''
-            )}
+            )} */}
             {this.props.isAdmin ? (
               <Tab
                 value={7}

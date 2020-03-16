@@ -8,6 +8,7 @@ import {
   UserHome,
   Menu,
   Game,
+  Welcome,
   TriviaHimHer,
   TriviaGuessNumber,
   TriviaMultiChoice,
@@ -26,7 +27,7 @@ class Routes extends Component {
 
     return (
       <Switch>
-        <Route path="/login" component={Login} />
+        <Route path="/logincn" component={Login} />
         {isLoggedIn && (
           <Switch>
             <Route path="/home" component={UserHome} />
@@ -38,6 +39,7 @@ class Routes extends Component {
             <Route path="/TriviaGuessNumbers" component={TriviaGuessNumber} />
           </Switch>
         )}
+        <Route component={Welcome} />
         {/* Displays our Login component as a fallback */}
         {/* <Route component={Login} /> */}
       </Switch>
