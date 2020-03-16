@@ -11,7 +11,7 @@ This app is an interactive trivia tool for party and events. It is to be used at
 Guests can login with their google account, update their nickname (nickname will later be shown on the big screen when playing trivia), view menu, make menu selection and update other information such us dietary restrictions. Once guest made their menu selection and put in their nickname, they can confirm their acceptance the invitation, and get a confirmation email.
 
 <p align="center">
-  <img src="public/ReadmeGuestInfo.png  title="hover text">
+  <img src="public/ReadmeGuestInfo.png"  title="hover text">
 </p>
 
 ## Interactive Trivia - at the event
@@ -19,13 +19,13 @@ Guests can login with their google account, update their nickname (nickname will
 Host will run through a list of trivia questions, and guests will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen and
 
 <p align="center">
-  <img src="public/ReadmeQuestion.png  title="hover text">
+  <img src="public/ReadmeQuestion.png"  title="hover text">
 </p>
 <p align="center">
-  <img src="public/ReadmeVote.png  title="hover text">
+  <img src="public/ReadmeVote.png"  title="hover text">
 </p>
 <p align="center">
-  <img src="public/ReadmeWinner.png  title="hover text">
+  <img src="public/ReadmeWinner.png"  title="hover text">
 </p>
 
 # Running the tool
