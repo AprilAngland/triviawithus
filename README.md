@@ -32,13 +32,13 @@ if guests try to visit the "TRIVIA!" tab before the host starts the game, the ap
 
 Host (host's page is shown on the below page on the left) will run through a list of trivia questions, and guests (guest page is shown on the below page on the right) will be prompted to make their answer on their phone. As guests(voters) make their selections, their names will be shown on the host's page, which can be projected onto a big screen where anyone can easily see.
 
-Even thought host and guest see very similar interfaces, they get questions from completely different sources. The host have access to the questions list in the database at all time, whereas guest can only get the one question that is currently being shown by the host. The question is send from the host via socket. Guests do not have access to the questions in the database.
+Note that even thought host and guest see very similar interfaces, they get questions from completely different sources. The host have access to the questions list in the database at all time, whereas guest can only get the one question that is currently being shown by the host. The question is send from the host via socket. Guests do not have access to the questions in the database.
 
 <p align="center">
   <img src="public/ReadmeQuestion.png"  title="hover text">
 </p>
 
-After each question, host will reveal the correct answer and the votes' statistic, the winners' (voters who made the correct answers) name will be shown on the host's big screen. Guests will be kindly asked to look away from their phones and to look at the host's big screen.
+After each question, host will reveal the correct answer and the votes' statistic, the winners' (voters who made the correct answers) names will be shown on the host's big screen. Guests will be kindly asked to look away from their phones and to look at the host's big screen.
 
 <p align="center">
   <img src="public/ReadmeVote.png"  title="hover text">
@@ -52,7 +52,7 @@ After all questions are played, host will show the overall winner/winners.
 
 # Running the tool
 
-To test ot this project on your computer, please complete these steps:
+If you want to play with this project on your computer, please complete these steps:
 
 - Fork and clone this repo
 
@@ -96,7 +96,7 @@ npm run seed-questions
 
 ## Sending invitation
 
-- Be careful to only run it once!!
+- Be careful to only send each guest one invitation!!
 - Edit mailing list in script/InvitationPublic.js and rename the file as Invitation.js
 - Edit the email template in public/Invitation.html
 - Run the below command to send out invitation
