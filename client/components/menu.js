@@ -48,44 +48,40 @@ class Menu extends React.Component {
             <Typography variant="h5" component="h2" align="center">
               {showEng ? `Our Menu` : `菜单`}
             </Typography>
+            <br />
             <Typography variant="h6" component="h4" align="center">
-              {showEng ? `Hors D doeuvre` : `餐前小食`}
+              {showEng ? `Hors D'oeuvre` : `餐前小食`}
             </Typography>
             {horsDdoeuvre.map(dish => (
               <Typography key={dish.id}>
-                {showEng
-                  ? JSON.stringify(dish.text)
-                  : JSON.stringify(dish.translation)}
+                {showEng ? dish.text : dish.translation}
               </Typography>
             ))}
+            <br />
             <Typography variant="h6" component="h4" align="center">
               {showEng ? `First course` : `前菜`}
             </Typography>
             {firstCourse.map(dish => (
               <Typography key={dish.id}>
-                {showEng
-                  ? JSON.stringify(dish.text)
-                  : JSON.stringify(dish.translation)}
+                {showEng ? dish.text : dish.translation}
               </Typography>
             ))}
+            <br />
             <Typography variant="h6" component="h4" align="center">
               {showEng ? `Entree` : `主菜`}
             </Typography>
             {entree.map(dish => (
               <Typography key={dish.id}>
-                {showEng
-                  ? JSON.stringify(dish.text)
-                  : JSON.stringify(dish.translation)}
+                {showEng ? dish.text : dish.translation}
               </Typography>
             ))}
+            <br />
             <Typography variant="h6" component="h4" align="center">
               {showEng ? `Dessert` : `甜品`}
             </Typography>
             {desserts.map(dish => (
               <Typography key={dish.id}>
-                {showEng
-                  ? JSON.stringify(dish.text)
-                  : JSON.stringify(dish.translation)}
+                {showEng ? dish.text : dish.translation}
               </Typography>
             ))}
           </CardContent>
