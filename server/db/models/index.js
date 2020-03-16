@@ -8,6 +8,7 @@ const TriviaMultiChoiceVote = require('./TriviaMultiChoiceVote')
 const TriviaTrueFalse = require('./TriviaTrueFalse')
 const TriviaTrueFalseVote = require('./TriviaTrueFalseVote')
 const Menu = require('./menu')
+const Setup = require('./setup')
 
 User.belongsToMany(TriviaHimHer, {through: TriviaHimHerVote})
 TriviaHimHer.belongsToMany(User, {through: TriviaHimHerVote})
@@ -19,6 +20,7 @@ User.belongsToMany(TriviaMultiChoice, {through: TriviaMultiChoiceVote})
 TriviaMultiChoice.belongsToMany(User, {through: TriviaMultiChoiceVote})
 module.exports = {
   User,
+  Setup,
   Menu,
   TriviaHimHer,
   TriviaHimHerVote,
