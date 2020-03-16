@@ -88,7 +88,7 @@ class NavbarCustom extends React.Component {
             ) : (
               ''
             )}
-            {/* {this.props.isLoggedIn && !this.props.isAdmin ? (
+            {this.props.isLoggedIn && !this.props.isAdmin ? (
               <Tab
                 value={4}
                 label={showEng ? 'Trivia!' : '有奖竞猜'}
@@ -97,7 +97,7 @@ class NavbarCustom extends React.Component {
               />
             ) : (
               ''
-            )} */}
+            )}
             {this.props.isAdmin ? (
               <Tab
                 value={7}
