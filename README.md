@@ -1,14 +1,14 @@
 # Summary
 
-This app is an interactive trivia tool for party and events. It is to be used at the author Tianxin's own wedding reception. Guests will receive an invitation to the website from the host, and see the welcome page:
+This is an interactive trivia tool for parties and events. The developer Tianxin is a newly wed and this tool is used for her own wedding reception. The host will use the app to send out the invitaions, which will direct guests to the website. The webside will welcome guests with the below message:
 
 <p align="center">
   <img src="public/ReadmeWelcome.png"  title="hover text">
 </p>
 
-## Invitation - before the event
+## Invitation & RSVP - before the event
 
-Guests can login with their google account, update their nickname (nickname will later be shown on the big screen when playing trivia), view menu, make menu selection and update other information such us dietary restrictions. Once guest made their menu selection and put in their nickname, they can confirm their acceptance the invitation, and get a confirmation email.
+Guests can login with their google account, update their nickname (nickname will later be shown on the big screen when playing trivia), view menu, make menu selection and update other information such us dietary restrictions. Once guest made their menu selection and put in their nickname, they can confirm their RSVP. The app will send them a confirmation email.
 
 <p align="center">
   <img src="public/ReadmeGuestInfo.png"  title="hover text">
@@ -16,7 +16,7 @@ Guests can login with their google account, update their nickname (nickname will
 
 ## Trivia - at the event
 
-Host (shown on the below page on the left) will run through a list of trivia questions, and guests (shown on the below page on the right) will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen.
+Host (host's page is shown on the below page on the left) will run through a list of trivia questions, and guests (guest page is shown on the below page on the right) will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen.
 
 <p align="center">
   <img src="public/ReadmeQuestion.png"  title="hover text">
@@ -28,7 +28,7 @@ After each questions, host will show the correct answer and the votes' statistic
   <img src="public/ReadmeVote.png"  title="hover text">
 </p>
 
-After all questions are played, host will show overall winners.
+After all questions are played, host will show the overall winners.
 
 <p align="center">
   <img src="public/ReadmeWinner.png"  title="hover text">
