@@ -4,9 +4,9 @@ Trivia with Us is an interactive tool for parties and events. The developer Tian
 
 ## Invitation
 
-The host will use the app to send out the invitations via email. We use hogan express to compile email from template, and nodemailer to send the emails.
+The host will use the app to send out the invitations via email. We use hogan express to compile emails from template, and nodemailer to dispatch the them.
 
-The invitation email will direct guests to the website https://triviawithus.herokuapp.com/. The website welcomes guests with the below message:
+The invitation emails will direct guests to the website https://triviawithus.herokuapp.com/. The website welcomes guests with the below page:
 
 <p align="center">
   <img src="public/ReadmeWelcome.png"  title="hover text">
@@ -22,27 +22,27 @@ Guests can login with their google accounts. After logging in, they will be dire
 
 ## Trivia - at the event
 
-if guests try to visit the "trivia" tab before the host starts the game, the app will kindly ask them to wait for host.
+if guests try to visit the "TRIVIA!" tab before the host starts the game, the app will kindly ask them to wait for host.
 
 <p align="center">
   <img src="public/ReadmeWait.png"  title="hover text">
 </p>
 
-Host (host's page is shown on the below page on the left) will run through a list of trivia questions, and guests (guest page is shown on the below page on the right) will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen.
+Host (host's page is shown on the below page on the left) will run through a list of trivia questions, and guests (guest page is shown on the below page on the right) will be prompted to make their answer on their phone. As guests(voters) make their selections, their names will be shown on the host's page, which can be projected onto a big screen where anyone can easily see.
 
-Even thought host and guest see very similar interface, they get the question from completely different sources. The host have access to the questions list from database at all time, whereas guest can only get the one question that is currently being played. The one questions is send from the host via socket.
+Even thought host and guest see very similar interfaces, they get questions from completely different sources. The host have access to the questions list in the database at all time, whereas guest can only get the one question that is currently being shown by the host. The question is send from the host via socket. Guests do not have access to the questions in the database.
 
 <p align="center">
   <img src="public/ReadmeQuestion.png"  title="hover text">
 </p>
 
-After each questions, host will show the correct answer and the votes' statistic, the winners' (voters for made the correct answer) name will be shown on the host's big screen. Guests (shown on the below page on the right) will be prompted to look at the host's big screen.
+After each question, host will reveal the correct answer and the votes' statistic, the winners' (voters who made the correct answers) name will be shown on the host's big screen. Guests will be kindly asked to look away from their phones and to look at the host's big screen.
 
 <p align="center">
   <img src="public/ReadmeVote.png"  title="hover text">
 </p>
 
-After all questions are played, host will show the overall winners.
+After all questions are played, host will show the overall winner/winners.
 
 <p align="center">
   <img src="public/ReadmeWinner.png"  title="hover text">
