@@ -6,7 +6,7 @@ This app is an interactive trivia tool for party and events. It is to be used at
   <img src="public/ReadmeWelcome.png"  title="hover text">
 </p>
 
-## Event Logistic - before the event
+## Invitation - before the event
 
 Guests can login with their google account, update their nickname (nickname will later be shown on the big screen when playing trivia), view menu, make menu selection and update other information such us dietary restrictions. Once guest made their menu selection and put in their nickname, they can confirm their acceptance the invitation, and get a confirmation email.
 
@@ -14,16 +14,22 @@ Guests can login with their google account, update their nickname (nickname will
   <img src="public/ReadmeGuestInfo.png"  title="hover text">
 </p>
 
-## Interactive Trivia - at the event
+## Trivia - at the event
 
-Host will run through a list of trivia questions, and guests will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen and
+Host (shown on the below page on the left) will run through a list of trivia questions, and guests (shown on the below page on the right) will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen.
 
 <p align="center">
   <img src="public/ReadmeQuestion.png"  title="hover text">
 </p>
+
+After each questions, host will show the correct answer and the votes' statistic, the winners' (voters for made the correct answer) name will be shown on the host's big screen. Guests (shown on the below page on the right) will be prompted to look at the host's big screen.
+
 <p align="center">
   <img src="public/ReadmeVote.png"  title="hover text">
 </p>
+
+After all questions are played, host will show overall winners.
+
 <p align="center">
   <img src="public/ReadmeWinner.png"  title="hover text">
 </p>
@@ -72,7 +78,7 @@ npm run start-dev
 npm run seed-questions
 ```
 
-# Sending invitation
+## Sending invitation
 
 - Be careful to only run it once!!
 - Edit mailing list in script/InvitationPublic.js and rename the file as Invitation.js
@@ -83,7 +89,9 @@ npm run seed-questions
 npm run invitation
 ```
 
-# Heroku PGBackups
+## Heroku PGBackups
+
+To prevent loosing guest's information, such as menu choice, we recommend running heroku database backup periodically.
 
 - Creating a backup
 
