@@ -1,12 +1,14 @@
 # Summary
 
-This app is an interactive trivia tool for party, events, etc. It is build to the author Tianxin's own wedding reception. There are two types of users: guest and host. Host will have access to a list of trivia questions from the database
+This app is an interactive trivia tool for party and events. It is to be used at the author Tianxin's own wedding reception. There are two types of users: guest and host. Host will have access to a list of trivia questions from the database
 
-## Event Logistic
+## Event Logistic - before the event
 
-Guests will
+Guests will receive an invitation to the website, guest can login with their google account, view menu, make menu selection and upate other information such us dietray restrictions.
 
-## Interactive Trivia
+## Interactive Trivia - at the event
+
+Host will run through a list of trivia questions, and guests will be prompted to make their answer on their phone. The votes's name will be shown on the host's big screen and
 
 # Running the tool
 
@@ -55,8 +57,8 @@ npm run seed-questions
 # Sending invitation
 
 - Be careful to only run it once!!
-- edit mailing list in script/InvitationPublic.js rename the file into Invitation.js
-- edit the email template in public/InvitationPublic.html and rename the file into Invitation.html
+- Edit mailing list in script/InvitationPublic.js and rename the file as Invitation.js
+- Edit the email template in public/InvitationPublic.html and rename the file as Invitation.html
 - Run the below command to send out invitation
 
 ```
@@ -67,14 +69,21 @@ npm run invitation
 
 - Creating a backup
 
-  - heroku pg:backups:capture --app triviawithus
+```
+heroku pg:backups:capture --app triviawithus
+```
 
 - Checking backup status and find out versions of the backups
 
-  - heroku pg:backups --app triviawithus
-  - heroku pg:backups:info [b101] --app triviawithus
+```
+heroku pg:backups --app triviawithus
+heroku pg:backups:info [b101] --app triviawithus
+```
 
 - Restoring backups
-  - heroku pg:backups:restore [b101] DATABASE_URL --app triviawithus
+
+```
+heroku pg:backups:restore [b101] DATABASE_URL --app triviawithus
+```
 
 More info here https://devcenter.heroku.com/articles/heroku-postgres-backups#creating-a-backup
