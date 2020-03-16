@@ -1,8 +1,14 @@
 # Summary
 
-This application is an interactive trivia application for party, wedding reception, events, etc. There are two types of users: guest and host. Host will have access to data
+This app is an interactive trivia tool for party, events, etc. It is build to the author Tianxin's own wedding reception. There are two types of users: guest and host. Host will have access to a list of trivia questions from the database
 
-## Setup
+## Event Logistic
+
+Guests will
+
+## Interactive Trivia
+
+# Running the tool
 
 To test ot this project on your computer, please complete these steps:
 
@@ -18,10 +24,11 @@ git clone https://github.com/tianxinAngland/triviawithus/
 npm install
 ```
 
-- Create database
+- Create database and seed dummy data
 
 ```
 createdb triviawithus
+npm run seed
 ```
 
 - Start app
@@ -32,25 +39,29 @@ npm run start-dev
 
 - visit app on http://localhost:8080/
 
-## Deployment
+- You can also visit the deployed app at https://triviawithus.herokuapp.com/
 
-Push branch to master and Run `npm run deploy` to visit deployed app at https://triviawithus.herokuapp.com/
+# Testing
 
-# Github Repository
+## Seeding real data
 
-https://github.com/tianxinAngland/triviawithus
+- Edit file /script/seedQuesions.js to add fun questions to the app
+- Run the below command and seed the tool with fun questions!
 
-# Seeding
-
-- for production run heroku run bash first
-- npm run seed (this resets all data)
-- npm run seed-questions
+```
+npm run seed-questions
+```
 
 # Sending invitation
 
 - Be careful to only run it once!!
-- edit mailing list in script/Invitation.js
-- npm run invitation
+- edit mailing list in script/InvitationPublic.js rename the file into Invitation.js
+- edit the email template in public/Invitation.html
+- Run the below command to send out invitation
+
+```
+npm run invitation
+```
 
 # Heroku PGBackups
 
