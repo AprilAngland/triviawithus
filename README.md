@@ -14,7 +14,7 @@ The invitation email will direct guests to the website https://triviawithus.hero
 
 ## RSVP - before the event
 
-Guests can login with their google account, update their nickname (nickname will later be shown on the big screen when playing trivia), view menu, make menu selection and update other information such us dietary restrictions. Once guest made their menu selection and put in their nickname, they can confirm their RSVP. The app will send them a confirmation email.
+Guests can login with their google accounts. After logging in, they will be directed to the user home page. Guests are first prompted to update their nicknames. Nicknames will later be shown on the big screen when playing trivia, so it is not optional. Menu selection is also a mandatory field. Once guest made their menu selection and fill in their nickname, they can click a button confirm their RSVP. The app will automatically send them a confirmation email.
 
 <p align="center">
   <img src="public/ReadmeGuestInfo.png"  title="hover text">
@@ -22,7 +22,7 @@ Guests can login with their google account, update their nickname (nickname will
 
 ## Trivia - at the event
 
-if guests try to visit the "trivia" tab, they would be told to wait for host.
+if guests try to visit the "trivia" tab before the host starts the game, the app will kindly ask them to wait for host.
 
 <p align="center">
   <img src="public/ReadmeWait.png"  title="hover text">
@@ -137,3 +137,7 @@ https://nodemailer.com/about/
 ## Hogan Express
 
 https://www.npmjs.com/package/hogan-express
+
+## Socket.IO
+
+https://socket.io/
