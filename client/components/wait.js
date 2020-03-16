@@ -9,9 +9,6 @@ import {
   Typography,
   Button
 } from '@material-ui/core'
-/**
- * COMPONENT
- */
 
 const styles = {
   root: {

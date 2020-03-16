@@ -15,52 +15,99 @@ async function seedGames() {
   await db.sync()
 
   const TriviaHimHer1 = await TriviaHimHer.findOne({where: {id: 1}})
-  TriviaHimHer1.text = 'Who steals apple pie at night?'
+  TriviaHimHer1.text = 'Who is the mother of dragon'
   TriviaHimHer1.ans = 'Her'
   await TriviaHimHer1.save()
   console.log('triviaHimHer1  updated')
 
   const TriviaHimHer2 = await TriviaHimHer.findOne({where: {id: 2}})
-  TriviaHimHer2.text = 'Who is the blanket thief?'
+  TriviaHimHer2.text = 'Who is the true heir of the throne'
   TriviaHimHer2.ans = 'Him'
   await TriviaHimHer2.save()
   console.log('triviaHimHer2  updated')
 
   const TriviaHimHer3 = await TriviaHimHer.findOne({where: {id: 3}})
-  TriviaHimHer3.text = 'Who is more opinionated about how to make rice'
+  TriviaHimHer3.text = 'Who is the Lord Commander Of The Night Watch'
   TriviaHimHer3.ans = 'Him'
   await TriviaHimHer3.save()
   console.log('triviaHimHer3  updated')
 
   const TriviaHimHer4 = await TriviaHimHer.findOne({where: {id: 4}})
-  TriviaHimHer4.text = 'Who is better at math'
+  TriviaHimHer4.text = 'Who is played by emilia clarke'
   TriviaHimHer4.ans = 'Her'
   await TriviaHimHer4.save()
   console.log('triviaHimHer4  updated')
 
   const TriviaHimHer5 = await TriviaHimHer.findOne({where: {id: 5}})
-  TriviaHimHer5.text = 'Who is a better chef'
+  TriviaHimHer5.text = 'Who is played by Kit Harington'
   TriviaHimHer5.ans = 'Him'
   await TriviaHimHer5.save()
   console.log('triviaHimHer5  updated')
 
   const TriviaHimHer6 = await TriviaHimHer.findOne({where: {id: 6}})
-  TriviaHimHer6.text = 'Who is the bad cop'
+  TriviaHimHer6.text = 'Who is a bastard'
   TriviaHimHer6.ans = 'Him'
   await TriviaHimHer6.save()
   console.log('triviaHimHer6  updated')
 
   const TriviaHimHer7 = await TriviaHimHer.findOne({where: {id: 7}})
-  TriviaHimHer7.text = 'Who likes disney'
+  TriviaHimHer7.text = 'Who get killed in the final episode'
   TriviaHimHer7.ans = 'Her'
   await TriviaHimHer7.save()
   console.log('triviaHimHer7  updated')
 
   const TriviaHimHer8 = await TriviaHimHer.findOne({where: {id: 8}})
-  TriviaHimHer8.text = 'Who sings more'
-  TriviaHimHer8.ans = 'Him'
+  TriviaHimHer8.text = 'Who burned a city to the ground'
+  TriviaHimHer8.ans = 'Her'
   await TriviaHimHer8.save()
   console.log('triviaHimHer8  updated')
+  // const TriviaHimHer1 = await TriviaHimHer.findOne({where: {id: 1}})
+  // TriviaHimHer1.text = 'Who steals apple pie at night?'
+  // TriviaHimHer1.ans = 'Her'
+  // await TriviaHimHer1.save()
+  // console.log('triviaHimHer1  updated')
+
+  // const TriviaHimHer2 = await TriviaHimHer.findOne({where: {id: 2}})
+  // TriviaHimHer2.text = 'Who is the blanket thief?'
+  // TriviaHimHer2.ans = 'Him'
+  // await TriviaHimHer2.save()
+  // console.log('triviaHimHer2  updated')
+
+  // const TriviaHimHer3 = await TriviaHimHer.findOne({where: {id: 3}})
+  // TriviaHimHer3.text = 'Who is more opinionated about how to make rice'
+  // TriviaHimHer3.ans = 'Him'
+  // await TriviaHimHer3.save()
+  // console.log('triviaHimHer3  updated')
+
+  // const TriviaHimHer4 = await TriviaHimHer.findOne({where: {id: 4}})
+  // TriviaHimHer4.text = 'Who is better at math'
+  // TriviaHimHer4.ans = 'Her'
+  // await TriviaHimHer4.save()
+  // console.log('triviaHimHer4  updated')
+
+  // const TriviaHimHer5 = await TriviaHimHer.findOne({where: {id: 5}})
+  // TriviaHimHer5.text = 'Who is a better chef'
+  // TriviaHimHer5.ans = 'Him'
+  // await TriviaHimHer5.save()
+  // console.log('triviaHimHer5  updated')
+
+  // const TriviaHimHer6 = await TriviaHimHer.findOne({where: {id: 6}})
+  // TriviaHimHer6.text = 'Who is the bad cop'
+  // TriviaHimHer6.ans = 'Him'
+  // await TriviaHimHer6.save()
+  // console.log('triviaHimHer6  updated')
+
+  // const TriviaHimHer7 = await TriviaHimHer.findOne({where: {id: 7}})
+  // TriviaHimHer7.text = 'Who likes disney'
+  // TriviaHimHer7.ans = 'Her'
+  // await TriviaHimHer7.save()
+  // console.log('triviaHimHer7  updated')
+
+  // const TriviaHimHer8 = await TriviaHimHer.findOne({where: {id: 8}})
+  // TriviaHimHer8.text = 'Who sings more'
+  // TriviaHimHer8.ans = 'Him'
+  // await TriviaHimHer8.save()
+  // console.log('triviaHimHer8  updated')
 
   // TriviaTrueFalse.truncate({restartIdentity: true, cascade: true})
   // const triviatruefalses = await Promise.all([

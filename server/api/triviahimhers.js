@@ -60,7 +60,7 @@ router.put('/:questionId', adminOnly, async (req, res, next) => {
       include: [{model: User, through: {attributes: ['ans', 'correct']}}],
       where: {id: req.params.questionId}
     })
-    console.log(req.params.questionId, req.query.userId)
+    // console.log(req.params.questionId, req.query.userId)
     const user = await User.findOne({
       where: {id: +req.query.userId}
     })

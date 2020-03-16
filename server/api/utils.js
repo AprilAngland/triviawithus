@@ -3,7 +3,7 @@ const adminOnly = (req, res, next) => {
     next()
   } else {
     console.log('this is an admin only request')
-    console.log(req)
+    // console.log(req)
     res.sendStatus(404)
   }
 }

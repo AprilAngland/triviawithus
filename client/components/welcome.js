@@ -43,7 +43,6 @@ const styles = {
 class Welcome extends React.Component {
   render() {
     const {classes} = this.props
-    // const showEng = true
 
     return (
       <div className={classes.root}>
@@ -85,8 +84,5 @@ class Welcome extends React.Component {
     )
   }
 }
-//const mapState = state => ({user: state.user})
-// const mapState = state => ({})
-// const mapDispatch = dispatch => ({})
 
 export default withStyles(styles)(Welcome)

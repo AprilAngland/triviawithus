@@ -1,9 +1,22 @@
-module.exports = io => {
+const {Setup} = require('../db/models')
+
+module.exports = async io => {
   io.on('connection', socket => {
     console.log(`A socket connection to the server has been made: ${socket.id}`)
 
-    socket.on('FromHost', question => {
+    socket.on('FromHost', async question => {
       socket.broadcast.emit('ToGuest', question)
+      const [setup] = await Setup.findOrCreate({
+        where: {id: 1}
+      })
+      setup.update({
+        curQuestion: JSON.stringify({
+          text: question.text,
+          translation: question.translation,
+          displayType: question.displayType,
+          questionType: question.questionType
+        })
+      })
     })
 
     socket.on('ResetUserFromHost', () => {

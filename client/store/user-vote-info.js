@@ -1,6 +1,18 @@
 import axios from 'axios'
 import history from '../history'
 
+const GET_SETUP = 'GET_SETUP'
+const gotSetup = setup => ({type: GET_SETUP, setup})
+
+export const getSetup = setup => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/setups`)
+    dispatch(gotSetup(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 const GUEST_ERASE_QUESTIONS = 'GUEST_ERASE_QUESTIONS'
 export const eraseDisplayedQuestions = () => ({
   type: GUEST_ERASE_QUESTIONS
@@ -27,6 +39,8 @@ export const suspendDisplayedQuestion = question => ({
 const initialState = {question: {}, status: 'paused'}
 export default function(state = initialState, action) {
   switch (action.type) {
+    case GET_SETUP:
+      return {...state, question: action.setup}
     case GUEST_SET_QUESTION:
       return {...state, question: action.question}
     case GUEST_ERASE_QUESTIONS:

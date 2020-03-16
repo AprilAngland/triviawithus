@@ -21,7 +21,7 @@ router.put('/', adminOnly, async (req, res, next) => {
       where: {id: 1}
     })
 
-    console.log(req.body)
+    console.log(JSON.stringify(req.body))
     setup.update({
       curQuestion: JSON.stringify(req.body)
     })

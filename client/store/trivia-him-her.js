@@ -9,9 +9,7 @@ const defaultQuestion = {
   ansCntHer: 1,
   type: 'dummy'
 }
-/**
- * ACTION TYPES
- */
+
 const defaultState = {curQuestion: {}, winners: []}
 const HOST_GET_QUESTION = 'HOST_GET_QUESTION'
 const gotQuestion = question => ({type: HOST_GET_QUESTION, question})

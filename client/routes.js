@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
-import {setDisplayedQuestion} from './store'
 import socket from './socket'
 import {
   Login,
@@ -15,11 +14,12 @@ import {
   TriviaTrueFalse
 } from './components'
 
-import {me} from './store'
+import {me, getSetup} from './store'
 
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
+    // this.props.getSetup()
   }
 
   render() {
@@ -57,6 +57,9 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+    },
+    getSetup(question) {
+      dispatch(getSetup(question))
     }
   }
 }

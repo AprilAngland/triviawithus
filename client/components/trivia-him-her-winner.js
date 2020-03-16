@@ -79,14 +79,12 @@ class TriviaHimHerWinner extends React.Component {
             </Button>
           </CardActions>
           <CardContent className={classes.body}>
-            {/* <CardContent className={classes.body}> */}
             <Typography
               className={classes.winners}
               variant="h2"
               component="h2"
               align="center"
             >
-              {/* {this.props.winners && */}
               {this.props.winners &&
                 this.props.winners.map(winner => (
                   <div key={winner.id}>
@@ -101,7 +99,6 @@ class TriviaHimHerWinner extends React.Component {
                   </div>
                 ))}
             </Typography>
-            {/* </CardContent> */}
           </CardContent>
         </Card>
       </div>

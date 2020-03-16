@@ -49,31 +49,6 @@ const styles = {
 }
 
 class TriviaHimHerVote extends React.Component {
-  componentDidMount() {
-    if (this.props.questions !== null && this.props.user.type === 'admin') {
-      const toEmit = {
-        ...this.props.question,
-        displayType: 'vote',
-        questionType: 'himher'
-      }
-      this.props.setSetup({
-        text: toEmit.text,
-        translation: toEmit.translation,
-        displayType: toEmit.displayType,
-        questionType: toEmit.questionType
-        // long:
-        //   'llllllllongonrsghrsfhreuhfusra fgyeagfrsoabfhsrgffhafvhsfhjraewfafawfafwfafwafwafawfrwafeawfafsavghjsavghjsafvhaofah'
-      })
-    }
-  }
-  componentWillUnmount() {
-    this.props.setSetup({
-      text: '',
-      translation: '',
-      displayType: '',
-      questionType: ''
-    })
-  }
   render() {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
@@ -147,22 +122,6 @@ class TriviaHimHerVote extends React.Component {
                 >
                   {this.props.userVoteInfo.length > 0 &&
                     this.props.userVoteInfo.map(voter => (
-                      // [
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo,
-                      //   ...this.props.userVoteInfo
-                      // ].map(voter => (
                       <Typography
                         key={voter.id}
                         className={classes.voter}
