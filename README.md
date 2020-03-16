@@ -3,7 +3,7 @@
 This app is an interactive trivia tool for party and events. It is to be used at the author Tianxin's own wedding reception.
 
 <p align="center">
-  <img src="public/ReadmeWelcome.png" width="80vw" title="hover text">
+  <img src="public/ReadmeWelcome.png"  title="hover text">
 </p>
 
 ## Event Logistic - before the event
