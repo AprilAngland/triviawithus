@@ -1,12 +1,18 @@
 # Summary
 
-This is an interactive trivia tool for parties and events. The developer Tianxin is a newly wed and this tool is used for her own wedding reception. The host will use the app to send out the invitaions, which will direct guests to the website. The webside will welcome guests with the below message:
+Trivia with Us is an interactive tool for parties and events. The developer Tianxin is a newly wed and developed this tool for her own wedding reception.
+
+## Invitation
+
+The host will use the app to send out the invitations via email. We use hogan express to compile email from template, and nodemailer to send the emails.
+
+The invitation email will direct guests to the website https://triviawithus.herokuapp.com/. The website welcomes guests with the below message:
 
 <p align="center">
   <img src="public/ReadmeWelcome.png"  title="hover text">
 </p>
 
-## Invitation & RSVP - before the event
+## RSVP - before the event
 
 Guests can login with their google account, update their nickname (nickname will later be shown on the big screen when playing trivia), view menu, make menu selection and update other information such us dietary restrictions. Once guest made their menu selection and put in their nickname, they can confirm their RSVP. The app will send them a confirmation email.
 
@@ -121,3 +127,13 @@ heroku pg:backups:restore [b101] DATABASE_URL --app triviawithus
 ```
 
 More info here https://devcenter.heroku.com/articles/heroku-postgres-backups#creating-a-backup
+
+# Technologies
+
+## Nodemailer
+
+https://nodemailer.com/about/
+
+## Hogan Express
+
+https://www.npmjs.com/package/hogan-express
