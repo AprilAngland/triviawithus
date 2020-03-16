@@ -16,7 +16,15 @@ Guests can login with their google account, update their nickname (nickname will
 
 ## Trivia - at the event
 
+if guests try to visit the "trivia" tab, they would be told to wait for host.
+
+<p align="center">
+  <img src="public/ReadmeWait.png"  title="hover text">
+</p>
+
 Host (host's page is shown on the below page on the left) will run through a list of trivia questions, and guests (guest page is shown on the below page on the right) will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen.
+
+Even thought host and guest see very similar interface, they get the question from completely different sources. The host have access to the questions list from database at all time, whereas guest can only get the one question that is currently being played. The one questions is send from the host via socket.
 
 <p align="center">
   <img src="public/ReadmeQuestion.png"  title="hover text">
