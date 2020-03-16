@@ -1,14 +1,18 @@
 # Summary
 
-This app is an interactive trivia tool for party and events. It is to be used at the author Tianxin's own wedding reception. There are two types of users: guest and host. Host will have access to a list of trivia questions from the database
+This app is an interactive trivia tool for party and events. It is to be used at the author Tianxin's own wedding reception.
+
+<p align="center">
+  <img src="public/ReadmeWelcome.png" width="350" title="hover text">
+</p>
 
 ## Event Logistic - before the event
 
-Guests will receive an invitation to the website, guest can login with their google account, view menu, make menu selection and upate other information such us dietray restrictions.
+Guests will receive an invitation to the website, guest can login with their google account, view menu, make menu selection and update other information such us dietary restrictions.
 
 ## Interactive Trivia - at the event
 
-Host will run through a list of trivia questions, and guests will be prompted to make their answer on their phone. The votes's name will be shown on the host's big screen and
+Host will run through a list of trivia questions, and guests will be prompted to make their answer on their phone. The votes' name will be shown on the host's big screen and
 
 # Running the tool
 
@@ -58,7 +62,7 @@ npm run seed-questions
 
 - Be careful to only run it once!!
 - Edit mailing list in script/InvitationPublic.js and rename the file as Invitation.js
-- Edit the email template in public/InvitationPublic.html and rename the file as Invitation.html
+- Edit the email template in public/Invitation.html
 - Run the below command to send out invitation
 
 ```
