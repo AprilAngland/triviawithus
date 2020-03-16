@@ -1,7 +1,7 @@
 /* eslint-disable no-new */
 import React from 'react'
 import {connect} from 'react-redux'
-import {resetQuestion} from '../store'
+import {resetQuestion, setSetup} from '../store'
 import socket from '../socket'
 import {Wait} from '.'
 import {withStyles} from '@material-ui/core/styles'
@@ -49,7 +49,31 @@ const styles = {
 }
 
 class TriviaHimHerVote extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    if (this.props.questions !== null && this.props.user.type === 'admin') {
+      const toEmit = {
+        ...this.props.question,
+        displayType: 'vote',
+        questionType: 'himher'
+      }
+      this.props.setSetup({
+        text: toEmit.text,
+        translation: toEmit.translation,
+        displayType: toEmit.displayType,
+        questionType: toEmit.questionType
+        // long:
+        //   'llllllllongonrsghrsfhreuhfusra fgyeagfrsoabfhsrgffhafvhsfhjraewfafawfafwfafwafwafawfrwafeawfafsavghjsavghjsafvhaofah'
+      })
+    }
+  }
+  componentWillUnmount() {
+    this.props.setSetup({
+      text: '',
+      translation: '',
+      displayType: '',
+      questionType: ''
+    })
+  }
   render() {
     const NUM_QUESTIONS = 8
     const {classes} = this.props
@@ -175,6 +199,9 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   resetQuestion: () => {
     dispatch(resetQuestion())
+  },
+  setSetup: question => {
+    dispatch(setSetup(question))
   }
 })
 

@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import socket from '../socket'
 import {Wait} from '.'
-import {resetQuestion} from '../store'
+import {resetQuestion, setSetup} from '../store'
 import {withStyles} from '@material-ui/core/styles'
 import {
   Card,
@@ -70,6 +70,31 @@ class TriviaHimHerQuestion extends React.Component {
   }
   handleClose = () => {
     this.setState({open: false})
+  }
+  componentDidMount() {
+    if (this.props.questions !== null && this.props.user.type === 'admin') {
+      const toEmit = {
+        ...this.props.question,
+        displayType: 'question',
+        questionType: 'himher'
+      }
+      this.props.setSetup({
+        text: toEmit.text,
+        translation: toEmit.translation,
+        displayType: toEmit.displayType,
+        questionType: toEmit.questionType
+        // long:
+        //   'llllllllongonrsghrsfhreuhfusra fgyeagfrsoabfhsrgffhafvhsfhjraewfafawfafwfafwafwafawfrwafeawfafsavghjsavghjsafvhaofah'
+      })
+    }
+  }
+  componentWillUnmount() {
+    this.props.setSetup({
+      text: '',
+      translation: '',
+      displayType: '',
+      questionType: ''
+    })
   }
   render() {
     let NUM_QUESTIONS = 8
@@ -242,6 +267,9 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   resetQuestion: () => {
     dispatch(resetQuestion())
+  },
+  setSetup: question => {
+    dispatch(setSetup(question))
   }
 })
 
