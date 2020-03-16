@@ -37,6 +37,7 @@ class Routes extends Component {
             <Route path="/TriviaTrueFalses" component={TriviaTrueFalse} />
             <Route path="/TriviaMultiChoices" component={TriviaMultiChoice} />
             <Route path="/TriviaGuessNumbers" component={TriviaGuessNumber} />
+            <Route component={UserHome}></Route>
           </Switch>
         )}
         <Route component={Welcome} />

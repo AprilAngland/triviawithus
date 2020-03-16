@@ -36,38 +36,50 @@ const styles = {
   },
   header: {
     fontFamily: 'calibre,serif',
-    fontSize: 100,
+    fontSize: 75,
     fontWeight: 'lighter'
   }
 }
 class Welcome extends React.Component {
   render() {
     const {classes} = this.props
-    const showEng = true
+    // const showEng = true
 
     return (
       <div className={classes.root}>
         <CardContent className={classes.body}>
-          {showEng ? (
-            <div>
-              <Typography align="center" className={classes.header}>
-                <i>Welcome</i>
-              </Typography>
+          <div>
+            <Typography align="center" className={classes.header}>
+              <i>Welcome</i>
+            </Typography>
 
-              <Typography
-                variant="h5"
-                component="h5"
-                className={classes.paragraph}
-              >
-                John and Tianxin will be celebrating their marriage on July
-                18th, 2020, at the venue mentioned in the invitation. If you
-                have received an invitation, please log in with a Google account
-                and make your menu selection.
-              </Typography>
-            </div>
-          ) : (
-            `请等待主持揭晓答案！`
-          )}
+            <Typography
+              variant="h5"
+              component="h5"
+              className={classes.paragraph}
+            >
+              John and Tianxin will be celebrating their marriage on July 18th,
+              2020, at the venue mentioned in the invitation. If you have
+              received an invitation, please log in with a Google account and
+              make your menu selection.
+            </Typography>
+          </div>
+          <br />
+          <br />
+          <div>
+            <Typography align="center" className={classes.header}>
+              <i> 欢迎！</i>
+            </Typography>
+
+            <Typography
+              variant="h5"
+              component="h5"
+              className={classes.paragraph}
+            >
+              约翰和天新要在二零二零年七月十八号举行婚礼。婚礼地点在曼哈顿。
+              请你用天新提供的登录账户和密码登陆，点菜。
+            </Typography>
+          </div>
         </CardContent>
       </div>
     )
