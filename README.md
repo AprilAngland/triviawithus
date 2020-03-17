@@ -35,7 +35,7 @@ Host (host's page is shown on the below page on the left) will run through a lis
 Note that even thought host and guest see very similar interfaces, they get questions from completely different sources. The host have access to the questions list in the database at all time, whereas guest can only get the one question that is currently being shown by the host. The question is send from the host via socket. Guests do not have access to the questions in the database.
 
 <p align="center">
-  <img src="public/ReadmeQuestion.png"  title="hover text">
+  <img src="public/Question.gif"  title="hover text">
 </p>
 
 After each question, host will reveal the correct answer and the votes' statistic, the winners' (voters who made the correct answers) names will be shown on the host's big screen. Guests will be kindly asked to look away from their phones and to look at the host's big screen.
