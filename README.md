@@ -9,7 +9,7 @@ The host will use the app to send out the invitations via email. We use hogan ex
 The invitation emails will direct guests to the website https://triviawithus.herokuapp.com/. The website welcomes guests with the page shown below:
 
 <p align="center">
-  <img src="public/ReadmeWelcome.png"  title="hover text">
+  <img src="public/ReadmeWelcome.png">
 </p>
 
 ## RSVP
@@ -17,7 +17,7 @@ The invitation emails will direct guests to the website https://triviawithus.her
 Guests can login with their google accounts. After logging in, they will be directed to their home page. They are prompted to update their nicknames. Nicknames will later be shown on the big screen when playing trivia, so it is not optional. Menu selection is the other mandatory field. Once guests made their menu selections and fill in their nicknames, they can click the button "save changes and accept invitation". After the button is clicked the app will automatically generate and send confirmation emails.
 
 <p align="center">
-  <img src="public/ReadmeGuestInfo.png"  title="hover text">
+  <img src="public/ReadmeGuestInfo.png">
 </p>
 
 ## Wait for it
@@ -25,7 +25,7 @@ Guests can login with their google accounts. After logging in, they will be dire
 if guests try to visit the "TRIVIA!" tab before the host starts the game, the app will kindly ask them to wait for host.
 
 <p align="center">
-  <img src="public/ReadmeWait.png">
+  <img src="public/Wait.gif">
 </p>
 
 ## Trivia time
@@ -34,9 +34,9 @@ Host (host's page is shown on the below page on the left) will run through a lis
 
 Note that even thought host and guest see very similar interfaces, they get questions from completely different sources. The host have access to the questions list in the database at all time, whereas guest can only get the one question that is currently being shown by the host. The question is send from the host via socket. Guests do not have access to the questions in the database.
 
-<!-- <p align="center">
+<p align="center">
   <img src="public/Question.gif">
-</p> -->
+</p>
 
 After each question, host will reveal the correct answer and the votes' statistic, the winners' (voters who made the correct answers) names will be shown on the host's big screen. Guests will be kindly asked to look away from their phones and to look at the host's big screen.
 
@@ -47,7 +47,11 @@ After each question, host will reveal the correct answer and the votes' statisti
 After all questions are played, host will show the overall winner/winners.
 
 <p align="center">
-  <img src="public/ReadmeWinner.png"  title="hover text">
+  <img src="public/Winner.gif">
+</p>
+
+<p align="center">
+  <img src="public/Restart.gif">
 </p>
 
 # Running the tool
